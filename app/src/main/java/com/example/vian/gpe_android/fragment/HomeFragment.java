@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.vian.gpe_android.R;
+import com.example.vian.gpe_android.activity.FieldsActivity;
 import com.example.vian.gpe_android.activity.FieldsDetailActivity;
 import com.youth.banner.Banner;
 
@@ -40,7 +41,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(getActivity(),FieldsDetailActivity.class);
+                intent = new Intent(getActivity(),FieldsActivity.class);
                 startActivity(intent);
             }
         });
