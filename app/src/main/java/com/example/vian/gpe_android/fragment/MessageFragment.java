@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android;
+package com.example.vian.gpe_android.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,9 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class AccountFragment extends Fragment{
+import com.example.vian.gpe_android.R;
+
+public class MessageFragment extends Fragment{
 
     @Nullable
     @Override
@@ -20,14 +21,14 @@ public class AccountFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        TextView tv = (TextView) getActivity().findViewById(R.id.);
+//        TextView tv = (TextView) getActivity().findViewById(R.id.tv);
 //        tv.setText(getArguments().getString("ARGS"));
     }
 
-    public static AccountFragment newInstance(String content) {
+    public static MessageFragment newInstance(String content) {
         Bundle args = new Bundle();
         args.putString("ARGS", content);
-        AccountFragment fragment = new AccountFragment();
+        MessageFragment fragment = new MessageFragment();
         fragment.setArguments(args);
         return fragment;
     }

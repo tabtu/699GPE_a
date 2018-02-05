@@ -1,20 +1,23 @@
-package com.example.vian.gpe_android;
+package com.example.vian.gpe_android.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ImageButton;
 
-import com.bumptech.glide.Glide;
+import com.example.vian.gpe_android.R;
+import com.example.vian.gpe_android.activity.FieldsDetailActivity;
 import com.youth.banner.Banner;
 
 public class HomeFragment extends Fragment {
-    Banner banner;
+    Banner banner_news;
+    ImageButton btn_fields;
+    Banner banner_interests;
 
     String[] images= new String[] {
             "http://img.zcool.cn/community/0166c756e1427432f875520f7cc838.jpg",
@@ -30,22 +33,41 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment, container, false);
-        banner = (Banner)view.findViewById(R.id.banner);
-        banner.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
-        banner.setIndicatorGravity(Banner.CENTER);
-        banner.setBannerTitle(titles);
-        banner.setImages(images);
-        banner.isAutoPlay(true);
-        banner.setDelayTime(5000);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        //buttons
+        btn_fields = (ImageButton) view.findViewById(R.id.fields);
+        btn_fields.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(getActivity(),FieldsDetailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //banner
+        banner_news = (Banner)view.findViewById(R.id.banner_news);
+        banner_news.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
+        banner_news.setIndicatorGravity(Banner.CENTER);
+        banner_news.setBannerTitle(titles);
+        banner_news.setImages(images);
+        banner_news.isAutoPlay(true);
+        banner_news.setDelayTime(5000);
+
+        banner_interests = (Banner)view.findViewById(R.id.banner_interests);
+        banner_interests.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
+        banner_interests.setIndicatorGravity(Banner.CENTER);
+        banner_interests.setBannerTitle(titles);
+        banner_interests.setImages(images);
+        banner_interests.isAutoPlay(true);
+        banner_interests.setDelayTime(5000);
+
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        TextView tv = (TextView) getActivity().findViewById(R.id.tv);
-//        tv.setText(getArguments().getString("ARGS"));
     }
 
     public static HomeFragment newInstance(String content) {

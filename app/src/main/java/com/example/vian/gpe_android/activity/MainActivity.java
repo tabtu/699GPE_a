@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android;
+package com.example.vian.gpe_android.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +8,11 @@ import android.os.Bundle;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.example.vian.gpe_android.R;
+import com.example.vian.gpe_android.fragment.AccountFragment;
+import com.example.vian.gpe_android.fragment.FollowFragment;
+import com.example.vian.gpe_android.fragment.HomeFragment;
+import com.example.vian.gpe_android.fragment.MessageFragment;
 
 import java.util.ArrayList;
 
