@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GPE-Android</string>
+    <string name="home_news">NEWS</string>
+    <string name="home_referee">Referee</string>
+</resources>
