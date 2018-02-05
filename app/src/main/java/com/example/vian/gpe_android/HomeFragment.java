@@ -26,40 +26,12 @@ public class HomeFragment extends Fragment {
     };
     //设置图片标题:自动对应
     String[] titles=new String[]{"全场2折起","全场2折起","十大星级品牌联盟","嗨购5折不要停","12趁现在","嗨购5折不要停，12.12趁现在","实打实大顶顶顶顶"};
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.home_fragment);
-//        banner = (Banner) findViewById(R.id.banner);
-//        banner.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
-//        banner.setIndicatorGravity(Banner.CENTER);
-//        banner.setBannerTitle(titles);
-//        banner.isAutoPlay(true);
-//        banner.setDelayTime(5000);
-//
-//        banner.setImages(images, new Banner.OnLoadImageListener() {
-//            @Override
-//            public void OnLoadImage(ImageView view, Object url) {
-//                System.out.println("Loading...");
-//                Glide.with(getApplicationContext()).load(url).into(view);
-//                System.out.println("Loading complete");
-//            }
-//        });
-//
-//        banner.setOnBannerClickListener(new Banner.OnBannerClickListener() {
-//            @Override
-//            public void OnBannerClick(View view, int position) {
-//                Toast.makeText(getApplicationContext(), "你点击了：" + position, Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         banner = (Banner)view.findViewById(R.id.banner);
-
         banner.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
         banner.setIndicatorGravity(Banner.CENTER);
         banner.setBannerTitle(titles);
