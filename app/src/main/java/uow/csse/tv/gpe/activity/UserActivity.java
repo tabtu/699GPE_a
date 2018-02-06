@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.UserListAdapter;
-import uow.csse.tv.gpe.fragment.AccountFragment;
 
 /**
  * Created by Vian on 2/5/2018.
@@ -21,7 +20,7 @@ public class UserActivity extends AppCompatActivity {
     Toolbar toolbar;
     ListView listView;
 
-    String[] userName = {"123","456"};
+    String[] userName = {"vian","tab"};
     int[] userPic = {R.mipmap.athlete,R.mipmap.athlete};
     String[] userInterest = {"adsa","dddd"};
     String[] userLocation = {"cccccccccccc","dddddddddddddddddd"};
@@ -29,20 +28,20 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users);
+        System.out.println("1111111111111111111111111111");
+        setContentView(R.layout.activity_fields);
 
-        toolbar = (Toolbar) findViewById(R.id.usrlist_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Users");
 
-        listView = (ListView) findViewById(R.id.userslist);
+        listView = (ListView) findViewById(R.id.fieldslist);
         UserListAdapter userListAdapter = new UserListAdapter(UserActivity.this, userName, userPic, userLocation, userInterest);
         listView.setAdapter(userListAdapter);
+        System.out.println("222222222222222222222222");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent;
-                intent = new Intent(UserActivity.this,AccountFragment.class);
-                startActivity(intent);
+                Intent intent = new Intent(UserActivity.this, UserDetailActivity.class);
 //                intent.putExtra("name",userName[i]);
 //                intent.putExtra("image",userPic[i]);
                 startActivity(intent);

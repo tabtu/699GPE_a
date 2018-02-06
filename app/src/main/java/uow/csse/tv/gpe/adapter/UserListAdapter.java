@@ -24,7 +24,7 @@ public class UserListAdapter extends ArrayAdapter<String>{
     Context context;
 
     public UserListAdapter (Context context, String[] listName, int[] listImage, String[] listInterest, String[] listLocation){
-        super(context, R.layout.adapter_fieldslist);
+        super(context, R.layout.adapter_userlist);
         this.name = listName;
         this.image = listImage;
         this.interest = listInterest;

@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <ImageButton
-                            android:id="@+id/athlete"
+                            android:id="@+id/btn_athlete"
                             android:layout_width="95dp"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <ImageButton
-                            android:id="@+id/fields"
+                            android:id="@+id/btn_fields"
                             android:layout_width="95dp"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"

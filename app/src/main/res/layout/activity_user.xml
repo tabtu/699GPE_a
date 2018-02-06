@@ -21,7 +21,7 @@
         android:background="@color/lightgrey"
         android:gravity="center">
         <SearchView
-            android:id="@+id/searchView"
+            android:id="@+id/usr_searchView"
             android:layout_width="390dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
@@ -34,7 +34,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/userslist"
+        android:id="@+id/userlist"
         android:background="@color/white"
         android:layout_margin="10dp" />
 

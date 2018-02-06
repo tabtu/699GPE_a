@@ -11,11 +11,14 @@ import android.widget.ImageButton;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.FieldsActivity;
+import uow.csse.tv.gpe.activity.UserActivity;
+
 import com.youth.banner.Banner;
 
 public class HomeFragment extends Fragment {
     Banner banner_news;
     ImageButton btn_fields;
+    ImageButton btn_athlete;
     Banner banner_interests;
 
     String[] images= new String[] {
@@ -34,12 +37,19 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         //buttons
-        btn_fields = (ImageButton) view.findViewById(R.id.fields);
+        btn_athlete = (ImageButton) view.findViewById(R.id.btn_athlete);
+        btn_athlete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),UserActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_fields = (ImageButton) view.findViewById(R.id.btn_fields);
         btn_fields.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getActivity(),FieldsActivity.class);
+                Intent intent = new Intent(getActivity(),FieldsActivity.class);
                 startActivity(intent);
             }
         });
