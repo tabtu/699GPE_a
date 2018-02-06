@@ -1,16 +1,15 @@
-package com.example.vian.gpe_android.activity;
+package uow.csse.tv.gpe.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.vian.gpe_android.R;
-import com.example.vian.gpe_android.adapter.FieldListAdapter;
+import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.adapter.FieldListAdapter;
 
 /**
  * Created by Vian on 2/5/2018.

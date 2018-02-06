@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android.fragment;
+package uow.csse.tv.gpe.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,23 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.vian.gpe_android.R;
+import uow.csse.tv.gpe.R;
 
 /**
  * Created by Vian on 2/5/2018.
  */
 
-public class FieldsDetailMovementFragment extends Fragment {
+public class FieldsDetailActivityFragment extends Fragment {
     View view;
 
-    public FieldsDetailMovementFragment() {
+    public FieldsDetailActivityFragment() {
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
-        view = inflater.inflate(R.layout.fragment_fieldsdetail_movement,container,false);
+        view = inflater.inflate(R.layout.fragment_fieldsdetailactivity,container,false);
         return view;
     }
 

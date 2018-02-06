@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android.activity;
+package uow.csse.tv.gpe.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,11 +8,11 @@ import android.os.Bundle;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.example.vian.gpe_android.R;
-import com.example.vian.gpe_android.fragment.AccountFragment;
-import com.example.vian.gpe_android.fragment.FollowFragment;
-import com.example.vian.gpe_android.fragment.HomeFragment;
-import com.example.vian.gpe_android.fragment.MessageFragment;
+import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.fragment.AccountFragment;
+import uow.csse.tv.gpe.fragment.FollowFragment;
+import uow.csse.tv.gpe.fragment.HomeFragment;
+import uow.csse.tv.gpe.fragment.MessageFragment;
 
 import java.util.ArrayList;
 
@@ -66,16 +66,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 Fragment fragment = fragments.get(position);
-                if (fragment.isAdded()) {
-                    ft.replace(R.id.layFrame, fragment);
-                } else {
-                    ft.add(R.id.layFrame, fragment);
-                }
+                ft.replace(R.id.layFrame, fragment);
                 ft.commitAllowingStateLoss();
             }
         }
-
     }
+
 
     @Override
     public void onTabUnselected(int position) {

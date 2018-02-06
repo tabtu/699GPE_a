@@ -1,8 +1,7 @@
-package com.example.vian.gpe_android.adapter;
+package uow.csse.tv.gpe.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.vian.gpe_android.R;
-
-import org.w3c.dom.Text;
+import uow.csse.tv.gpe.R;
 
 /**
  * Created by Vian on 2/5/2018.

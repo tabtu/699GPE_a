@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android.adapter;
+package uow.csse.tv.gpe.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

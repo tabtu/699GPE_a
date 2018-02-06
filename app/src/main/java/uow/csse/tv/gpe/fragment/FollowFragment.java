@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android.fragment;
+package uow.csse.tv.gpe.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.vian.gpe_android.R;
+import uow.csse.tv.gpe.R;
 
 public class FollowFragment extends Fragment{
     @Nullable
@@ -15,13 +15,6 @@ public class FollowFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        TextView tv = (TextView) getActivity().findViewById(R.id.tv);
-//        tv.setText(getArguments().getString("ARGS"));
     }
 
     public static FollowFragment newInstance(String content) {

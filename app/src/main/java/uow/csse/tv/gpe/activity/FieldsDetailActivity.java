@@ -1,14 +1,14 @@
-package com.example.vian.gpe_android.activity;
+package uow.csse.tv.gpe.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.vian.gpe_android.R;
-import com.example.vian.gpe_android.adapter.TabhostAdapter;
-import com.example.vian.gpe_android.fragment.FieldsDetailActivityFragment;
-import com.example.vian.gpe_android.fragment.FieldsDetailMovementFragment;
+import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.adapter.TabhostAdapter;
+import uow.csse.tv.gpe.fragment.FieldsDetailActivityFragment;
+import uow.csse.tv.gpe.fragment.FieldsDetailMovementFragment;
 import com.youth.banner.Banner;
 
 /**

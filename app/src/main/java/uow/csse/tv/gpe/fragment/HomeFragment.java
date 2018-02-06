@@ -1,4 +1,4 @@
-package com.example.vian.gpe_android.fragment;
+package uow.csse.tv.gpe.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.vian.gpe_android.R;
-import com.example.vian.gpe_android.activity.FieldsActivity;
-import com.example.vian.gpe_android.activity.FieldsDetailActivity;
+import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.activity.FieldsActivity;
 import com.youth.banner.Banner;
 
 public class HomeFragment extends Fragment {
@@ -69,6 +67,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        TextView tv = (TextView) getActivity().findViewById(R.id.tv);
+//        tv.setText(getArguments().getString("ARGS"));
     }
 
     public static HomeFragment newInstance(String content) {
