@@ -22,8 +22,8 @@ public class User extends Entitys implements Serializable {
     private boolean enabled;
     private String profilePicture;
     private String introduction;
-    private Date createTime;
-    private Date lastModifyTime;
+    private Long createTime;
+    private Long lastModifyTime;
 
 
     public User() { super(); }
@@ -98,19 +98,19 @@ public class User extends Entitys implements Serializable {
         this.introduction = introduction;
     }
 
-    public Date getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 
-    public Date getLastModifyTime() {
+    public Long getLastModifyTime() {
         return lastModifyTime;
     }
 
-    public void setLastModifyTime(Date lastModifyTime) {
+    public void setLastModifyTime(Long lastModifyTime) {
         this.lastModifyTime = lastModifyTime;
     }
 }

@@ -16,7 +16,7 @@ import java.util.Date;
 public class News extends Entitys implements Serializable {
 
     private Long news_id;
-    private Date updateDate;
+    private Long updateDate;
     private String title;
     private String text;
 
@@ -32,11 +32,11 @@ public class News extends Entitys implements Serializable {
         this.news_id = news_id;
     }
 
-    public Date getUpdateDate() {
+    public Long getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(Long updateDate) {
         this.updateDate = updateDate;
     }
 

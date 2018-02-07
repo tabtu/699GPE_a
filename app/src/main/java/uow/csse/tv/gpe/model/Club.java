@@ -25,8 +25,8 @@ public class Club extends Entitys implements Serializable {
     private List<Sport> myfav;
     private short sort;
     private String introduction;
-    private Date createDate;
-    private Date updateDate;
+    private Long createDate;
+    private Long updateDate;
 
     public Club() { }
 
@@ -94,19 +94,19 @@ public class Club extends Entitys implements Serializable {
         this.sort = sort;
     }
 
-    public Date getCreateDate() {
+    public Long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(Long createDate) {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
+    public Long getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(Long updateDate) {
         this.updateDate = updateDate;
     }
 }

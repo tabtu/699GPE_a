@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.vian.gpe_android"
+        applicationId "uow.csse.tv.gpe"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -15,6 +15,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
     }
 }
 repositories {
@@ -31,5 +34,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile(name: 'bottom-navigation-bar-2.0.4', ext: 'aar')
     compile 'com.youth.banner:banner:1.1.5'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+//    compile 'org.apache.httpcomponents:httpclient:4.5.5'
     implementation 'com.android.support:design:27.0.2'
 }

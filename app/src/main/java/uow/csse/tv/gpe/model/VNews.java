@@ -20,7 +20,7 @@ public class VNews extends Entitys implements Serializable {
     private String title;
     private String content;
     private String picture;
-    private Date updateDate;
+    private Long updateDate;
 
     public VNews() { }
 
@@ -64,11 +64,11 @@ public class VNews extends Entitys implements Serializable {
         this.picture = picture;
     }
 
-    public Date getUpdateDate() {
+    public Long getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(Long updateDate) {
         this.updateDate = updateDate;
     }
 }

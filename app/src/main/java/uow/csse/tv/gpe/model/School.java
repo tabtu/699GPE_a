@@ -24,7 +24,7 @@ public class School extends Entitys implements Serializable {
     private String tel;
     private String picture;
    private List<Sport> myfav;
-    private Date createDate;
+    private Long createDate;
 
     public School() { }
 
@@ -84,11 +84,11 @@ public class School extends Entitys implements Serializable {
         this.myfav = myfav;
     }
 
-    public Date getCreateDate() {
+    public Long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(Long createDate) {
         this.createDate = createDate;
     }
 }

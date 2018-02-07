@@ -20,7 +20,7 @@ public class Venue extends Entitys implements Serializable {
     private String tel;
     private District district;
     private String address;
-    private Date createDate;
+    private Long createDate;
 
     public Venue() { }
 
@@ -64,11 +64,11 @@ public class Venue extends Entitys implements Serializable {
         this.address = address;
     }
 
-    public Date getCreateDate() {
+    public Long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(Long createDate) {
         this.createDate = createDate;
     }
 }

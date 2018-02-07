@@ -9,7 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.model.Venue;
 
 /**
  * Created by Vian on 2/5/2018.
@@ -17,24 +20,18 @@ import uow.csse.tv.gpe.R;
 
 public class FieldListAdapter extends ArrayAdapter<String>{
 
-    String [] name;
-    int [] image;
-    String [] usage;
-    String [] location;
-    Context context;
+    private Context context;
+    private List<Venue> list;
 
-    public FieldListAdapter (Context context, String[] listName, int[] listImage, String[] listUsage, String[] listLocation){
+    public FieldListAdapter (Context context, List<Venue> venue){
         super(context, R.layout.adapter_fieldslist);
-        this.name = listName;
-        this.image = listImage;
-        this.usage = listUsage;
-        this.location = listLocation;
+        this.list = venue;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return name.length;
+        return list.size();
     }
 
     @NonNull
@@ -54,10 +51,10 @@ public class FieldListAdapter extends ArrayAdapter<String>{
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        viewHolder.mImage.setImageResource(image[position]);
-        viewHolder.mName.setText(name[position]);
-        viewHolder.mLocation.setText(location[position]);
-        viewHolder.mUsage.setText(usage[position]);
+//        viewHolder.mImage.setImageResource(image[position]);
+        viewHolder.mName.setText(list.get(position).getName());
+        viewHolder.mLocation.setText(list.get(position).getAddress());
+        viewHolder.mUsage.setText(list.get(position).getTel());
 
         return convertView;
     }

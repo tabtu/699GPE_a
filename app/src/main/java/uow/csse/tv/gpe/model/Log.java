@@ -17,14 +17,14 @@ public class Log extends Entitys implements Serializable {
 
     private long logid;
     private User lguser;
-    private Date lgtime;
+    private Long lgtime;
     private String operation;
 
     public Log() {
 
     }
 
-    public Log(User u, Date t, String op) {
+    public Log(User u, Long t, String op) {
         this.lguser = u;
         this.lgtime = t;
         this.operation = op;
@@ -46,11 +46,11 @@ public class Log extends Entitys implements Serializable {
         this.lguser = lguser;
     }
 
-    public Date getLgtime() {
+    public Long getLgtime() {
         return lgtime;
     }
 
-    public void setLgtime(Date lgtime) {
+    public void setLgtime(Long lgtime) {
         this.lgtime = lgtime;
     }
 

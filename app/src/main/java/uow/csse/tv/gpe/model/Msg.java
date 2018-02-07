@@ -16,16 +16,16 @@ import java.util.Date;
 
 public class Msg implements Serializable {
 
-    private long sender;
-    private long receiver;
-    private Date sendtime;
-    private Date receivetime;
+    private Long sender;
+    private Long receiver;
+    private Long sendtime;
+    private Long receivetime;
 
     public Msg() {
 
     }
 
-    public Msg(long s, long r, Date st, Date rt) {
+    public Msg(Long s, Long r, Long st, Long rt) {
         this.sender = s;
         this.receiver = r;
         this.sendtime = st;
@@ -48,19 +48,19 @@ public class Msg implements Serializable {
         this.receiver = receiver;
     }
 
-    public Date getSendtime() {
+    public Long getSendtime() {
         return sendtime;
     }
 
-    public void setSendtime(Date sendtime) {
+    public void setSendtime(Long sendtime) {
         this.sendtime = sendtime;
     }
 
-    public Date getReceivetime() {
+    public Long getReceivetime() {
         return receivetime;
     }
 
-    public void setReceivetime(Date receivetime) {
+    public void setReceivetime(Long receivetime) {
         this.receivetime = receivetime;
     }
 

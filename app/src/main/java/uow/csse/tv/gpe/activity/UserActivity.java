@@ -28,7 +28,6 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("1111111111111111111111111111");
         setContentView(R.layout.activity_fields);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -37,7 +36,6 @@ public class UserActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.fieldslist);
         UserListAdapter userListAdapter = new UserListAdapter(UserActivity.this, userName, userPic, userLocation, userInterest);
         listView.setAdapter(userListAdapter);
-        System.out.println("222222222222222222222222");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
