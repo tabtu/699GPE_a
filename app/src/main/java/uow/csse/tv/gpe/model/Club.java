@@ -14,19 +14,21 @@ import java.util.List;
  * @since	1.0
  *
  */
-
 public class Club extends Entitys implements Serializable {
-
     private int club_id;
     private String name;
     private District district;
+    private String picture;
     private String address;
     private String tel;
-    private List<Sport> myfav;
-    private short sort;
+    private int sort;
     private String introduction;
     private Long createDate;
     private Long updateDate;
+    private boolean isSchool;
+    private List<Coach> coaches = new ArrayList<>();
+    private List<Referee> referees = new ArrayList<>();
+    private List<Athlete> athletes = new ArrayList<>();
 
     public Club() { }
 
@@ -70,14 +72,6 @@ public class Club extends Entitys implements Serializable {
         this.address = address;
     }
 
-    public List<Sport> getMyfav() {
-        return myfav;
-    }
-
-    public void setMyfav(List<Sport> myfav) {
-        this.myfav = myfav;
-    }
-
     public String getIntroduction() {
         return introduction;
     }
@@ -86,11 +80,11 @@ public class Club extends Entitys implements Serializable {
         this.introduction = introduction;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 
@@ -108,5 +102,45 @@ public class Club extends Entitys implements Serializable {
 
     public void setUpdateDate(Long updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public boolean getIsSchool() {
+        return isSchool;
+    }
+
+    public void setIsSchool(boolean isSchool) {
+        this.isSchool = isSchool;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
+    public List<Referee> getReferees() {
+        return referees;
+    }
+
+    public void setReferees(List<Referee> referees) {
+        this.referees = referees;
+    }
+
+    public List<Athlete> getAthletes() {
+        return athletes;
+    }
+
+    public void setAthletes(List<Athlete> athletes) {
+        this.athletes = athletes;
     }
 }

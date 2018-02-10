@@ -16,9 +16,8 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.SchoolListAdapter;
-import uow.csse.tv.gpe.adapter.VenueListAdapter;
-import uow.csse.tv.gpe.model.School;
-import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 
@@ -29,7 +28,7 @@ import uow.csse.tv.gpe.util.JsonParse;
 public class SchoolActivity extends AppCompatActivity {
 
     ListView listView;
-    private List<School> mylist = new ArrayList<>();
+    private List<Club> mylist = new ArrayList<>();
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -56,9 +55,9 @@ public class SchoolActivity extends AppCompatActivity {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet("http://gpe.tabtu.top/school");
+                String tmp = hu.executeHttpGet(Const.getschoollist);
                 JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonSchool(tmp);
+                mylist = jp.ParseJsonClub(tmp);
                 if (mylist != null) {
                     Message msg = new Message();
                     msg.what = 0x0;

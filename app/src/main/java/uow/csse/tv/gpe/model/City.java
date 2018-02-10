@@ -3,7 +3,7 @@ package uow.csse.tv.gpe.model;
 import java.io.Serializable;
 
 /**
- * Log Entity
+ * City Entity
  *
  * @author 	Tab Tu
  * @date	2018-01-30
@@ -11,22 +11,24 @@ import java.io.Serializable;
  * @since	1.0
  *
  */
-
 public class City extends Entitys implements Serializable {
-
-    private short city_id;
+    private int city_id;
     private String name;
-    private short sort;
+    private int sort;
 
     public City() {
 
     }
 
-    public short getCity_id() {
+    public City(int city_id) {
+        this.city_id = city_id;
+    }
+
+    public int getCity_id() {
         return city_id;
     }
 
-    public void setCity_id(short city_id) {
+    public void setCity_id(int city_id) {
         this.city_id = city_id;
     }
 
@@ -38,11 +40,11 @@ public class City extends Entitys implements Serializable {
         this.name = name;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

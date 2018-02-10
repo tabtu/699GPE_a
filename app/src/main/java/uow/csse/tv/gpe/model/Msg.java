@@ -1,7 +1,6 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -16,51 +15,51 @@ import java.util.Date;
 
 public class Msg implements Serializable {
 
-    private Long sender;
-    private Long receiver;
-    private Long sendtime;
-    private Long receivetime;
+    private String sender;
+    private String receiver;
+    private Date sendtime;
+    private Date receivetime;
 
     public Msg() {
 
     }
 
-    public Msg(Long s, Long r, Long st, Long rt) {
+    public Msg(String s, String r, Date st, Date rt) {
         this.sender = s;
         this.receiver = r;
         this.sendtime = st;
         this.receivetime = rt;
     }
 
-    public long getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(long sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public long getReceiver() {
+    public String getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(long receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 
-    public Long getSendtime() {
+    public Date getSendtime() {
         return sendtime;
     }
 
-    public void setSendtime(Long sendtime) {
+    public void setSendtime(Date sendtime) {
         this.sendtime = sendtime;
     }
 
-    public Long getReceivetime() {
+    public Date getReceivetime() {
         return receivetime;
     }
 
-    public void setReceivetime(Long receivetime) {
+    public void setReceivetime(Date receivetime) {
         this.receivetime = receivetime;
     }
 

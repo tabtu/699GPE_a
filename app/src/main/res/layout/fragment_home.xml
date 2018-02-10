@@ -113,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                             <ImageButton
-                                android:id="@+id/coach"
+                                android:id="@+id/btn_club"
                                 android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:background="@color/transparent"

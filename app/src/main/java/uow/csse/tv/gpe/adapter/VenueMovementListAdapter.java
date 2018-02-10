@@ -12,21 +12,20 @@ import android.widget.TextView;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.model.User;
-import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.model.VNews;
 
 /**
- * Created by Vian on 2/5/2018.
+ * Created by Vian on 2/10/2018.
  */
 
-public class UserListAdapter extends ArrayAdapter<String>{
+public class VenueMovementListAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private List<User> list;
+    private List<VNews> list;
 
-    public UserListAdapter (Context context, List<User> user){
-        super(context, R.layout.adapter_userlist);
-        this.list = user;
+    public VenueMovementListAdapter(Context context, List<VNews> news){
+        super(context, R.layout.adapter_news);
+        this.list = news;
         this.context = context;
     }
 
@@ -42,28 +41,26 @@ public class UserListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_userlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_news, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.usrlist_Image);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.usrlist_Name);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.usrlist_Location);
-            viewHolder.mInterest = (TextView) convertView.findViewById(R.id.usrlist_Interest);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.mTitle = (TextView) convertView.findViewById(R.id.title);
+            viewHolder.mDate = (TextView) convertView.findViewById(R.id.date);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
+
 //        viewHolder.mImage.setImageResource(image[position]);
-        viewHolder.mName.setText(list.get(position).getName());
-        viewHolder.mLocation.setText(list.get(position).getEmail());
-        viewHolder.mInterest.setText(list.get(position).getIntroduction());
+        viewHolder.mTitle.setText(list.get(position).getTitle());
+        viewHolder.mDate.setText(String.valueOf(list.get(position).getUpdateDate()));
 
         return convertView;
     }
 
     static class ViewHolder{
         ImageView mImage;
-        TextView mName;
-        TextView mLocation;
-        TextView mInterest;
+        TextView mTitle;
+        TextView mDate;
     }
 }

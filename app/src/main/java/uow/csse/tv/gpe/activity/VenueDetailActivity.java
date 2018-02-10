@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
+import uow.csse.tv.gpe.adapter.VenueMovementListAdapter;
 import uow.csse.tv.gpe.fragment.ActivityFragment;
 import uow.csse.tv.gpe.fragment.MovementFragment;
 import com.youth.banner.Banner;

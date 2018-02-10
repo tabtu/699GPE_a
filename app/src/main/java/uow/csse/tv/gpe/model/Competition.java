@@ -1,4 +1,4 @@
-//package uow.csse.tv.gympe.model;
+//package uow.csse.tv.gpe.model;
 //
 //import javax.persistence.Entity;
 //import javax.persistence.Table;

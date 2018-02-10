@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.VenueListAdapter;
+import uow.csse.tv.gpe.adapter.ClubListAdapter;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 
@@ -25,22 +25,22 @@ import uow.csse.tv.gpe.util.JsonParse;
  * Created by Vian on 2/5/2018.
  */
 
-public class VenueActivity extends AppCompatActivity {
+public class ClubActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private List<Venue> mylist = new ArrayList<>();
+    ListView listView;
+    private List<Club> mylist = new ArrayList<>();
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-        if (msg.what == 0x0) {
-            //pd.dismiss();
-            VenueListAdapter venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
-            listView.setAdapter(venueListAdapter);
-        } else {
-            Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
-        }
+            if (msg.what == 0x0) {
+                //pd.dismiss();
+                ClubListAdapter clubListAdapter = new ClubListAdapter(ClubActivity.this, mylist);
+                listView.setAdapter(clubListAdapter);
+            } else {
+                Toast.makeText(ClubActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -49,17 +49,15 @@ public class VenueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setTitle("Fields");
         listView = (ListView) findViewById(R.id.fieldslist);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getvenuelist);
+                String tmp = hu.executeHttpGet(Const.getclublist);
                 JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonVenue(tmp);
+                mylist = jp.ParseJsonClub(tmp);
                 if (mylist != null) {
                     Message msg = new Message();
                     msg.what = 0x0;
@@ -75,7 +73,7 @@ public class VenueActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(VenueActivity.this, VenueDetailActivity.class);
+                Intent intent = new Intent(ClubActivity.this, ClubDetailActivity.class);
                 startActivity(intent);
             }
         });

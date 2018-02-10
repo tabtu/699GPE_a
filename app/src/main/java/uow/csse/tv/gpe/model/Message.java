@@ -11,9 +11,7 @@ import java.io.Serializable;
  * @since	1.0
  *
  */
-
 public class Message extends Entitys implements Serializable {
-
     private Msg msgid;
     private boolean isread;
     private String text;

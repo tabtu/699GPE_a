@@ -1,7 +1,9 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Venue Entity
@@ -14,13 +16,15 @@ import java.util.Date;
  */
 
 public class Venue extends Entitys implements Serializable {
-
     private int venue_id;
     private String name;
     private String tel;
     private District district;
     private String address;
     private Long createDate;
+    private String picture;
+    private List<Sport> sports = new ArrayList<>();
+
 
     public Venue() { }
 
@@ -70,5 +74,21 @@ public class Venue extends Entitys implements Serializable {
 
     public void setCreateDate(Long createDate) {
         this.createDate = createDate;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public List<Sport> getSports() {
+        return sports;
+    }
+
+    public void setSports(List<Sport> sports) {
+        this.sports = sports;
     }
 }

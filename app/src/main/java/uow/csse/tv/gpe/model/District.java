@@ -1,9 +1,10 @@
 package uow.csse.tv.gpe.model;
 
+import uow.csse.tv.gpe.model.City;
 import java.io.Serializable;
 
 /**
- * Log Entity
+ * District Entity
  *
  * @author 	Tab Tu
  * @date	2018-01-30
@@ -11,13 +12,11 @@ import java.io.Serializable;
  * @since	1.0
  *
  */
-
 public class District extends Entitys implements Serializable {
-
     private int district_id;
     private String name;
     private City city;
-    private short sort;
+    private int sort;
 
     public District() {
 
@@ -47,11 +46,11 @@ public class District extends Entitys implements Serializable {
         this.city = city;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

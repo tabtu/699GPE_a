@@ -8,7 +8,8 @@ import java.util.List;
 
 import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.model.News;
-import uow.csse.tv.gpe.model.School;
+import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.model.VNews;
 import uow.csse.tv.gpe.model.Venue;
 
 /**
@@ -56,10 +57,17 @@ public class JsonParse {
         return result;
     }
 
-    public List<School> ParseJsonSchool (String  str) {
+    public List<User> ParseJsonUser (String  str) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<School>>(){}.getType();
-        List<School> result = gson.fromJson(str, type);
+        Type type = new TypeToken<List<User>>(){}.getType();
+        List<User> result = gson.fromJson(str, type);
+        return result;
+    }
+
+    public List<VNews> ParseJsonVNews (String str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<VNews>>(){}.getType();
+        List<VNews> result = gson.fromJson(str, type);
         return result;
     }
 }
