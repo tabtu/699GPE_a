@@ -23,6 +23,8 @@
         <activity android:name=".activity.VenueActivity"/>
         <activity android:name=".activity.UserActivity"/>
         <activity android:name=".activity.UserDetailActivity"/>
+        <activity android:name=".activity.SchoolActivity"/>
+        <activity android:name=".activity.SchoolDetailActivity"/>
 
 
     </application>

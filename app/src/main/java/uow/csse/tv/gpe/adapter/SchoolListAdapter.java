@@ -13,7 +13,6 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.School;
-import uow.csse.tv.gpe.model.Venue;
 
 /**
  * Created by Vian on 2/5/2018.
