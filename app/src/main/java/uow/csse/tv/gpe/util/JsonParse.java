@@ -6,7 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.model.News;
+import uow.csse.tv.gpe.model.School;
 import uow.csse.tv.gpe.model.Venue;
 
 /**
@@ -44,6 +46,20 @@ public class JsonParse {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Venue>>(){}.getType();
         List<Venue> result = gson.fromJson(str, type);
+        return result;
+    }
+
+    public List<Club> ParseJsonClub (String  str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Club>>(){}.getType();
+        List<Club> result = gson.fromJson(str, type);
+        return result;
+    }
+
+    public List<School> ParseJsonSchool (String  str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<School>>(){}.getType();
+        List<School> result = gson.fromJson(str, type);
         return result;
     }
 }

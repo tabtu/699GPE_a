@@ -12,20 +12,20 @@ import android.widget.TextView;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.model.Club;
 
 /**
- * Created by Vian on 2/5/2018.
+ * Created by Vian on 2/9/2018.
  */
 
-public class FieldListAdapter extends ArrayAdapter<String>{
+public class ClubListAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private List<Venue> list;
+    private List<Club> list;
 
-    public FieldListAdapter (Context context, List<Venue> venue){
-        super(context, R.layout.adapter_fieldslist);
-        this.list = venue;
+    public ClubListAdapter(Context context, List<Club> clubs){
+        super(context, R.layout.adapter_clublist);
+        this.list = clubs;
         this.context = context;
     }
 
@@ -41,12 +41,11 @@ public class FieldListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_fieldslist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_clublist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.listImage);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.listName);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.listLocation);
-            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.listUsage);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.clublist_Image);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.clublist_Name);
+            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.clublist_Location);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -54,7 +53,6 @@ public class FieldListAdapter extends ArrayAdapter<String>{
 //        viewHolder.mImage.setImageResource(image[position]);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
-        viewHolder.mUsage.setText(list.get(position).getTel());
 
         return convertView;
     }
@@ -63,6 +61,5 @@ public class FieldListAdapter extends ArrayAdapter<String>{
         ImageView mImage;
         TextView mName;
         TextView mLocation;
-        TextView mUsage;
     }
 }

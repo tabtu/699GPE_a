@@ -1,12 +1,11 @@
 package uow.csse.tv.gpe.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.FieldListAdapter;
+import uow.csse.tv.gpe.adapter.VenueListAdapter;
 import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
@@ -25,52 +24,33 @@ import uow.csse.tv.gpe.util.JsonParse;
  * Created by Vian on 2/5/2018.
  */
 
-public class FieldsActivity extends AppCompatActivity {
+public class VenueActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private ListView listView;
+    private List<Venue> mylist = new ArrayList<>();
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 0x0) {
-                //pd.dismiss();
-                FieldListAdapter fieldListAdapter = new FieldListAdapter(FieldsActivity.this, mylist);
-                listView.setAdapter(fieldListAdapter);
-            } else {
-                Toast.makeText(FieldsActivity.this, "empty list", Toast.LENGTH_SHORT).show();
-            }
+        if (msg.what == 0x0) {
+            //pd.dismiss();
+            VenueListAdapter venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
+            listView.setAdapter(venueListAdapter);
+        } else {
+            Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+        }
         }
     };
-
-
-
-    private List<Venue> mylist = new ArrayList<>();
-
-//    private void createVenue() {
-//        for (int i = 0; i < 2; i++) {
-//            Venue tmp = new Venue();
-//            tmp.setName("123");
-//            tmp.setAddress("adfg");
-//            tmp.setTel("45745754745");
-//            mylist.add(tmp);
-//        }
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fields);
+        setContentView(R.layout.activity_search);
 
-        //createVenue();
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Fields");
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setTitle("Fields");
         listView = (ListView) findViewById(R.id.fieldslist);
-//        FieldListAdapter fieldListAdapter = new FieldListAdapter(FieldsActivity.this, fieldName, fieldPic, fieldLocation, fieldUsage);
-//        FieldListAdapter fieldListAdapter = new FieldListAdapter(FieldsActivity.this, mylist);
-//        listView.setAdapter(fieldListAdapter);
-
 
         new Thread(new Runnable() {
             @Override
@@ -91,13 +71,10 @@ public class FieldsActivity extends AppCompatActivity {
             }
         }).start();
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(FieldsActivity.this, FieldsDetailActivity.class);
-//                intent.putExtra("name",fieldName[i]);
-//                intent.putExtra("image",fieldPic[i]);
+                Intent intent = new Intent(VenueActivity.this, VenueDetailActivity.class);
                 startActivity(intent);
             }
         });

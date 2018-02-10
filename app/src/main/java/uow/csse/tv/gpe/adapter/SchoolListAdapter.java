@@ -12,20 +12,21 @@ import android.widget.TextView;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.model.School;
 import uow.csse.tv.gpe.model.Venue;
 
 /**
  * Created by Vian on 2/5/2018.
  */
 
-public class UserListAdapter extends ArrayAdapter<String>{
+public class SchoolListAdapter extends ArrayAdapter<String>{
 
     private Context context;
-    private List<Venue> list;
+    private List<School> list;
 
-    public UserListAdapter (Context context, List<Venue> venue){
-        super(context, R.layout.adapter_userlist);
-        this.list = venue;
+    public SchoolListAdapter (Context context, List<School> school){
+        super(context, R.layout.adapter_schoollist);
+        this.list = school;
         this.context = context;
     }
 
@@ -41,12 +42,12 @@ public class UserListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_userlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_schoollist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.usrlist_Image);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.usrlist_Name);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.usrlist_Location);
-            viewHolder.mInterest = (TextView) convertView.findViewById(R.id.usrlist_Interest);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.schoollist_Image);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.schoollist_Name);
+            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.schoollist_Location);
+            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.schoollist_Usage);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -54,7 +55,7 @@ public class UserListAdapter extends ArrayAdapter<String>{
 //        viewHolder.mImage.setImageResource(image[position]);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
-        viewHolder.mInterest.setText(list.get(position).getTel());
+        viewHolder.mUsage.setText(list.get(position).getTel());
 
         return convertView;
     }
@@ -63,6 +64,6 @@ public class UserListAdapter extends ArrayAdapter<String>{
         ImageView mImage;
         TextView mName;
         TextView mLocation;
-        TextView mInterest;
+        TextView mUsage;
     }
 }

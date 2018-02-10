@@ -7,15 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.fragment.FieldsDetailActivityFragment;
-import uow.csse.tv.gpe.fragment.FieldsDetailMovementFragment;
+import uow.csse.tv.gpe.fragment.ActivityFragment;
+import uow.csse.tv.gpe.fragment.MovementFragment;
 import com.youth.banner.Banner;
 
 /**
  * Created by Vian on 2/5/2018.
  */
 
-public class FieldsDetailActivity extends AppCompatActivity {
+public class VenueDetailActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -36,7 +36,7 @@ public class FieldsDetailActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fieldsdetail);
+        setContentView(R.layout.activity_venuedetail);
 
         banner_fields = (Banner) findViewById(R.id.banner_fields);
         banner_fields.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
@@ -50,8 +50,8 @@ public class FieldsDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new FieldsDetailMovementFragment(),"Movement");
-        adapter.AddFragment(new FieldsDetailActivityFragment(),"Activity");
+        adapter.AddFragment(new MovementFragment(),"Movement");
+        adapter.AddFragment(new ActivityFragment(),"Activity");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

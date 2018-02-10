@@ -12,33 +12,24 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gpe"
-            android:gravity="center">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="95dp"
-                android:layout_height="82dp"
-                app:srcCompat="@mipmap/logo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:background="@color/gpe"
-            android:gravity="center">
+            android:layout_height="150dp"
+            android:background="@mipmap/homebackground"
+            android:gravity="center"
+            android:paddingBottom="80dp">
             <SearchView
                 android:id="@+id/searchView"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/white"
                 android:iconifiedByDefault="false"
                 android:queryHint="Search" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp">
+            android:layout_height="42dp"
+            android:background="@color/black">
             <TextView
                 android:id="@+id/textNews"
                 android:layout_width="1dp"
@@ -47,6 +38,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.2"
+                android:textColor="@color/gpe"
                 android:text="@string/home_news" />
             <TextView
                 android:id="@+id/News"
@@ -56,16 +48,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:text="sdfsdfsdsdasdsadszdsdfz" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.01"
-                android:background="@color/transparent"
-                android:text="Switch"
-                android:textColor="@color/gpe"
-                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
@@ -111,18 +95,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                            <ImageButton
-                                android:id="@+id/referee"
-                                android:layout_width="95dp"
-                                android:layout_height="wrap_content"
-                                android:background="@color/transparent"
-                                app:srcCompat="@mipmap/athlete"/>
+                        <ImageButton
+                            android:id="@+id/btn_fields"
+                            android:layout_width="95dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            app:srcCompat="@mipmap/athlete"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="25dp"
                                 android:layout_marginLeft="25dp"
-                                android:text="@string/home_referee"/>
+                                android:text="Venue"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -137,16 +121,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginLeft="25dp"
-                                android:text="Coach"/>
+                                android:layout_marginStart="33dp"
+                                android:layout_marginLeft="33dp"
+                                android:text="Club"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                             <ImageButton
-                                android:id="@+id/school"
+                                android:id="@+id/btn_school"
                                 android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:background="@color/transparent"
@@ -157,82 +141,6 @@
                                 android:layout_marginStart="25dp"
                                 android:layout_marginLeft="25dp"
                                 android:text="School"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/btn_fields"
-                            android:layout_width="95dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/transparent"
-                            app:srcCompat="@mipmap/athlete"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginLeft="30dp"
-                            android:text="Fields"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/club"
-                            android:layout_width="95dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/transparent"
-                            app:srcCompat="@mipmap/athlete"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="33dp"
-                            android:layout_marginLeft="33dp"
-                            android:text="Club"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/team"
-                            android:layout_width="95dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/transparent"
-                            app:srcCompat="@mipmap/athlete"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="33dp"
-                            android:layout_marginLeft="33dp"
-                            android:text="Tean"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageButton
-                            android:id="@+id/activity"
-                            android:layout_width="95dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/transparent"
-                            app:srcCompat="@mipmap/athlete"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:layout_marginLeft="25dp"
-                            android:text="Activity"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -368,7 +276,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp">
+            android:layout_height="42dp"
+            android:background="@color/black">
             <TextView
                 android:id="@+id/interests"
                 android:layout_width="1dp"
@@ -377,6 +286,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.2"
+                android:textColor="@color/white"
                 android:text="INTERESTS" />
             <Button
                 android:layout_width="wrap_content"

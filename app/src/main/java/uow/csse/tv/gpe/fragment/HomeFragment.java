@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.FieldsActivity;
+import uow.csse.tv.gpe.activity.SchoolActivity;
+import uow.csse.tv.gpe.activity.VenueActivity;
 import uow.csse.tv.gpe.activity.UserActivity;
 
 import com.youth.banner.Banner;
@@ -19,6 +20,7 @@ public class HomeFragment extends Fragment {
     Banner banner_news;
     ImageButton btn_fields;
     ImageButton btn_athlete;
+    ImageButton btn_school;
     Banner banner_interests;
 
     String[] images= new String[] {
@@ -45,11 +47,21 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         btn_fields = (ImageButton) view.findViewById(R.id.btn_fields);
         btn_fields.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),FieldsActivity.class);
+                Intent intent = new Intent(getActivity(),VenueActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_school = (ImageButton) view.findViewById(R.id.btn_school);
+        btn_school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SchoolActivity.class);
                 startActivity(intent);
             }
         });

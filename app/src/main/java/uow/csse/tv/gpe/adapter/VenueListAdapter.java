@@ -18,13 +18,13 @@ import uow.csse.tv.gpe.model.Venue;
  * Created by Vian on 2/5/2018.
  */
 
-public class UserListAdapter extends ArrayAdapter<String>{
+public class VenueListAdapter extends ArrayAdapter<String>{
 
     private Context context;
     private List<Venue> list;
 
-    public UserListAdapter (Context context, List<Venue> venue){
-        super(context, R.layout.adapter_userlist);
+    public VenueListAdapter(Context context, List<Venue> venue){
+        super(context, R.layout.adapter_venueslist);
         this.list = venue;
         this.context = context;
     }
@@ -41,12 +41,12 @@ public class UserListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_userlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_venueslist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.usrlist_Image);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.usrlist_Name);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.usrlist_Location);
-            viewHolder.mInterest = (TextView) convertView.findViewById(R.id.usrlist_Interest);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.listImage);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.listName);
+            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.listLocation);
+            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.listUsage);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -54,7 +54,7 @@ public class UserListAdapter extends ArrayAdapter<String>{
 //        viewHolder.mImage.setImageResource(image[position]);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
-        viewHolder.mInterest.setText(list.get(position).getTel());
+        viewHolder.mUsage.setText(list.get(position).getTel());
 
         return convertView;
     }
@@ -63,6 +63,6 @@ public class UserListAdapter extends ArrayAdapter<String>{
         ImageView mImage;
         TextView mName;
         TextView mLocation;
-        TextView mInterest;
+        TextView mUsage;
     }
 }
