@@ -17,11 +17,11 @@ import uow.csse.tv.gpe.adapter.TabhostAdapter;
  * Created by Vian on 2/9/2018.
  */
 
-public class UserDetailCoachFragment extends Fragment {
+public class UserCoachFragment extends Fragment {
 
     View view;
 
-    public UserDetailCoachFragment() {
+    public UserCoachFragment() {
 
     }
 

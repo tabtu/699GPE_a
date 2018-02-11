@@ -7,9 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.adapter.VenueMovementListAdapter;
 import uow.csse.tv.gpe.fragment.ActivityFragment;
-import uow.csse.tv.gpe.fragment.MovementFragment;
+import uow.csse.tv.gpe.fragment.VenueMovementFragment;
 import com.youth.banner.Banner;
 
 /**
@@ -51,7 +50,7 @@ public class VenueDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new MovementFragment(),"Movement");
+        adapter.AddFragment(new VenueMovementFragment(),"Movement");
         adapter.AddFragment(new ActivityFragment(),"Activity");
 
         viewPager.setAdapter(adapter);

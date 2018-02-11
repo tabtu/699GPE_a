@@ -10,21 +10,21 @@ import android.view.ViewGroup;
 import uow.csse.tv.gpe.R;
 
 /**
- * Created by Vian on 2/5/2018.
+ * Created by Vian on 2/9/2018.
  */
 
-public class MovementFragment extends Fragment {
+public class UserRefereeFragment extends Fragment {
+
     View view;
 
-    public MovementFragment() {
+    public UserRefereeFragment() {
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
-        view = inflater.inflate(R.layout.fragment_news,container,false);
+        view = inflater.inflate(R.layout.fragment_userdetail_referee,container,false);
         return view;
     }
-
 }

@@ -119,4 +119,9 @@ public class Athlete extends Entitys implements Serializable {
     public void setTechnical(int technical) {
         this.technical = technical;
     }
+
+    public int[] getGraphicInts() {
+        int[] result = { focusLevel, teamSpirit, psychological, technical, communication, physical };
+        return result;
+    }
 }

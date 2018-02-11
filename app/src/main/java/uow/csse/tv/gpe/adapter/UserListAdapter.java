@@ -54,8 +54,8 @@ public class UserListAdapter extends ArrayAdapter<String>{
         }
 //        viewHolder.mImage.setImageResource(image[position]);
         viewHolder.mName.setText(list.get(position).getName());
-        viewHolder.mLocation.setText(list.get(position).getEmail());
-        viewHolder.mInterest.setText(list.get(position).getIntroduction());
+        viewHolder.mLocation.setText(String.valueOf(list.get(position).getEmail()));
+        viewHolder.mInterest.setText(String.valueOf(list.get(position).getIntroduction()));
 
         return convertView;
     }
