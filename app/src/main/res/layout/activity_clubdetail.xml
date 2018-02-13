@@ -23,7 +23,7 @@
             android:orientation="vertical"
             android:layout_marginTop="-155dp">
             <TextView
-                android:id="@+id/schoolname"
+                android:id="@+id/clubdetail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -38,13 +38,13 @@
                 android:gravity="center"
                 android:layout_marginBottom="10dp">
                 <TextView
-                    android:id="@+id/city"
+                    android:id="@+id/clubdetail_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:text="Windsor"/>
                 <TextView
-                    android:id="@+id/district"
+                    android:id="@+id/clubdetail_district"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -60,6 +60,7 @@
             android:background="@color/lightgrey"/>
 
         <ImageView
+            android:id="@+id/clubdetail_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-100dp"
@@ -82,7 +83,7 @@
                 android:paddingTop="5dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/athletenum"
+                    android:id="@+id/clubdetail_athletenum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -110,7 +111,7 @@
                 android:padding="5dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/cachnum"
+                    android:id="@+id/clubdetail_cachnum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -138,7 +139,7 @@
                 android:padding="5dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/coursenum"
+                    android:id="@+id/clubdetail_coursenum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -170,7 +171,7 @@
                 android:layout_weight="0.02"
                 android:text="Contact" />
             <TextView
-                android:id="@+id/contact_detail"
+                android:id="@+id/clubdetail_contact"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -217,6 +218,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
+            android:id="@+id/clubdetail_intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
@@ -264,7 +266,7 @@
             android:layout_marginLeft="10dp"
             android:scrollbars="none" >
             <LinearLayout
-                android:id="@+id/button_gallery"
+                android:id="@+id/clubdetail_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

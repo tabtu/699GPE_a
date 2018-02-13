@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class Coach extends Entitys implements Serializable {
-    private int coach_id;
+    private int id;
     private boolean gender;
     private List<Club> clubs = new ArrayList<>();
 
@@ -23,12 +23,12 @@ public class Coach extends Entitys implements Serializable {
 
     }
 
-    public int getCoach_id() {
-        return coach_id;
+    public int getId() {
+        return id;
     }
 
-    public void setCoach_id(int coach_id) {
-        this.coach_id = coach_id;
+    public void setId(int coach_id) {
+        this.id = id;
     }
 
     public boolean getGender() {

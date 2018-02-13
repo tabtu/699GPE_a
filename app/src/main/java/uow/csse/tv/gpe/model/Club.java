@@ -15,7 +15,7 @@ import java.util.List;
  *
  */
 public class Club extends Entitys implements Serializable {
-    private int club_id;
+    private int id;
     private String name;
     private District district;
     private String picture;
@@ -23,21 +23,21 @@ public class Club extends Entitys implements Serializable {
     private String tel;
     private int sort;
     private String introduction;
-    private Long createDate;
-    private Long updateDate;
-    private boolean isSchool;
+    private Long createdate;
+    private Long updatedate;
+    private boolean school;
     private List<Coach> coaches = new ArrayList<>();
     private List<Referee> referees = new ArrayList<>();
     private List<Athlete> athletes = new ArrayList<>();
 
     public Club() { }
 
-    public int getClub_id() {
-        return club_id;
+    public int getId() {
+        return id;
     }
 
-    public void setClub_id(int club_id) {
-        this.club_id = club_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -88,20 +88,20 @@ public class Club extends Entitys implements Serializable {
         this.sort = sort;
     }
 
-    public Long getCreateDate() {
-        return createDate;
+    public Long getCreatedate() {
+        return createdate;
     }
 
-    public void setCreateDate(Long createDate) {
-        this.createDate = createDate;
+    public void setCreatedate(Long createdate) {
+        this.createdate = createdate;
     }
 
-    public Long getUpdateDate() {
-        return updateDate;
+    public Long getUpdatedate() {
+        return updatedate;
     }
 
-    public void setUpdateDate(Long updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdatedate(Long updatedate) {
+        this.updatedate = updatedate;
     }
 
     public String getPicture() {
@@ -112,12 +112,12 @@ public class Club extends Entitys implements Serializable {
         this.picture = picture;
     }
 
-    public boolean getIsSchool() {
-        return isSchool;
+    public boolean getSchool() {
+        return school;
     }
 
-    public void setIsSchool(boolean isSchool) {
-        this.isSchool = isSchool;
+    public void setSchool(boolean school) {
+        this.school = school;
     }
 
     public List<Coach> getCoaches() {

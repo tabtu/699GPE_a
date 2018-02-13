@@ -43,10 +43,10 @@ public class VenueListAdapter extends ArrayAdapter<String>{
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.adapter_venueslist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.listImage);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.listName);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.listLocation);
-            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.listUsage);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.venuelist_image);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.venuelist_name);
+            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.venuelist_location);
+            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.venuelist_usage);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -54,7 +54,7 @@ public class VenueListAdapter extends ArrayAdapter<String>{
 //        viewHolder.mImage.setImageResource(image[position]);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
-        viewHolder.mUsage.setText(list.get(position).getTel());
+        viewHolder.mUsage.setText(list.get(position).getSportsName());
 
         return convertView;
     }

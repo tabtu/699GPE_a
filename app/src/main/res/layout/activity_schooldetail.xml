@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:layout_marginTop="-120dp">
             <TextView
-                android:id="@+id/schoolname"
+                android:id="@+id/schooldetail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -36,11 +36,11 @@
             android:background="@color/lightgrey"/>
 
         <ImageView
+            android:id="@+id/schooldetail_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-100dp"
             android:layout_marginLeft="-178dp"
-
             app:srcCompat="@mipmap/ava"/>
 
         <!--<LinearLayout-->
@@ -72,7 +72,7 @@
                 android:text="Location" />
 
             <TextView
-                android:id="@+id/location_detail"
+                android:id="@+id/schooldetail_location"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
@@ -100,7 +100,7 @@
                 android:layout_weight="0.02"
                 android:text="Contact" />
             <TextView
-                android:id="@+id/contact_detail"
+                android:id="@+id/schooldetail_contact"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -128,7 +128,7 @@
                 android:layout_weight="0.05"
                 android:text="Registeration" />
             <TextView
-                android:id="@+id/register_detail"
+                android:id="@+id/schooldetail_register"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -170,6 +170,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
+            android:id="@+id/schooldetail_intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
@@ -217,7 +218,7 @@
             android:layout_marginLeft="10dp"
             android:scrollbars="none" >
             <LinearLayout
-                android:id="@+id/button_gallery"
+                android:id="@+id/schooldetail_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

@@ -44,6 +44,7 @@ public class VenueActivity extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,7 @@ public class VenueActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(VenueActivity.this, VenueDetailActivity.class);
+                intent.putExtra("venue", mylist.get(i));
                 startActivity(intent);
             }
         });

@@ -15,21 +15,21 @@ import java.util.Date;
 
 public class VNews extends Entitys implements Serializable {
 
-    private long vnews_id;
+    private long id;
     private Venue venue;
     private String title;
     private String content;
     private String picture;
-    private Long updateDate;
+    private Long updatedate;
 
     public VNews() { }
 
-    public long getVnews_id() {
-        return vnews_id;
+    public long getId() {
+        return id;
     }
 
-    public void setVnews_id(long vnews_id) {
-        this.vnews_id = vnews_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Venue getVenue() {
@@ -65,10 +65,10 @@ public class VNews extends Entitys implements Serializable {
     }
 
     public Long getUpdateDate() {
-        return updateDate;
+        return updatedate;
     }
 
-    public void setUpdateDate(Long updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateDate(Long updatedate) {
+        this.updatedate = updatedate;
     }
 }

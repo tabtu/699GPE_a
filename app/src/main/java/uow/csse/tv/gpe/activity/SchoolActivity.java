@@ -74,6 +74,7 @@ public class SchoolActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(SchoolActivity.this, SchoolDetailActivity.class);
+                intent.putExtra("school", mylist.get(i));
                 startActivity(intent);
             }
         });

@@ -14,7 +14,7 @@ import java.util.List;
  *
  */
 public class Sport extends Entitys implements Serializable {
-    private int sport_id;
+    private int id;
     private String name;
 
     private String cname;
@@ -30,8 +30,8 @@ public class Sport extends Entitys implements Serializable {
 
     public Sport(String name) { this.name = name; }
 
-    public int getSport_id() { return sport_id; }
-    public void setSport_id(int id) { this.sport_id = id; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 

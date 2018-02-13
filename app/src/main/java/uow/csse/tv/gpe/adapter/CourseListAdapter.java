@@ -15,21 +15,20 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.model.User;
-import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.model.Club;
 
 /**
- * Created by Vian on 2/5/2018.
+ * Created by Vian on 2/12/2018.
  */
 
-public class UserListAdapter extends ArrayAdapter<String>{
+public class CourseListAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private List<User> list;
+    private List<Club> list;
 
-    public UserListAdapter (Context context, List<User> user){
-        super(context, R.layout.adapter_userlist);
-        this.list = user;
+    public CourseListAdapter(Context context, List<Club> clubs){
+        super(context, R.layout.adapter_courselist);
+        this.list = clubs;
         this.context = context;
     }
 
@@ -45,20 +44,16 @@ public class UserListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_userlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_courselist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.usrlist_Image);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.usrlist_Name);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.usrlist_Location);
-            viewHolder.mInterest = (TextView) convertView.findViewById(R.id.usrlist_Interest);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.courselist_image);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.courselist_name);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().into(viewHolder.mImage);
+        Picasso.with(getContext()).load(list.get(position).getPicture()).fit().into(viewHolder.mImage);
         viewHolder.mName.setText(list.get(position).getName());
-        viewHolder.mLocation.setText(String.valueOf(list.get(position).getEmail()));
-        viewHolder.mInterest.setText(String.valueOf(list.get(position).getIntroduction()));
 
         return convertView;
     }
@@ -66,7 +61,5 @@ public class UserListAdapter extends ArrayAdapter<String>{
     static class ViewHolder{
         ImageView mImage;
         TextView mName;
-        TextView mLocation;
-        TextView mInterest;
     }
 }

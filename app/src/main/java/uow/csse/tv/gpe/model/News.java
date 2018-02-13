@@ -13,8 +13,8 @@ import java.util.Date;
  *
  */
 public class News extends Entitys implements Serializable {
-    private long news_id;
-    private Long updateDate;
+    private long id;
+    private Long updatedate;
     private String title;
     private String text;
 
@@ -22,20 +22,20 @@ public class News extends Entitys implements Serializable {
 
     }
 
-    public long getNews_id() {
-        return news_id;
+    public long getId() {
+        return id;
     }
 
-    public void setNews_id(long news_id) {
-        this.news_id = news_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Long getUpdateDate() {
-        return updateDate;
+        return updatedate;
     }
 
-    public void setUpdateDate(Long updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateDate(Long updatedate) {
+        this.updatedate = updatedate;
     }
 
     public String getTitle() {

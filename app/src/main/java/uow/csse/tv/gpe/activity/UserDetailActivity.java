@@ -1,32 +1,17 @@
 package uow.csse.tv.gpe.activity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.adapter.UserListAdapter;
-import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.fragment.UserAthleteFragment;
-import uow.csse.tv.gpe.fragment.UserCoachFragment;
-import uow.csse.tv.gpe.fragment.UserRefereeFragment;
+import uow.csse.tv.gpe.fragment.athlete.UserAthleteFragment;
+import uow.csse.tv.gpe.fragment.athlete.UserCoachFragment;
+import uow.csse.tv.gpe.fragment.athlete.UserRefereeFragment;
 import uow.csse.tv.gpe.model.User;
-import uow.csse.tv.gpe.util.HttpUtils;
-import uow.csse.tv.gpe.util.JsonParse;
 
 /**
  * Created by Vian on 2/6/2018.
@@ -39,8 +24,7 @@ public class UserDetailActivity extends AppCompatActivity {
     private User user;
 
     private void setData() {
-        TextView name = (TextView) findViewById(R.id.Name);
-//        Log.v("v",user.getReferee().getClubs().get(0).getName());
+        TextView name = (TextView) findViewById(R.id.userdetail_name);
         name.setText(user.getName());
     }
 

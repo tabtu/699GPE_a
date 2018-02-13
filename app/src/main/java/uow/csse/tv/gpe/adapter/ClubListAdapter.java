@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
@@ -51,7 +53,7 @@ public class ClubListAdapter extends ArrayAdapter<String> {
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-//        viewHolder.mImage.setImageResource(image[position]);
+        Picasso.with(getContext()).load(list.get(position).getPicture()).fit().into(viewHolder.mImage);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
 

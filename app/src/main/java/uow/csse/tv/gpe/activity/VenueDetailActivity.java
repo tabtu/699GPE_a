@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
 import uow.csse.tv.gpe.fragment.ActivityFragment;
-import uow.csse.tv.gpe.fragment.VenueMovementFragment;
+import uow.csse.tv.gpe.fragment.venue.VenueMovementFragment;
+import uow.csse.tv.gpe.model.Venue;
+
 import com.youth.banner.Banner;
 
 /**
@@ -19,6 +22,7 @@ public class VenueDetailActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Venue venue;
 
     Banner banner_fields;
 
@@ -33,10 +37,23 @@ public class VenueDetailActivity extends AppCompatActivity {
     //设置图片标题:自动对应
     String[] titles=new String[]{"全场2折起","全场2折起","十大星级品牌联盟","嗨购5折不要停","12趁现在","嗨购5折不要停，12.12趁现在","实打实大顶顶顶顶"};
 
+    private void setData() {
+        TextView name = findViewById(R.id.venuedetail_name);
+        TextView location = findViewById(R.id.venuedetail_location);
+        TextView contact = findViewById(R.id.venuedetail_contact);
+
+        name.setText(venue.getName());
+        location.setText(venue.getAddress());
+        contact.setText(String.valueOf(venue.getTel()));
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venuedetail);
+
+        venue = (Venue) getIntent().getSerializableExtra("venue");
+        setData();
 
         banner_fields = (Banner) findViewById(R.id.banner_fields);
         banner_fields.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
@@ -50,7 +67,13 @@ public class VenueDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new VenueMovementFragment(),"Movement");
+        VenueMovementFragment vmf = new VenueMovementFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("venueid", venue.getId());
+        vmf.setArguments(bundle);
+        adapter.AddFragment(vmf,"Movement");
+
+
         adapter.AddFragment(new ActivityFragment(),"Activity");
 
         viewPager.setAdapter(adapter);

@@ -74,6 +74,7 @@ public class ClubActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ClubActivity.this, ClubDetailActivity.class);
+                intent.putExtra("club", mylist.get(i));
                 startActivity(intent);
             }
         });

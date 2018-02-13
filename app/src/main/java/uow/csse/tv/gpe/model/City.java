@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  */
 public class City extends Entitys implements Serializable {
-    private int city_id;
+    private int id;
     private String name;
     private int sort;
 
@@ -20,16 +20,16 @@ public class City extends Entitys implements Serializable {
 
     }
 
-    public City(int city_id) {
-        this.city_id = city_id;
+    public City(int id) {
+        this.id = id;
     }
 
-    public int getCity_id() {
-        return city_id;
+    public int getId() {
+        return id;
     }
 
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

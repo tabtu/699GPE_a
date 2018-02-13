@@ -14,16 +14,16 @@ import uow.csse.tv.gpe.model.Coach;
  */
 
 public class User extends Entitys implements Serializable {
-    private String user_id;
+    private String id;
     private String username;
     private String telephone;
     private String password;
     private String email;
     private boolean enabled;
-    private String profilePicture;
+    private String picture;
     private String introduction;
-    private Long createTime;
-    private Long lastModifyTime;
+    private Long createtime;
+    private Long updatetime;
     private String name;
     private Long birth;
 //    @ManyToMany(cascade = CascadeType.ALL)
@@ -49,12 +49,12 @@ public class User extends Entitys implements Serializable {
         this.enabled = true;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getId() {
+        return id;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -97,12 +97,12 @@ public class User extends Entitys implements Serializable {
         this.enabled = enabled;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getIntroduction() {
@@ -113,20 +113,20 @@ public class User extends Entitys implements Serializable {
         this.introduction = introduction;
     }
 
-    public Long getCreateTime() {
-        return createTime;
+    public Long getCreatetime() {
+        return createtime;
     }
 
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
+    public void setCreatetime(Long createtime) {
+        this.createtime = createtime;
     }
 
-    public Long getLastModifyTime() {
-        return lastModifyTime;
+    public Long getUpdatetime() {
+        return updatetime;
     }
 
-    public void setLastModifyTime(Long lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
+    public void setUpdatetime(Long updatetime) {
+        this.updatetime = updatetime;
     }
 
     public String getName() {
