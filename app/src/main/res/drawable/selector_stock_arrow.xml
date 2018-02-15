@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!--选中的箭头样式-->
-    <item android:drawable="@mipmap/sm" android:state_checked="true" />
-    <!--未选中的箭头样式-->
-    <item android:drawable="@mipmap/sm" android:state_checked="false" />
+    <!--<item android:drawable="@mipmap/sm" android:state_checked="true" />-->
+    <!--&lt;!&ndash;未选中的箭头样式&ndash;&gt;-->
+    <!--<item android:drawable="@mipmap/sm" android:state_checked="false" />-->
 </selector>

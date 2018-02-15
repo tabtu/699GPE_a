@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.CourseListAdapter;
-import uow.csse.tv.gpe.config.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.Club;
 
 /**

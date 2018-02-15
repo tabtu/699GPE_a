@@ -17,6 +17,7 @@ import java.util.List;
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.util.CircleTransform;
 
 /**
  * Created by Vian on 2/5/2018.
@@ -55,7 +56,7 @@ public class UserListAdapter extends ArrayAdapter<String>{
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().into(viewHolder.mImage);
+        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(String.valueOf(list.get(position).getEmail()));
         viewHolder.mInterest.setText(String.valueOf(list.get(position).getIntroduction()));

@@ -100,7 +100,7 @@
                             android:layout_width="95dp"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
-                            app:srcCompat="@mipmap/athlete"/>
+                            app:srcCompat="@mipmap/venue"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                                 android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:background="@color/transparent"
-                                app:srcCompat="@mipmap/athlete"/>
+                                app:srcCompat="@mipmap/club"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                                 android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:background="@color/transparent"
-                                app:srcCompat="@mipmap/athlete"/>
+                                app:srcCompat="@mipmap/school"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

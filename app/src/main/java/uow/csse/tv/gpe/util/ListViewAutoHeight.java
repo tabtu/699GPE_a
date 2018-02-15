@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.config;
+package uow.csse.tv.gpe.util;
 
 import android.util.Log;
 import android.view.View;

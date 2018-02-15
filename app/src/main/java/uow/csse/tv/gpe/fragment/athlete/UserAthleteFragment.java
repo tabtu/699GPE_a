@@ -14,9 +14,7 @@ import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.ClubDetailActivity;
 import uow.csse.tv.gpe.adapter.ClubListAdapter;
 import uow.csse.tv.gpe.adapter.PolygonAdapter;
-import uow.csse.tv.gpe.config.ListViewAutoHeight;
-import uow.csse.tv.gpe.model.Club;
-import uow.csse.tv.gpe.model.Log;
+import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.User;
 
 /**

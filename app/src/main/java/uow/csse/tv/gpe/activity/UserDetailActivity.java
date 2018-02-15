@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
@@ -12,6 +15,7 @@ import uow.csse.tv.gpe.fragment.athlete.UserAthleteFragment;
 import uow.csse.tv.gpe.fragment.athlete.UserCoachFragment;
 import uow.csse.tv.gpe.fragment.athlete.UserRefereeFragment;
 import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.util.CircleTransform;
 
 /**
  * Created by Vian on 2/6/2018.
@@ -25,7 +29,9 @@ public class UserDetailActivity extends AppCompatActivity {
 
     private void setData() {
         TextView name = (TextView) findViewById(R.id.userdetail_name);
+        ImageView img = (ImageView) findViewById(R.id.userdetail_image);
         name.setText(user.getName());
+        Picasso.with(UserDetailActivity.this).load(user.getPicture()).resize(220,220).centerCrop().transform(new CircleTransform()).into(img);
     }
 
     @Override

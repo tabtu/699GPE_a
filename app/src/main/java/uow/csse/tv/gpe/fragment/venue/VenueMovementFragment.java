@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.ClubDetailActivity;
 import uow.csse.tv.gpe.activity.NewsActivity;
-import uow.csse.tv.gpe.adapter.ClubListAdapter;
 import uow.csse.tv.gpe.adapter.VenueMovementListAdapter;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.config.ListViewAutoHeight;
-import uow.csse.tv.gpe.model.Club;
+import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.VNews;
-import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 

@@ -10,6 +10,9 @@
         android:id="@+id/usrlist_Image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="-5dp"
         app:srcCompat="@mipmap/athlete" />
 
     <LinearLayout

@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 );
         bottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, "HOME").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.ic_favorite_white_24dp, "FOLLOW").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, "MESSAGE").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, "ACCOUNT").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_msg_white_24dp, "MESSAGE").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_account_white_24dp, "ACCOUNT").setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
 
