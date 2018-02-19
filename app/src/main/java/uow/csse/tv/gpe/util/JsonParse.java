@@ -39,35 +39,36 @@ public class JsonParse {
     public List<News> ParseJsonNews (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<News>>(){}.getType();
-        List<News> result = gson.fromJson(str, type);
-        return result;
+        return gson.fromJson(str, type);
     }
 
     public List<Venue> ParseJsonVenue (String  str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Venue>>(){}.getType();
-        List<Venue> result = gson.fromJson(str, type);
-        return result;
+        return gson.fromJson(str, type);
     }
 
     public List<Club> ParseJsonClub (String  str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Club>>(){}.getType();
-        List<Club> result = gson.fromJson(str, type);
-        return result;
+        return gson.fromJson(str, type);
     }
 
-    public List<User> ParseJsonUser (String  str) {
+    public List<User> ParseJsonUsers (String  str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<User>>(){}.getType();
-        List<User> result = gson.fromJson(str, type);
-        return result;
+        return gson.fromJson(str, type);
+    }
+
+    public User ParseJsonUser (String  str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<User>(){}.getType();
+        return gson.fromJson(str, type);
     }
 
     public List<VNews> ParseJsonVNews (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<VNews>>(){}.getType();
-        List<VNews> result = gson.fromJson(str, type);
-        return result;
+        return gson.fromJson(str, type);
     }
 }

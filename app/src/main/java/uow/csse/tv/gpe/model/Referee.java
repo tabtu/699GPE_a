@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class Referee extends Entitys implements Serializable {
     private int id;
-    private boolean gender;
     private List<Qualification> qualifications;
     private List<Club> clubs = new ArrayList<>();
 
@@ -29,14 +28,6 @@ public class Referee extends Entitys implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
     }
 
     public List<Club> getClubs() {

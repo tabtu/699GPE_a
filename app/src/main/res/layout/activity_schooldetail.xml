@@ -6,7 +6,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:layout_width="match_parent"
@@ -322,6 +324,30 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="Join" />
+            <View
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                android:layout_gravity="center_horizontal"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="Follow" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

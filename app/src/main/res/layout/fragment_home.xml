@@ -174,7 +174,7 @@
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:srcCompat="@mipmap/athlete"/>
+                        app:srcCompat="@mipmap/running"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:srcCompat="@mipmap/athlete"/>
+                        app:srcCompat="@mipmap/badmiton"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:srcCompat="@mipmap/athlete"/>
+                        app:srcCompat="@mipmap/tennis"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:srcCompat="@mipmap/athlete" />
+                        app:srcCompat="@mipmap/football" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
                         android:layout_width="95dp"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:srcCompat="@mipmap/athlete"/>
+                        app:srcCompat="@mipmap/basketball"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -1,28 +1,43 @@
 package uow.csse.tv.gpe.activity;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.adapter.SchoolListAdapter;
 import uow.csse.tv.gpe.fragment.AccountFragment;
 import uow.csse.tv.gpe.fragment.FollowFragment;
 import uow.csse.tv.gpe.fragment.HomeFragment;
+import uow.csse.tv.gpe.fragment.LoginFragment;
 import uow.csse.tv.gpe.fragment.MessageFragment;
+import uow.csse.tv.gpe.model.User;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
     private ArrayList<Fragment> fragments;
+    private User usr;
+    private SharedPreferences pref;
+    private int status = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        usr = (User)getIntent().getSerializableExtra("user");
+
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar
@@ -40,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigationBar.setTabSelectedListener(this);
     }
 
+    public User getUsr() {
+        return usr;
+    }
+
+    public void finishActivity() {
+        finish();
+    }
+
     /**
      * 设置默认的
      */
@@ -50,12 +73,36 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         transaction.commit();
     }
 
+    private void status() {
+        pref = getSharedPreferences("status", MODE_PRIVATE);
+        String outAccount = pref.getString("account","");
+        String outPsd = pref.getString("password","");
+        Log.v("status",outAccount);
+        if (outAccount.length() != 0 && outPsd.length() != 0) {
+            status = 1;
+        } else { status = 0;}
+    }
+
     private ArrayList<Fragment> getFragments() {
+        status();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.newInstance("HOME"));
-        fragments.add(FollowFragment.newInstance("FOLLOW"));
-        fragments.add(MessageFragment.newInstance("MESSAGE"));
-        fragments.add(AccountFragment.newInstance("ACCOUNT"));
+        if (status == 0) {
+            fragments.add(LoginFragment.newInstance("FOLLOW"));
+            fragments.add(LoginFragment.newInstance("MESSAGE"));
+            fragments.add(LoginFragment.newInstance("ACCOUNT"));
+        } else {
+            if (status ==1) {
+                fragments.add(FollowFragment.newInstance("FOLLOW"));
+                fragments.add(MessageFragment.newInstance("MESSAGE"));
+                fragments.add(AccountFragment.newInstance("ACCOUNT"));
+        } else {
+            fragments.add(LoginFragment.newInstance("FOLLOW"));
+            fragments.add(LoginFragment.newInstance("MESSAGE"));
+            fragments.add(LoginFragment.newInstance("ACCOUNT"));
+        }
+    }
+
         return fragments;
     }
 

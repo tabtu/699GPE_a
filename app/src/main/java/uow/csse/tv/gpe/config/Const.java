@@ -13,10 +13,10 @@ public class Const {
     public static String ID = "id=";
 
     public static String getsportlist = hostname + "sport";
-    public static String getvenuelist = hostname + "venue";
+    public static String getvenuelist = hostname + "venue?" + PAGE + "0";
     public static String getvenuenewslist = hostname + "vnews?";
     public static String getclublist = hostname + "club?" + PAGE + "0";
     public static String getschoollist = hostname + "school?" + PAGE + "0";
     public static String getuserlist = hostname + "user";
-
+    public static String loginlgnm = hostname + "lg/nm?";
 }

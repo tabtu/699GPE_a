@@ -26,9 +26,7 @@ public class User extends Entitys implements Serializable {
     private Long updatetime;
     private String name;
     private Long birth;
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "tv_user_sport", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "sport_id"))
-//    private List<Sport> myfav = new ArrayList<>();
+    private boolean gender;
     private Athlete athlete;
     private Coach coach;
     private Referee referee;
@@ -143,6 +141,14 @@ public class User extends Entitys implements Serializable {
 
     public void setBirth(Long birth) {
         this.birth = birth;
+    }
+
+    public boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     public Athlete getAthlete() {

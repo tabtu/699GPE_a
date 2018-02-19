@@ -57,7 +57,7 @@ public class UserActivity extends AppCompatActivity {
                 HttpUtils hu = new HttpUtils();
                 String tmp = hu.executeHttpGet(Const.getuserlist);
                 JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonUser(tmp);
+                mylist = jp.ParseJsonUsers(tmp);
                 if (mylist != null) {
                     Message msg = new Message();
                     msg.what = 0x0;
