@@ -1,26 +1,21 @@
 package uow.csse.tv.gpe.activity;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.SchoolListAdapter;
 import uow.csse.tv.gpe.fragment.AccountFragment;
-import uow.csse.tv.gpe.fragment.FollowFragment;
 import uow.csse.tv.gpe.fragment.HomeFragment;
 import uow.csse.tv.gpe.fragment.LoginFragment;
 import uow.csse.tv.gpe.fragment.MessageFragment;
+import uow.csse.tv.gpe.fragment.user.UserFragment;
 import uow.csse.tv.gpe.model.User;
 
 import java.util.ArrayList;
@@ -44,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
                 );
         bottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, "HOME").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_favorite_white_24dp, "FOLLOW").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_user_white_24dp, "FIND").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.ic_msg_white_24dp, "MESSAGE").setActiveColorResource(R.color.black))
                 .addItem(new BottomNavigationItem(R.mipmap.ic_account_white_24dp, "ACCOUNT").setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
@@ -74,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void status() {
-        pref = getSharedPreferences("status", MODE_PRIVATE);
+        pref = getSharedPreferences("status1", MODE_PRIVATE);
         String outAccount = pref.getString("account","");
         String outPsd = pref.getString("password","");
         Log.v("status",outAccount);
@@ -93,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             fragments.add(LoginFragment.newInstance("ACCOUNT"));
         } else {
             if (status ==1) {
-                fragments.add(FollowFragment.newInstance("FOLLOW"));
+                fragments.add(UserFragment.newInstance("FIND"));
                 fragments.add(MessageFragment.newInstance("MESSAGE"));
                 fragments.add(AccountFragment.newInstance("ACCOUNT"));
         } else {

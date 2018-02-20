@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.fragment.athlete;
+package uow.csse.tv.gpe.fragment.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

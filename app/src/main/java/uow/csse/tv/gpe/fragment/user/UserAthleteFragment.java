@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.fragment.athlete;
+package uow.csse.tv.gpe.fragment.user;
 
 import android.content.Intent;
 import android.os.Bundle;

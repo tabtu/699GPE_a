@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.MainActivity;
+import uow.csse.tv.gpe.activity.RegisterActivity;
+import uow.csse.tv.gpe.activity.UserActivity;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.HttpUtils;
@@ -27,7 +29,8 @@ import uow.csse.tv.gpe.util.JsonParse;
 public class LoginFragment extends Fragment{
     private EditText account;
     private EditText psd;
-    private Button login;
+    private Button btn_login;
+    private Button btn_register;
     private User usr;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -63,13 +66,13 @@ public class LoginFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         account = (EditText) view.findViewById(R.id.login_account);
         psd = (EditText) view.findViewById(R.id.login_password);
-        login = (Button) view.findViewById(R.id.login_login);
+        btn_login = (Button) view.findViewById(R.id.login_login);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new Thread(new Runnable() {
                     @Override
@@ -77,10 +80,10 @@ public class LoginFragment extends Fragment{
                         String _account = account.getText().toString();
                         String _psd = psd.getText().toString();
                         String exu = "usr=" + _account + "&pwd=" + _psd;
-                        Log.v("2", Const.loginlgnm + exu);
+                        Log.v("2", Const.loginlgtl + exu);
                         try {
                             HttpUtils hu = new HttpUtils();
-                            String tmp = hu.executeHttpPost(Const.loginlgnm + exu);
+                            String tmp = hu.executeHttpPost(Const.loginlgtl + exu);
                             Log.v("2", tmp);
                             JsonParse jp = new JsonParse(tmp);
                             usr  = jp.ParseJsonUser(tmp);
@@ -102,6 +105,15 @@ public class LoginFragment extends Fragment{
                         }
                     }
                 }).start();
+            }
+        });
+
+        btn_register = (Button) view.findViewById(R.id.login_regis);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

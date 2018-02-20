@@ -18,5 +18,6 @@ public class Const {
     public static String getclublist = hostname + "club?" + PAGE + "0";
     public static String getschoollist = hostname + "school?" + PAGE + "0";
     public static String getuserlist = hostname + "user";
-    public static String loginlgnm = hostname + "lg/nm?";
+    public static String loginlgtl = hostname + "tl/nm?";
+    public static String registtl = hostname + "reg/tl?";
 }

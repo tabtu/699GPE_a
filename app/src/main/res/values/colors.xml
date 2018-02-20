@@ -11,5 +11,6 @@
     <color name="grey">#607D8B</color>
     <color name="lightgrey">#eeeeee</color>
     <color name="black">#000</color>
-    <color name="gpe">#48c997</color>
+    <color name="gpe">#8fc551</color>
+    <color name="lightgpe">#ecf7e0</color>
 </resources>
