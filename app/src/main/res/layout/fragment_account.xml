@@ -194,5 +194,18 @@
             android:layout_marginTop="10dp"
             android:background="@android:color/darker_gray"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+            <Button
+                android:id="@+id/account_signout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gpe"
+                android:textColor="@color/white"
+                android:text="Sign Out"/>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

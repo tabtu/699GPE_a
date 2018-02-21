@@ -1,6 +1,7 @@
-package uow.csse.tv.gpe.activity;
+package uow.csse.tv.gpe.activity.school;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.UserListAdapter;
+import uow.csse.tv.gpe.adapter.SchoolListAdapter;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 
@@ -25,21 +26,20 @@ import uow.csse.tv.gpe.util.JsonParse;
  * Created by Vian on 2/5/2018.
  */
 
-public class UserActivity extends AppCompatActivity {
+public class SchoolActivity extends AppCompatActivity {
 
     private ListView listView;
-    private List<User> mylist = new ArrayList<>();
+    private List<Club> mylist = new ArrayList<>();
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                //pd.dismiss();
-                UserListAdapter userListAdapter = new UserListAdapter(UserActivity.this, mylist);
-                listView.setAdapter(userListAdapter);
+                SchoolListAdapter schoolListAdapter = new SchoolListAdapter(SchoolActivity.this, mylist);
+                listView.setAdapter(schoolListAdapter);
             } else {
-                Toast.makeText(UserActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, "empty list", Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -55,9 +55,9 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getuserlist);
+                String tmp = hu.executeHttpGet(Const.getschoollist);
                 JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonUsers(tmp);
+                mylist = jp.ParseJsonClub(tmp);
                 if (mylist != null) {
                     Message msg = new Message();
                     msg.what = 0x0;
@@ -73,8 +73,8 @@ public class UserActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(UserActivity.this, UserDetailActivity.class);
-                intent.putExtra("user", mylist.get(i));
+                Intent intent = new Intent(SchoolActivity.this, SchoolDetailActivity.class);
+                intent.putExtra("school", mylist.get(i));
                 startActivity(intent);
             }
         });

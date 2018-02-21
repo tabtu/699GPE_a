@@ -1,6 +1,7 @@
-package uow.csse.tv.gpe.activity;
+package uow.csse.tv.gpe.activity.venue;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,7 +36,6 @@ public class VenueActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
         if (msg.what == 0x0) {
-            //pd.dismiss();
             VenueListAdapter venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
             listView.setAdapter(venueListAdapter);
         } else {

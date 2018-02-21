@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.NewsActivity;
 import uow.csse.tv.gpe.adapter.VenueMovementListAdapter;
 import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.activity.venue.VenueMovementDetailActivity;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.VNews;
 import uow.csse.tv.gpe.util.HttpUtils;
@@ -86,7 +86,8 @@ public class VenueMovementFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), NewsActivity.class);
+                Intent intent = new Intent(getActivity(), VenueMovementDetailActivity.class);
+                intent.putExtra("vnews", mylist.get(i));
                 startActivity(intent);
             }
         });

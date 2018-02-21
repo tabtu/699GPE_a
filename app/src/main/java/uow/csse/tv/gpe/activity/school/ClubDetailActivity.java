@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.activity;
+package uow.csse.tv.gpe.activity.school;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

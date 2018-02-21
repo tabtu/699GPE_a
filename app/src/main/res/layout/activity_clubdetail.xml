@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="-155dp">
+            android:layout_marginTop="-165dp">
             <TextView
                 android:id="@+id/clubdetail_name"
                 android:layout_width="match_parent"
@@ -68,96 +68,30 @@
             app:srcCompat="@mipmap/ava"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="-53dp"
-            android:layout_gravity="end"
-            android:textAlignment="textEnd"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="170dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:paddingTop="5dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_athletenum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:text="5"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="Member"/>
-            </LinearLayout>
-
-            <View
-                android:layout_width="1dip"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"
-                android:layout_gravity="center_horizontal"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:background="@drawable/buttonborder"
+                android:layout_weight="1"
+                android:text="Join" />
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_cachnum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="5dp"
-                    android:textAlignment="center"
-                    android:text="3"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="Coach"/>
-            </LinearLayout>
-
-            <View
-                android:layout_width="1dip"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"
-                android:layout_gravity="center_horizontal"
-                />
-
-            <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_coursenum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:text="3"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Course"/>
-            </LinearLayout>
-
+                android:background="@drawable/buttonborder"
+                android:layout_weight="1"
+                android:text="Follow" />
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="15dp"
+            android:background="@color/lightgrey"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -219,6 +153,87 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@color/lightgrey"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/lightgrey"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/clubdetail_athletenum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="5"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Member"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:background="@color/white"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/clubdetail_cachnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Coach"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/clubdetail_coursenum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Course"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -370,38 +385,6 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:text="Join" />
-            <View
-                android:layout_width="1dip"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"
-                android:layout_gravity="center_horizontal"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:text="Follow" />
-        </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
 
     </LinearLayout>
 </ScrollView>

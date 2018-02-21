@@ -1,6 +1,7 @@
-package uow.csse.tv.gpe.activity;
+package uow.csse.tv.gpe.activity.school;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,7 +36,6 @@ public class ClubActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                //pd.dismiss();
                 ClubListAdapter clubListAdapter = new ClubListAdapter(ClubActivity.this, mylist);
                 listView.setAdapter(clubListAdapter);
             } else {

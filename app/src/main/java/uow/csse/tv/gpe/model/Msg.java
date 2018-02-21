@@ -17,18 +17,16 @@ public class Msg implements Serializable {
 
     private String sender;
     private String receiver;
-    private Date sendtime;
-    private Date receivetime;
+    private Long sendtime;
 
     public Msg() {
 
     }
 
-    public Msg(String s, String r, Date st, Date rt) {
+    public Msg(String s, String r, Long st) {
         this.sender = s;
         this.receiver = r;
         this.sendtime = st;
-        this.receivetime = rt;
     }
 
     public String getSender() {
@@ -47,20 +45,12 @@ public class Msg implements Serializable {
         this.receiver = receiver;
     }
 
-    public Date getSendtime() {
+    public Long getSendtime() {
         return sendtime;
     }
 
-    public void setSendtime(Date sendtime) {
+    public void setSendtime(Long sendtime) {
         this.sendtime = sendtime;
-    }
-
-    public Date getReceivetime() {
-        return receivetime;
-    }
-
-    public void setReceivetime(Date receivetime) {
-        this.receivetime = receivetime;
     }
 
     @Override
@@ -72,8 +62,7 @@ public class Msg implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Msg other = (Msg) obj;
-        if(sender == other.sender && receiver == other.receiver &&
-                sendtime == other.sendtime && receivetime == other.receivetime) {
+        if(sender == other.sender && receiver == other.receiver && sendtime == other.sendtime) {
             return true;
         } else {
             return false;

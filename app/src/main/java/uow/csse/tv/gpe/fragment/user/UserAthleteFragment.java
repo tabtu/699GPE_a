@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.ClubDetailActivity;
+import uow.csse.tv.gpe.activity.school.ClubDetailActivity;
 import uow.csse.tv.gpe.adapter.ClubListAdapter;
 import uow.csse.tv.gpe.adapter.PolygonAdapter;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;

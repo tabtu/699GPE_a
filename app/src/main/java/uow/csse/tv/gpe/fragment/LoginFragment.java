@@ -1,6 +1,7 @@
 package uow.csse.tv.gpe.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +10,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,6 @@ import android.widget.Toast;
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.RegisterActivity;
-import uow.csse.tv.gpe.activity.UserActivity;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.HttpUtils;
@@ -32,12 +31,11 @@ public class LoginFragment extends Fragment{
     private Button btn_login;
     private Button btn_register;
     private User usr;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
+//    private ProgressDialog pd;
 
     private void saveStatus() {
-        pref = getActivity().getSharedPreferences("status", Context.MODE_PRIVATE);
-        editor = pref.edit();
+        SharedPreferences pref = getActivity().getSharedPreferences("status", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
 
         editor.putString("account", account.getText().toString());
         editor.putString("password", psd.getText().toString());
@@ -51,7 +49,7 @@ public class LoginFragment extends Fragment{
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
                 saveStatus();
-
+//                pd.dismiss();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("user", usr);
                 startActivity(intent);
@@ -80,14 +78,12 @@ public class LoginFragment extends Fragment{
                         String _account = account.getText().toString();
                         String _psd = psd.getText().toString();
                         String exu = "usr=" + _account + "&pwd=" + _psd;
-                        Log.v("2", Const.loginlgtl + exu);
+//                        pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
                         try {
                             HttpUtils hu = new HttpUtils();
                             String tmp = hu.executeHttpPost(Const.loginlgtl + exu);
-                            Log.v("2", tmp);
                             JsonParse jp = new JsonParse(tmp);
                             usr  = jp.ParseJsonUser(tmp);
-                            Log.v("2", usr.getName());
                             if (usr == null) {
                                 Message msg = new Message();
                                 msg.what = 0x99;
@@ -98,7 +94,6 @@ public class LoginFragment extends Fragment{
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
-                            Log.v("2", e.getMessage());
 //                            Message msg = new Message();
 //                            msg.what = 0x99;
 //                            handler.sendMessage(msg);

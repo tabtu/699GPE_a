@@ -15,6 +15,7 @@ public class Message extends Entitys implements Serializable {
     private Msg msgid;
     private boolean isread;
     private String text;
+    private Long logtime;
 
     public Message() {
 
@@ -23,7 +24,6 @@ public class Message extends Entitys implements Serializable {
     public Message(Msg msd, String txt) {
         this.msgid = msd;
         this.text = txt;
-        this.isread = false;
     }
 
     public Msg getMsgid() {
@@ -48,5 +48,13 @@ public class Message extends Entitys implements Serializable {
 
     public void setIsread(boolean isread) {
         this.isread = isread;
+    }
+
+    public Long getLogtime() {
+        return logtime;
+    }
+
+    public void setLogtime(Long logtime) {
+        this.logtime = logtime;
     }
 }

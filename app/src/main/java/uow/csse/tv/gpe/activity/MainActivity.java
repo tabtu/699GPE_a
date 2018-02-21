@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
     private ArrayList<Fragment> fragments;
     private User usr;
-    private SharedPreferences pref;
     private int status = 0;
 
     @Override
@@ -58,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         finish();
     }
 
-    /**
-     * 设置默认的
-     */
     private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -69,10 +65,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void status() {
-        pref = getSharedPreferences("status1", MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("status", MODE_PRIVATE);
         String outAccount = pref.getString("account","");
         String outPsd = pref.getString("password","");
-        Log.v("status",outAccount);
         if (outAccount.length() != 0 && outPsd.length() != 0) {
             status = 1;
         } else { status = 0;}
@@ -83,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.newInstance("HOME"));
         if (status == 0) {
-            fragments.add(LoginFragment.newInstance("FOLLOW"));
+            fragments.add(LoginFragment.newInstance("FIND"));
             fragments.add(LoginFragment.newInstance("MESSAGE"));
             fragments.add(LoginFragment.newInstance("ACCOUNT"));
         } else {
@@ -92,12 +87,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 fragments.add(MessageFragment.newInstance("MESSAGE"));
                 fragments.add(AccountFragment.newInstance("ACCOUNT"));
         } else {
-            fragments.add(LoginFragment.newInstance("FOLLOW"));
+            fragments.add(LoginFragment.newInstance("FIND"));
             fragments.add(LoginFragment.newInstance("MESSAGE"));
             fragments.add(LoginFragment.newInstance("ACCOUNT"));
         }
     }
-
         return fragments;
     }
 
@@ -113,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             }
         }
     }
-
 
     @Override
     public void onTabUnselected(int position) {
