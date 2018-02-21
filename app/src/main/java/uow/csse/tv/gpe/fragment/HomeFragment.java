@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,8 @@ public class HomeFragment extends Fragment {
     private List<News> downlist = new ArrayList<>();
     private List<City> citylist = new ArrayList<>();
 
+    private City currentCity;
+
     private void setBanner() {
         Banner banner_news;
         String[] newsImg = new String[uplist.size()];
@@ -97,7 +100,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setSpinner() {
-        Spinner spinner = view.findViewById(R.id.home_spinner);
+        final Spinner spinner = view.findViewById(R.id.home_spinner);
         List<String> cityData = new ArrayList<>();
         for (int i = 0; i < citylist.size(); i++) {
             cityData.add(citylist.get(i).getName());
@@ -107,14 +110,25 @@ public class HomeFragment extends Fragment {
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), R.layout.adapter_citylist, cityData);
         spinner.setAdapter(arrayAdapter);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
+                currentCity = citylist.get(i);
+                Message msg = new Message();
+                msg.what = 0x3;
+                handler.sendMessage(msg);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
 
+            }
+        });
 
 //        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(getActivity(), MainActivity.class);
-////                intent.putExtra("news", downlist.get(i));
-//                startActivity(intent);
+//                currentCity = citylist.get(i).getId();
 //            }
 //        });
     }
@@ -132,8 +146,59 @@ public class HomeFragment extends Fragment {
         if (msg.what == 0x2) {
             setSpinner();
         }
+        if (msg.what == 0x3) {
+            getHomeAndList();
+        }
         }
     };
+
+    private void getHomeAndList() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+//                pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
+//
+//                    }
+//                });
+                HttpUtils hu = new HttpUtils();
+                String tmp = hu.executeHttpGet(Const.getupnewslist + currentCity.getId());
+                JsonParse jp = new JsonParse(tmp);
+                uplist = jp.ParseJsonNews(tmp);
+                if (uplist != null) {
+                    Message msg = new Message();
+                    msg.what = 0x0;
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    msg.what = 0x99;
+                    handler.sendMessage(msg);
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpUtils hu = new HttpUtils();
+                String tmp = hu.executeHttpGet(Const.getdownnewslist + currentCity.getId() + "&" + Const.PAGE + "0");
+                JsonParse jp = new JsonParse(tmp);
+                downlist = jp.ParseJsonNews(tmp);
+                if (downlist != null) {
+                    Message msg = new Message();
+                    msg.what = 0x1;
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    msg.what = 0x99;
+                    handler.sendMessage(msg);
+                }
+            }
+        }).start();
+    }
 
     @Nullable
     @Override
@@ -157,6 +222,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),VenueActivity.class);
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -166,6 +232,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),SchoolActivity.class);
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -175,55 +242,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ClubActivity.class);
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//                pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
-//
-//                    }
-//                });
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getupnewslist);
-                JsonParse jp = new JsonParse(tmp);
-                uplist = jp.ParseJsonNews(tmp);
-                if (uplist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x0;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x99;
-                    handler.sendMessage(msg);
-                }
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getdownnewslist);
-                JsonParse jp = new JsonParse(tmp);
-                downlist = jp.ParseJsonNews(tmp);
-                if (downlist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x99;
-                    handler.sendMessage(msg);
-                }
-            }
-        }).start();
 
         new Thread(new Runnable() {
             @Override

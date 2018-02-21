@@ -18,6 +18,7 @@ import java.util.List;
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.ClubListAdapter;
 import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.model.City;
 import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
@@ -30,6 +31,7 @@ public class ClubActivity extends AppCompatActivity {
 
     ListView listView;
     private List<Club> mylist = new ArrayList<>();
+    private City city;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -49,13 +51,15 @@ public class ClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        city = (City) getIntent().getSerializableExtra("city");
+
         listView = (ListView) findViewById(R.id.fieldslist);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getclublist);
+                String tmp = hu.executeHttpGet(Const.getclublist + city.getId() + "&"+ Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
                 mylist = jp.ParseJsonClub(tmp);
                 if (mylist != null) {

@@ -27,7 +27,7 @@ public class CityListAdapter extends ArrayAdapter<String> {
     private Context context;
     private List<String> list;
 
-    public CityListAdapter(Context context, int resource, List<String> city){
+    public CityListAdapter(Context context, int textViewResourceId, List<String> city){
         super(context, R.layout.adapter_citylist);
         this.list = city;
         this.context = context;

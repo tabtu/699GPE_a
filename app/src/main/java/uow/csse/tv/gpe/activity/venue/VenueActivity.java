@@ -18,6 +18,7 @@ import java.util.List;
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.VenueListAdapter;
 import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.model.City;
 import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
@@ -30,6 +31,7 @@ public class VenueActivity extends AppCompatActivity {
 
     private ListView listView;
     private List<Venue> mylist = new ArrayList<>();
+    private City city;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -50,6 +52,8 @@ public class VenueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        city = (City) getIntent().getSerializableExtra("city");
+
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar.setTitle("Fields");
         listView = (ListView) findViewById(R.id.fieldslist);
@@ -58,7 +62,7 @@ public class VenueActivity extends AppCompatActivity {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getvenuelist);
+                String tmp = hu.executeHttpGet(Const.getvenuelist + city.getId() + "&"+ Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
                 mylist = jp.ParseJsonVenue(tmp);
                 if (mylist != null) {
