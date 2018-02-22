@@ -15,12 +15,11 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.Message;
-import uow.csse.tv.gpe.model.Msg;
-import uow.csse.tv.gpe.model.News;
+import uow.csse.tv.gpe.model.VNews;
 import uow.csse.tv.gpe.util.Func;
 
 /**
- * Created by Vian on 2/20/2018.
+ * Created by Vian on 2/10/2018.
  */
 
 public class MessageListAdapter extends ArrayAdapter<String> {
@@ -30,7 +29,7 @@ public class MessageListAdapter extends ArrayAdapter<String> {
     private Func func = new Func();
 
     public MessageListAdapter(Context context, List<Message> msg){
-        super(context, R.layout.adapter_movementlist);
+        super(context, R.layout.adapter_msglist);
         this.list = msg;
         this.context = context;
     }
@@ -49,24 +48,26 @@ public class MessageListAdapter extends ArrayAdapter<String> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.adapter_msglist, parent, false);
 
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.msglist_title);
-            viewHolder.mDate = (TextView) convertView.findViewById(R.id.msglist_date);
-            viewHolder.mDetail = (TextView) convertView.findViewById(R.id.msglist_detail);
+//            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.movementlist_image);
+//            viewHolder.mTitle = (TextView) convertView.findViewById(R.id.movementlist_title);
+//            viewHolder.mDate = (TextView) convertView.findViewById(R.id.movementlist_date);
+            viewHolder.mText = (TextView) convertView.findViewById(R.id.msglist_title);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.mName.setText(list.get(position).getMsgid().getSender());
-        viewHolder.mDate.setText(func.convertLong2String(list.get(position).getMsgid().getSendtime()));
-        viewHolder.mDetail.setText(list.get(position).getText());
-
+//        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(320,220).centerCrop().into(viewHolder.mImage);
+//        viewHolder.mTitle.setText(list.get(position).getTitle());
+//        viewHolder.mDate.setText(func.convertLong2String(list.get(position).getUpdateDate()));
+//        viewHolder.mText.setText(list.get(position).getText());
+        viewHolder.mText.setText("asasasasasas");
         return convertView;
     }
 
     static class ViewHolder{
-        TextView mName;
-        TextView mDate;
-        TextView mDetail;
+//        ImageView mImage;
+        TextView mText;
+//        TextView mDate;
     }
 }

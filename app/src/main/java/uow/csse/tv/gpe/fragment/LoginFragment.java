@@ -51,7 +51,9 @@ public class LoginFragment extends Fragment{
                 saveStatus();
 //                pd.dismiss();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("user", usr);
+//                intent.putExtra("user", usr);
+//                intent.putExtra("useraccount", account.getText());
+//                intent.putExtra("userkey", psd.getText());
                 startActivity(intent);
                 MainActivity parentActivity = (MainActivity) getActivity();
                 parentActivity.finishActivity();
@@ -94,9 +96,6 @@ public class LoginFragment extends Fragment{
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
-//                            Message msg = new Message();
-//                            msg.what = 0x99;
-//                            handler.sendMessage(msg);
                         }
                     }
                 }).start();

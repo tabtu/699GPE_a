@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import uow.csse.tv.gpe.util.JsonParse;
 
 public class ClubActivity extends AppCompatActivity {
 
-    ListView listView;
+    private ListView listView;
     private List<Club> mylist = new ArrayList<>();
     private City city;
 

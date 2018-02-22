@@ -101,7 +101,6 @@
             app:tabIndicatorColor="@color/gpe"/>
         <com.youth.banner.Banner
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/banner_tab"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
         <android.support.v4.view.ViewPager
@@ -109,20 +108,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@color/lightgrey"/>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:background="@color/lightgrey"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.youth.banner.Banner
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/banner_fields"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<com.youth.banner.Banner-->
+            <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/banner_fields"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="200dp" />-->
+        <!--</LinearLayout>-->
 
     </LinearLayout>
 </ScrollView>

@@ -1,22 +1,29 @@
 package uow.csse.tv.gpe.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.fragment.AccountFragment;
 import uow.csse.tv.gpe.fragment.HomeFragment;
 import uow.csse.tv.gpe.fragment.LoginFragment;
-import uow.csse.tv.gpe.fragment.MessageFragment;
+import uow.csse.tv.gpe.fragment.msg.MessageFragment;
 import uow.csse.tv.gpe.fragment.user.UserFragment;
 import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.util.HttpUtils;
+import uow.csse.tv.gpe.util.JsonParse;
 
 import java.util.ArrayList;
 
@@ -25,12 +32,51 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private User usr;
     private int status = 0;
 
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x0) {
+
+            } else {
+                Toast.makeText(MainActivity.this, "No User", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usr = (User)getIntent().getSerializableExtra("user");
+//        usr = (User)getIntent().getSerializableExtra("user");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences pref = getSharedPreferences("status", MODE_PRIVATE);
+                String _account = pref.getString("account","");
+                String _psd = pref.getString("password","");
+
+                String exu = "usr=" + _account + "&pwd=" + _psd;
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpPost(Const.loginlgtl + exu);
+                    JsonParse jp = new JsonParse(tmp);
+                    usr  = jp.ParseJsonUser(tmp);
+                    if (usr == null) {
+                        Message msg = new Message();
+                        msg.what = 0x99;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x0;
+                        handler.sendMessage(msg);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }).start();
 
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);

@@ -38,7 +38,7 @@ public class UserDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
-        View view = inflater.inflate(R.layout.activity_userdetail, container, false);
+        View view = inflater.inflate(R.layout.fragment_userdetail, container, false);
 
         user = (User)getArguments().getSerializable("user");
         setData(view);
