@@ -14,4 +14,9 @@ public class Func {
         return dateStr;
     }
 
+    public String convertLong2Time(Long time) {
+        String timeStr = new SimpleDateFormat("HH:MM").format(new Date(time));
+        return timeStr;
+    }
+
 }

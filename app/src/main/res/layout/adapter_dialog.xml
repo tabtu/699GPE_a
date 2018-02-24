@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@mipmap/reply"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Reply"
+        android:textColor="#666666"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/dialog_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@mipmap/delete"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Delete"
+        android:textColor="#666666"
+        android:textSize="14sp"/>
+
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,8 @@ public class UserAthleteFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.userdetail_athelete_clublist);
 
         user = (User)getArguments().getSerializable("user");
+
+        Log.v("uu",user.getAthlete().toString());
 
         ClubListAdapter clubListAdapter = new ClubListAdapter(getActivity(), user.getAthlete().getClubs());
         listView.setAdapter(clubListAdapter);

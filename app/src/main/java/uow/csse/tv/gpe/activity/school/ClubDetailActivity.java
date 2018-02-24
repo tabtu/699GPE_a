@@ -7,11 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.fragment.ActivityFragment;
 import uow.csse.tv.gpe.fragment.club.CourseFragment;
 import uow.csse.tv.gpe.fragment.HonorFragment;
 import uow.csse.tv.gpe.fragment.club.ClubMovementFragment;
@@ -68,7 +65,7 @@ public class ClubDetailActivity extends AppCompatActivity {
 
         adapter.AddFragment(new ClubMovementFragment(),"Movement");
         adapter.AddFragment(new HonorFragment(),"Honor");
-        adapter.AddFragment(new ActivityFragment(),"Activity");
+        adapter.AddFragment(new HonorFragment(),"Activity");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

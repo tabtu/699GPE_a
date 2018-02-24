@@ -21,13 +21,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
 import uow.csse.tv.gpe.activity.school.ClubActivity;
 import uow.csse.tv.gpe.activity.school.SchoolActivity;
 import uow.csse.tv.gpe.activity.venue.VenueActivity;
-import uow.csse.tv.gpe.activity.user.UserActivity;
-import uow.csse.tv.gpe.adapter.CityListAdapter;
 import uow.csse.tv.gpe.adapter.NewsListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.City;
@@ -212,8 +209,8 @@ public class HomeFragment extends Fragment {
         btn_athlete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),UserActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(),UserActivity.class);
+//                startActivity(intent);
             }
         });
 

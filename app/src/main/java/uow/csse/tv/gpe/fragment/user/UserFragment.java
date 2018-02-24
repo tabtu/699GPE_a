@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.activity.MainActivity;
+import uow.csse.tv.gpe.activity.UserDetailActivity;
 import uow.csse.tv.gpe.adapter.UserListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.User;
@@ -59,7 +60,7 @@ public class UserFragment extends Fragment {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getuserlist);
+                String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
                 mylist = jp.ParseJsonUsers(tmp);
                 if (mylist != null) {
@@ -77,12 +78,9 @@ public class UserFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), UserDetailFragment.class);
-                UserDetailFragment udf = new UserDetailFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("user", mylist.get(i));
-                udf.setArguments(bundle);
-//                intent.putExtra("user", mylist.get(i));
+                Intent intent = new Intent(getActivity(), UserDetailActivity.class);
+                intent.putExtra("user",mylist.get(i));
+                intent.putExtra("currentuser",((MainActivity)getActivity()).getUsr());
                 startActivity(intent);
             }
         });

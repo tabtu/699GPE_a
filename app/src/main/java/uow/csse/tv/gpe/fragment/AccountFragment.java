@@ -23,7 +23,6 @@ public class AccountFragment extends Fragment {
 
     private void setData(View view) {
         TextView name = view.findViewById(R.id.account_name);
-        Log.v("id",user.getId().length()+"");
         if (user.getName() == null) {
             String userName = "User" + user.getId().substring(10, 15);
             name.setText(userName);

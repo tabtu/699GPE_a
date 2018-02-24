@@ -1,7 +1,6 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Message Entity
@@ -13,20 +12,26 @@ import java.util.Date;
  *
  */
 
-public class Msg implements Serializable {
+public class Msgs implements Serializable {
 
     private String sender;
     private String receiver;
     private Long sendtime;
+    private boolean isread;
+    private String text;
+    private Long logtime;
 
-    public Msg() {
+    public Msgs() {
 
     }
 
-    public Msg(String s, String r, Long st) {
+    public Msgs(String s, String r, Long st, String text, boolean isread) {
         this.sender = s;
         this.receiver = r;
         this.sendtime = st;
+        this.logtime = st;
+        this.text = text;
+        this.isread = isread;
     }
 
     public String getSender() {
@@ -53,20 +58,28 @@ public class Msg implements Serializable {
         this.sendtime = sendtime;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Msg other = (Msg) obj;
-        if(sender == other.sender && receiver == other.receiver && sendtime == other.sendtime) {
-            return true;
-        } else {
-            return false;
-        }
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public boolean getIsread() {
+        return isread;
+    }
+
+    public void setIsread(boolean isread) {
+        this.isread = isread;
+    }
+
+    public Long getLogtime() {
+        return logtime;
+    }
+
+    public void setLogtime(Long logtime) {
+        this.logtime = logtime;
     }
 }
 

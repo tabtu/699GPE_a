@@ -8,11 +8,8 @@ import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.fragment.ActivityFragment;
 import uow.csse.tv.gpe.fragment.venue.VenueMovementFragment;
 import uow.csse.tv.gpe.model.Venue;
-
-import com.youth.banner.Banner;
 
 /**
  * Created by Vian on 2/5/2018.
@@ -74,7 +71,7 @@ public class VenueDetailActivity extends AppCompatActivity {
         adapter.AddFragment(vmf,"Movement");
 
 
-        adapter.AddFragment(new ActivityFragment(),"Activity");
+//        adapter.AddFragment(new ActivityFragment(),"Activity");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

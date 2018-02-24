@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="203dp"
             android:layout_marginTop="-15dp"
-            app:srcCompat="@mipmap/accountdbackground" />
+            app:srcCompat="@mipmap/black_blackground" />
 
         <LinearLayout
             android:layout_width="match_parent"

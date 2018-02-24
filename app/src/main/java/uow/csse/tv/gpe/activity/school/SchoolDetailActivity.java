@@ -8,11 +8,9 @@ import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.fragment.ActivityFragment;
 import uow.csse.tv.gpe.fragment.HonorFragment;
 import uow.csse.tv.gpe.fragment.club.ClubMovementFragment;
 import uow.csse.tv.gpe.model.Club;
-import uow.csse.tv.gpe.model.User;
 
 /**
  * Created by Vian on 2/9/2018.
@@ -51,7 +49,7 @@ public class SchoolDetailActivity extends AppCompatActivity {
 
         adapter.AddFragment(new HonorFragment(),"Honor");
         adapter.AddFragment(new ClubMovementFragment(),"Movement");
-        adapter.AddFragment(new ActivityFragment(),"Activity");
+        adapter.AddFragment(new HonorFragment(),"Activity");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
