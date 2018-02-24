@@ -2,7 +2,7 @@ package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import uow.csse.tv.gpe.model.Coach;
 /**
  * User Entity
  *
@@ -14,17 +14,22 @@ import java.util.Date;
  */
 
 public class User extends Entitys implements Serializable {
-
-    private Long user_id;
+    private String id;
     private String username;
+    private String telephone;
     private String password;
     private String email;
     private boolean enabled;
-    private String profilePicture;
+    private String picture;
     private String introduction;
-    private Long createTime;
-    private Long lastModifyTime;
-
+    private Long createtime;
+    private Long updatetime;
+    private String name;
+    private Long birth;
+    private boolean gender;
+    private Athlete athlete;
+    private Coach coach;
+    private Referee referee;
 
     public User() { super(); }
 
@@ -42,12 +47,12 @@ public class User extends Entitys implements Serializable {
         this.enabled = true;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public String getId() {
+        return id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -56,6 +61,14 @@ public class User extends Entitys implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getPassword() {
@@ -82,12 +95,12 @@ public class User extends Entitys implements Serializable {
         this.enabled = enabled;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getIntroduction() {
@@ -98,19 +111,67 @@ public class User extends Entitys implements Serializable {
         this.introduction = introduction;
     }
 
-    public Long getCreateTime() {
-        return createTime;
+    public Long getCreatetime() {
+        return createtime;
     }
 
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
+    public void setCreatetime(Long createtime) {
+        this.createtime = createtime;
     }
 
-    public Long getLastModifyTime() {
-        return lastModifyTime;
+    public Long getUpdatetime() {
+        return updatetime;
     }
 
-    public void setLastModifyTime(Long lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
+    public void setUpdatetime(Long updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Long birth) {
+        this.birth = birth;
+    }
+
+    public boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public Athlete getAthlete() {
+        return athlete;
+    }
+
+    public void setAthlete(Athlete athlete) {
+        this.athlete = athlete;
+    }
+
+    public Coach getCoach() {
+        return coach;
+    }
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
+    }
+
+    public Referee getReferee() {
+        return referee;
+    }
+
+    public void setReferee(Referee referee) {
+        this.referee = referee;
     }
 }

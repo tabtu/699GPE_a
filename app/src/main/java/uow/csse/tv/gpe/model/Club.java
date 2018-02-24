@@ -14,28 +14,30 @@ import java.util.List;
  * @since	1.0
  *
  */
-
 public class Club extends Entitys implements Serializable {
-
-    private int club_id;
+    private int id;
     private String name;
     private District district;
+    private String picture;
     private String address;
     private String tel;
-    private List<Sport> myfav;
-    private short sort;
+    private int sort;
     private String introduction;
-    private Long createDate;
-    private Long updateDate;
+    private Long createdate;
+    private Long updatedate;
+    private boolean school;
+    private List<Coach> coaches = new ArrayList<>();
+    private List<Referee> referees = new ArrayList<>();
+    private List<Athlete> athletes = new ArrayList<>();
 
     public Club() { }
 
-    public int getClub_id() {
-        return club_id;
+    public int getId() {
+        return id;
     }
 
-    public void setClub_id(int club_id) {
-        this.club_id = club_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -70,14 +72,6 @@ public class Club extends Entitys implements Serializable {
         this.address = address;
     }
 
-    public List<Sport> getMyfav() {
-        return myfav;
-    }
-
-    public void setMyfav(List<Sport> myfav) {
-        this.myfav = myfav;
-    }
-
     public String getIntroduction() {
         return introduction;
     }
@@ -86,27 +80,67 @@ public class Club extends Entitys implements Serializable {
         this.introduction = introduction;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 
-    public Long getCreateDate() {
-        return createDate;
+    public Long getCreatedate() {
+        return createdate;
     }
 
-    public void setCreateDate(Long createDate) {
-        this.createDate = createDate;
+    public void setCreatedate(Long createdate) {
+        this.createdate = createdate;
     }
 
-    public Long getUpdateDate() {
-        return updateDate;
+    public Long getUpdatedate() {
+        return updatedate;
     }
 
-    public void setUpdateDate(Long updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdatedate(Long updatedate) {
+        this.updatedate = updatedate;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public boolean getSchool() {
+        return school;
+    }
+
+    public void setSchool(boolean school) {
+        this.school = school;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
+    public List<Referee> getReferees() {
+        return referees;
+    }
+
+    public void setReferees(List<Referee> referees) {
+        this.referees = referees;
+    }
+
+    public List<Athlete> getAthletes() {
+        return athletes;
+    }
+
+    public void setAthletes(List<Athlete> athletes) {
+        this.athletes = athletes;
     }
 }

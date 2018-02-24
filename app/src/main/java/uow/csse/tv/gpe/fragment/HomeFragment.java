@@ -1,75 +1,267 @@
 package uow.csse.tv.gpe.fragment;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.FieldsActivity;
-import uow.csse.tv.gpe.activity.UserActivity;
+import uow.csse.tv.gpe.activity.NewsDetailActivity;
+import uow.csse.tv.gpe.activity.school.ClubActivity;
+import uow.csse.tv.gpe.activity.school.SchoolActivity;
+import uow.csse.tv.gpe.activity.venue.VenueActivity;
+import uow.csse.tv.gpe.adapter.NewsListAdapter;
+import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.model.City;
+import uow.csse.tv.gpe.model.News;
+import uow.csse.tv.gpe.util.HttpUtils;
+import uow.csse.tv.gpe.util.JsonParse;
+import uow.csse.tv.gpe.util.ListViewAutoHeight;
 
 import com.youth.banner.Banner;
 
-public class HomeFragment extends Fragment {
-    Banner banner_news;
-    ImageButton btn_fields;
-    ImageButton btn_athlete;
-    Banner banner_interests;
+import java.util.ArrayList;
+import java.util.List;
 
-    String[] images= new String[] {
-            "http://img.zcool.cn/community/0166c756e1427432f875520f7cc838.jpg",
-            "http://img.zcool.cn/community/018fdb56e1428632f875520f7b67cb.jpg",
-            "http://img.zcool.cn/community/01c8dc56e1428e6ac72531cbaa5f2c.jpg",
-            "http://img.zcool.cn/community/01fda356640b706ac725b2c8b99b08.jpg",
-            "http://img.zcool.cn/community/01fd2756e142716ac72531cbf8bbbf.jpg",
-            "http://img.zcool.cn/community/0114a856640b6d32f87545731c076a.jpg"
+public class HomeFragment extends Fragment {
+
+    private View view;
+    private ImageButton btn_fields;
+    private ImageButton btn_athlete;
+    private ImageButton btn_school;
+    private ImageButton btn_club;
+    private ListView listView;
+
+    private List<News> uplist = new ArrayList<>();
+    private List<News> downlist = new ArrayList<>();
+    private List<City> citylist = new ArrayList<>();
+
+    private City currentCity;
+
+    private void setBanner() {
+        Banner banner_news;
+        String[] newsImg = new String[uplist.size()];
+        String[] newsTitle = new String[uplist.size()];
+        for (int i = 0; i < uplist.size(); i++) {
+            newsImg[i] = uplist.get(i).getBackground();
+            newsTitle[i] = uplist.get(i).getTitle();
+        }
+
+        banner_news = (Banner)view.findViewById(R.id.banner_news);
+        banner_news.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
+        banner_news.setIndicatorGravity(Banner.CENTER);
+        banner_news.setBannerTitle(newsTitle);
+        banner_news.setImages(newsImg);
+        banner_news.isAutoPlay(true);
+        banner_news.setDelayTime(5000);
+
+        banner_news.setOnBannerClickListener(new Banner.OnBannerClickListener() {
+            @Override
+            public void OnBannerClick(View view, int i) {
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra("news", uplist.get(i));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setList() {
+        NewsListAdapter newsListAdapter = new NewsListAdapter(getActivity(), downlist);
+        listView.setAdapter(newsListAdapter);
+        ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
+        listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra("news", downlist.get(i));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setSpinner() {
+        final Spinner spinner = view.findViewById(R.id.home_spinner);
+        List<String> cityData = new ArrayList<>();
+        for (int i = 0; i < citylist.size(); i++) {
+            cityData.add(citylist.get(i).getName());
+        }
+//        CityListAdapter cityListAdapter = new CityListAdapter(getActivity(),R.layout.adapter_citylist, cityData);
+//        spinner.setAdapter(cityListAdapter);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), R.layout.adapter_citylist, cityData);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
+                currentCity = citylist.get(i);
+                Message msg = new Message();
+                msg.what = 0x3;
+                handler.sendMessage(msg);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
+
+//        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                currentCity = citylist.get(i).getId();
+//            }
+//        });
+    }
+
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+        if (msg.what == 0x0) {
+            setBanner();
+        }
+        if (msg.what == 0x1) {
+            setList();
+        }
+        if (msg.what == 0x2) {
+            setSpinner();
+        }
+        if (msg.what == 0x3) {
+            getHomeAndList();
+        }
+        }
     };
-    //设置图片标题:自动对应
-    String[] titles=new String[]{"全场2折起","全场2折起","十大星级品牌联盟","嗨购5折不要停","12趁现在","嗨购5折不要停，12.12趁现在","实打实大顶顶顶顶"};
+
+    private void getHomeAndList() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+//                pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
+//
+//                    }
+//                });
+                HttpUtils hu = new HttpUtils();
+                String tmp = hu.executeHttpGet(Const.getupnewslist + currentCity.getId());
+                JsonParse jp = new JsonParse(tmp);
+                uplist = jp.ParseJsonNews(tmp);
+                if (uplist != null) {
+                    Message msg = new Message();
+                    msg.what = 0x0;
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    msg.what = 0x99;
+                    handler.sendMessage(msg);
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpUtils hu = new HttpUtils();
+                String tmp = hu.executeHttpGet(Const.getdownnewslist + currentCity.getId() + "&" + Const.PAGE + "0");
+                JsonParse jp = new JsonParse(tmp);
+                downlist = jp.ParseJsonNews(tmp);
+                if (downlist != null) {
+                    Message msg = new Message();
+                    msg.what = 0x1;
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    msg.what = 0x99;
+                    handler.sendMessage(msg);
+                }
+            }
+        }).start();
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        listView = (ListView) view.findViewById(R.id.home_list);
+
         //buttons
         btn_athlete = (ImageButton) view.findViewById(R.id.btn_athlete);
         btn_athlete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),UserActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(),UserActivity.class);
+//                startActivity(intent);
             }
         });
+
         btn_fields = (ImageButton) view.findViewById(R.id.btn_fields);
         btn_fields.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),FieldsActivity.class);
+                Intent intent = new Intent(getActivity(),VenueActivity.class);
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
 
-        //banner
-        banner_news = (Banner)view.findViewById(R.id.banner_news);
-        banner_news.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
-        banner_news.setIndicatorGravity(Banner.CENTER);
-        banner_news.setBannerTitle(titles);
-        banner_news.setImages(images);
-        banner_news.isAutoPlay(true);
-        banner_news.setDelayTime(5000);
+        btn_school = (ImageButton) view.findViewById(R.id.btn_school);
+        btn_school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SchoolActivity.class);
+                intent.putExtra("city", currentCity);
+                startActivity(intent);
+            }
+        });
 
-        banner_interests = (Banner)view.findViewById(R.id.banner_interests);
-        banner_interests.setBannerStyle(Banner.CIRCLE_INDICATOR_TITLE);
-        banner_interests.setIndicatorGravity(Banner.CENTER);
-        banner_interests.setBannerTitle(titles);
-        banner_interests.setImages(images);
-        banner_interests.isAutoPlay(true);
-        banner_interests.setDelayTime(5000);
+        btn_club = (ImageButton) view.findViewById(R.id.btn_club);
+        btn_club.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ClubActivity.class);
+                intent.putExtra("city", currentCity);
+                startActivity(intent);
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpUtils hu = new HttpUtils();
+                String tmp = hu.executeHttpGet(Const.getcitylist);
+                JsonParse jp = new JsonParse(tmp);
+                citylist = jp.ParseJsonCity(tmp);
+                if (citylist != null) {
+                    Message msg = new Message();
+                    msg.what = 0x2;
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    msg.what = 0x99;
+                    handler.sendMessage(msg);
+                }
+            }
+        }).start();
 
         return view;
     }

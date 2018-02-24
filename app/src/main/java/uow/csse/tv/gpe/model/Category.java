@@ -3,7 +3,7 @@ package uow.csse.tv.gpe.model;
 import java.io.Serializable;
 
 /**
- * Log Entity
+ * Category Entity
  *
  * @author 	Tab Tu
  * @date	2018-01-30
@@ -11,23 +11,25 @@ import java.io.Serializable;
  * @since	1.0
  *
  */
-
 public class Category extends Entitys implements Serializable {
-
-    private short cate_id;
+    private int id;
     private String name;
-    private short sort;
+    private int sort;
 
     public Category() {
 
     }
 
-    public short getCate_id() {
-        return cate_id;
+    public Category(int id) {
+        this.id = id;
     }
 
-    public void setCate_id(short cate_id) {
-        this.cate_id = cate_id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,11 +40,11 @@ public class Category extends Entitys implements Serializable {
         this.name = name;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

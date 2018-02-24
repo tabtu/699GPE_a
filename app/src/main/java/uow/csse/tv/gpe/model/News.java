@@ -12,32 +12,34 @@ import java.util.Date;
  * @since	1.0
  *
  */
-
 public class News extends Entitys implements Serializable {
-
-    private Long news_id;
-    private Long updateDate;
+    private long id;
+    private Long updatedate;
     private String title;
     private String text;
+    private City city;
+    private String background;
+    private String author;
+    private boolean home;
 
     public News() {
 
     }
 
-    public Long getNews_id() {
-        return news_id;
+    public long getId() {
+        return id;
     }
 
-    public void setNews_id(Long news_id) {
-        this.news_id = news_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Long getUpdateDate() {
-        return updateDate;
+    public Long getUpdatedate() {
+        return updatedate;
     }
 
-    public void setUpdateDate(Long updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdatedate(Long updatedate) {
+        this.updatedate = updatedate;
     }
 
     public String getTitle() {
@@ -54,5 +56,37 @@ public class News extends Entitys implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public boolean getHome() {
+        return home;
+    }
+
+    public void setHome(boolean home) {
+        this.home = home;
     }
 }

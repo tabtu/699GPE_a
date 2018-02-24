@@ -19,11 +19,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FieldsDetailActivity"/>
-        <activity android:name=".activity.FieldsActivity"/>
-        <activity android:name=".activity.UserActivity"/>
+        <activity android:name=".activity.venue.VenueDetailActivity"/>
+        <activity android:name=".activity.venue.VenueActivity"/>
+        <activity android:name=".activity.user.UserActivity"/>
         <activity android:name=".activity.UserDetailActivity"/>
-
+        <activity android:name=".activity.school.SchoolActivity"/>
+        <activity android:name=".activity.school.SchoolDetailActivity"/>
+        <activity android:name=".activity.school.ClubActivity"/>
+        <activity android:name=".activity.school.ClubDetailActivity"/>
+        <activity android:name=".activity.NewsDetailActivity"/>
+        <activity android:name=".activity.venue.VenueMovementDetailActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.msg.MessageReceiveDetailActivity"/>
+        <activity android:name=".activity.msg.MessageSendDetailActivity"/>
+        <activity android:name=".activity.msg.MessageSendActivity"/>
 
     </application>
 

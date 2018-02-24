@@ -5,11 +5,13 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="teal">#00796B</color>
+    <color name="search">#304e0f</color>
     <color name="white">#ffff</color>
     <color name="transparent">#0000</color>
     <color name="grey">#607D8B</color>
     <color name="lightgrey">#eeeeee</color>
     <color name="black">#000</color>
-    <color name="gpe">#009966</color>
+    <color name="gpe">#8fc551</color>
+    <color name="lightgpe">#ecf7e0</color>
+    <color name="lightred">#f7caca</color>
 </resources>

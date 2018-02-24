@@ -12,29 +12,27 @@ import java.util.Date;
  * @since	1.0
  *
  */
-
 public class Log extends Entitys implements Serializable {
-
-    private long logid;
+    private String logid;
     private User lguser;
-    private Long lgtime;
+    private Date lgtime;
     private String operation;
 
     public Log() {
 
     }
 
-    public Log(User u, Long t, String op) {
+    public Log(User u, Date t, String op) {
         this.lguser = u;
         this.lgtime = t;
         this.operation = op;
     }
 
-    public long getLogid() {
+    public String getLogid() {
         return logid;
     }
 
-    public void setLogid(long logid) {
+    public void setLogid(String logid) {
         this.logid = logid;
     }
 
@@ -46,11 +44,11 @@ public class Log extends Entitys implements Serializable {
         this.lguser = lguser;
     }
 
-    public Long getLgtime() {
+    public Date getLgtime() {
         return lgtime;
     }
 
-    public void setLgtime(Long lgtime) {
+    public void setLgtime(Date lgtime) {
         this.lgtime = lgtime;
     }
 

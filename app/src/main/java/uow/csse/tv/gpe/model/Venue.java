@@ -1,7 +1,9 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Venue Entity
@@ -14,22 +16,24 @@ import java.util.Date;
  */
 
 public class Venue extends Entitys implements Serializable {
-
-    private int venue_id;
+    private int id;
     private String name;
     private String tel;
     private District district;
     private String address;
-    private Long createDate;
+    private Long createdate;
+    private String picture;
+    private List<Sport> sports = new ArrayList<>();
+
 
     public Venue() { }
 
-    public int getVenue_id() {
-        return venue_id;
+    public int getId() {
+        return id;
     }
 
-    public void setVenue_id(int venue_id) {
-        this.venue_id = venue_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -65,10 +69,42 @@ public class Venue extends Entitys implements Serializable {
     }
 
     public Long getCreateDate() {
-        return createDate;
+        return createdate;
     }
 
-    public void setCreateDate(Long createDate) {
-        this.createDate = createDate;
+    public void setCreateDate(Long createdate) {
+        this.createdate = createdate;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public List<Sport> getSports() {
+        return sports;
+    }
+
+    public void setSports(List<Sport> sports) {
+        this.sports = sports;
+    }
+
+    public String getSportsName() {
+        String result = "";
+        if (sports != null) {
+            if (sports.size() > 0) {
+                for (int i = 0; i < sports.size(); i++) {
+                    result += (sports.get(i).getName() + ", ");
+                }
+                return result;
+            } else {
+                return "empty";
+            }
+        } else {
+            return "empty";
+        }
     }
 }

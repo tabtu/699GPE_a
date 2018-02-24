@@ -1,8 +1,8 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Sport list
@@ -13,22 +13,25 @@ import java.util.Set;
  * @since	1.0
  *
  */
-
 public class Sport extends Entitys implements Serializable {
-
-    private short sport_id;
+    private int id;
     private String name;
+
     private String cname;
     private String tablename;
     private Category category;
-    private short sort;
+    private int sort;
+    private List<Venue> venues = new ArrayList<>();
+
+//    @ManyToMany(mappedBy = "schools", cascade = CascadeType.ALL)
+//    private List<School> myfav;
 
     public Sport() { }
 
     public Sport(String name) { this.name = name; }
 
-    public short getSport_id() { return sport_id; }
-    public void setSport_id(short id) { this.sport_id = id; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -51,11 +54,11 @@ public class Sport extends Entitys implements Serializable {
         this.category = category;
     }
 
-    public short getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(short sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

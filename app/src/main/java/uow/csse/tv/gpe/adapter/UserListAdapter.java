@@ -2,6 +2,7 @@ package uow.csse.tv.gpe.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.util.CircleTransform;
 
 /**
  * Created by Vian on 2/5/2018.
@@ -17,24 +25,18 @@ import uow.csse.tv.gpe.R;
 
 public class UserListAdapter extends ArrayAdapter<String>{
 
-    String [] name;
-    int [] image;
-    String [] interest;
-    String [] location;
-    Context context;
+    private Context context;
+    private List<User> list;
 
-    public UserListAdapter (Context context, String[] listName, int[] listImage, String[] listInterest, String[] listLocation){
+    public UserListAdapter (Context context, List<User> user){
         super(context, R.layout.adapter_userlist);
-        this.name = listName;
-        this.image = listImage;
-        this.interest = listInterest;
-        this.location = listLocation;
+        this.list = user;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return name.length;
+        return list.size();
     }
 
     @NonNull
@@ -54,10 +56,10 @@ public class UserListAdapter extends ArrayAdapter<String>{
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        viewHolder.mImage.setImageResource(image[position]);
-        viewHolder.mName.setText(name[position]);
-        viewHolder.mLocation.setText(location[position]);
-        viewHolder.mInterest.setText(interest[position]);
+        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
+        viewHolder.mName.setText(list.get(position).getName());
+        viewHolder.mLocation.setText(String.valueOf(list.get(position).getEmail()));
+        viewHolder.mInterest.setText(String.valueOf(list.get(position).getIntroduction()));
 
         return convertView;
     }
