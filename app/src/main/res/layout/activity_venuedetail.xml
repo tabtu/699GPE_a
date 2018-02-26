@@ -10,6 +10,16 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/venuedetail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Venue"
+            app:titleTextColor="@color/white"
+            android:background="@color/gpe">
+        </android.support.v7.widget.Toolbar>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"

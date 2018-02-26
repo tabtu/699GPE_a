@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.adapter;
+package uow.csse.tv.gpe.adapter.club;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

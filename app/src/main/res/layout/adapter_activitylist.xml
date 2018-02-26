@@ -37,22 +37,12 @@
             android:background="@color/gpe"
             android:text="Title"/>
 
-        <TextView
-            android:id="@+id/activitylist_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="Location"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,8 +58,15 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="11/11/1111"/>
+                android:text="11/11/1111 - 12/12/1212"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,10 +83,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:text="11:11"/>
-
         </LinearLayout>
 
     </LinearLayout>
-
-
 </LinearLayout>

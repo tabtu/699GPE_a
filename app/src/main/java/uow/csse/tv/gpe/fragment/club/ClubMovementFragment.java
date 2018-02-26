@@ -22,7 +22,7 @@ public class ClubMovementFragment extends Fragment{
     }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
-        view = inflater.inflate(R.layout.fragment_news, container, false);
+        view = inflater.inflate(R.layout.fragment_simplelist, container, false);
         return view;
     }
 }

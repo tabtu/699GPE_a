@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.ClubListAdapter;
+import uow.csse.tv.gpe.adapter.club.ClubListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.City;
 import uow.csse.tv.gpe.model.Club;
@@ -51,6 +52,16 @@ public class ClubActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         city = (City) getIntent().getSerializableExtra("city");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.search_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         listView = (ListView) findViewById(R.id.fieldslist);
 

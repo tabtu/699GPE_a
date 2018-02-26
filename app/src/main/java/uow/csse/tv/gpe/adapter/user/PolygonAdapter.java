@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.adapter;
+package uow.csse.tv.gpe.adapter.user;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -29,4 +29,6 @@ public class Const {
     public static String postmsg = hostname + "us/sd?";
     public static String getmsgread = hostname + "us/chk?";
     public static String postdeletemsg = hostname + "us/del?";
+    public static String getvenueactivitylist = hostname + "act/venue?";
+    public static String getclubactivitylist = hostname + "act/club?";
 }

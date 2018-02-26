@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +34,6 @@ public class ClubDetailActivity extends AppCompatActivity {
         TextView courseNum = (TextView)findViewById(R.id.clubdetail_coursenum);
         TextView contact = (TextView)findViewById(R.id.clubdetail_contact);
         TextView intro = (TextView)findViewById(R.id.clubdetail_intro);
-        ImageView image = (ImageView)findViewById(R.id.clubdetail_image);
 
         name.setText(club.getName());
         city.setText(club.getDistrict().getCity().getName());
@@ -49,6 +50,16 @@ public class ClubDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubdetail);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.clubdetail_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         club = (Club)getIntent().getSerializableExtra("club");
         setData();

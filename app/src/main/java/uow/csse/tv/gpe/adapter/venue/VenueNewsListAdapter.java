@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.adapter;
+package uow.csse.tv.gpe.adapter.venue;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -21,14 +21,14 @@ import uow.csse.tv.gpe.util.Func;
  * Created by Vian on 2/10/2018.
  */
 
-public class VenueMovementListAdapter extends ArrayAdapter<String> {
+public class VenueNewsListAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private List<VNews> list;
     private Func func = new Func();
 
-    public VenueMovementListAdapter(Context context, List<VNews> news){
-        super(context, R.layout.adapter_movementlist);
+    public VenueNewsListAdapter(Context context, List<VNews> news){
+        super(context, R.layout.adapter_newslist);
         this.list = news;
         this.context = context;
     }
@@ -45,11 +45,12 @@ public class VenueMovementListAdapter extends ArrayAdapter<String> {
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_movementlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_newslist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.movementlist_image);
-            viewHolder.mTitle = (TextView) convertView.findViewById(R.id.movementlist_title);
-            viewHolder.mDate = (TextView) convertView.findViewById(R.id.movementlist_date);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.newslist_image);
+            viewHolder.mTitle = (TextView) convertView.findViewById(R.id.newslist_title);
+            viewHolder.mDate = (TextView) convertView.findViewById(R.id.newslist_date);
+            viewHolder.mAuthor = (TextView) convertView.findViewById(R.id.newslist_author);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
@@ -58,6 +59,7 @@ public class VenueMovementListAdapter extends ArrayAdapter<String> {
         Picasso.with(getContext()).load(list.get(position).getPicture()).resize(320,220).centerCrop().into(viewHolder.mImage);
         viewHolder.mTitle.setText(list.get(position).getTitle());
         viewHolder.mDate.setText(func.convertLong2String(list.get(position).getUpdateDate()));
+        viewHolder.mAuthor.setText(list.get(position).getVenue().getName());
 
         return convertView;
     }
@@ -66,5 +68,6 @@ public class VenueMovementListAdapter extends ArrayAdapter<String> {
         ImageView mImage;
         TextView mTitle;
         TextView mDate;
+        TextView mAuthor;
     }
 }

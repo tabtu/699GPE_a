@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
@@ -52,10 +53,10 @@ public class MessageSendActivity extends AppCompatActivity {
     };
 
     private void setData() {
-        name = findViewById(R.id.sendmsgdetail_name);
-        content = findViewById(R.id.sendmsgdetail_content);
-        Button btn_send = findViewById(R.id.sendmsgdetail_send);
-        Button btn_cancel = findViewById(R.id.sendmsgdetail_cancel);
+        name = findViewById(R.id.sendmsg_name);
+        content = findViewById(R.id.sendmsg_content);
+        Button btn_send = findViewById(R.id.sendmsg_send);
+        Button btn_cancel = findViewById(R.id.sendmsg_cancel);
 
         if (senName == null) {
             name.setText("NULL");
@@ -102,6 +103,17 @@ public class MessageSendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sendmsg);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.sendmsg_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         senName = (String) getIntent().getSerializableExtra("msgname");
         myId = (String) getIntent().getSerializableExtra("msgmyid");
         setData();

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
 import uow.csse.tv.gpe.activity.school.ClubActivity;
 import uow.csse.tv.gpe.activity.school.SchoolActivity;
@@ -32,6 +34,7 @@ import uow.csse.tv.gpe.model.News;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;
+import uow.csse.tv.gpe.util.MyListView;
 
 import com.youth.banner.Banner;
 
@@ -45,11 +48,13 @@ public class HomeFragment extends Fragment {
     private ImageButton btn_athlete;
     private ImageButton btn_school;
     private ImageButton btn_club;
+//    private MyListView listView;
     private ListView listView;
 
     private List<News> uplist = new ArrayList<>();
     private List<News> downlist = new ArrayList<>();
     private List<City> citylist = new ArrayList<>();
+    private NewsListAdapter newsListAdapter;
 
     private City currentCity;
 
@@ -81,7 +86,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setList() {
-        NewsListAdapter newsListAdapter = new NewsListAdapter(getActivity(), downlist);
+        newsListAdapter = new NewsListAdapter(getActivity(), downlist);
         listView.setAdapter(newsListAdapter);
         ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
         listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
@@ -121,13 +126,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-//        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                currentCity = citylist.get(i).getId();
-//            }
-//        });
     }
 
     @SuppressLint("HandlerLeak")
@@ -265,6 +263,38 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+//    @Override
+//    public void onLoad() {
+//        //设置三秒延迟模仿延时获取数据
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //加载数据
+//                setList();
+//                //更新 数据
+//                newsListAdapter.notifyDataSetChanged();
+//                //加载完毕
+//                listView.loadComplete();
+//
+//            }
+//        },3000);
+//    }
+//
+//    @Override
+//    public void pullLoad() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                listView.setAdapter(null);
+//                setList();
+//                newsListAdapter.notifyDataSetChanged();
+//                listView.loadComplete();
+//
+//            }
+//        },2000);
+//
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

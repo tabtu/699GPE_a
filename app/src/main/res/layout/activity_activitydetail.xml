@@ -7,6 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/activitydetail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Activity"
+            app:titleTextColor="@color/white"
+            android:background="@color/gpe">
+        </android.support.v7.widget.Toolbar>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <ImageView
+                        android:id="@+id/activitydetail_image"
                         android:layout_width="150dp"
                         android:layout_height="160dp" />
                     <TextView
@@ -52,6 +64,7 @@
                     android:gravity="end"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/activitydetail_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Time:"/>
@@ -72,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:text="Date:"/>
                     <TextView
+                        android:id="@+id/activitydetail_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

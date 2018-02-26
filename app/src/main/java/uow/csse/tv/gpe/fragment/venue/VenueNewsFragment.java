@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.VenueMovementListAdapter;
+import uow.csse.tv.gpe.adapter.venue.VenueNewsListAdapter;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.activity.venue.VenueMovementDetailActivity;
+import uow.csse.tv.gpe.activity.venue.VenueNewsDetailActivity;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.VNews;
 import uow.csse.tv.gpe.util.HttpUtils;
@@ -30,13 +30,13 @@ import uow.csse.tv.gpe.util.JsonParse;
  * Created by Vian on 2/5/2018.
  */
 
-public class VenueMovementFragment extends Fragment {
+public class VenueNewsFragment extends Fragment {
     private View view;
     private ListView listView;
     private List<VNews> mylist = new ArrayList<>();
     private int venueid;
 
-    public VenueMovementFragment() {
+    public VenueNewsFragment() {
 
     }
 
@@ -46,8 +46,8 @@ public class VenueMovementFragment extends Fragment {
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
                 //pd.dismiss();
-                VenueMovementListAdapter venueMovementListAdapter = new VenueMovementListAdapter(getActivity(), mylist);
-                listView.setAdapter(venueMovementListAdapter);
+                VenueNewsListAdapter venueNewsListAdapter = new VenueNewsListAdapter(getActivity(), mylist);
+                listView.setAdapter(venueNewsListAdapter);
                 ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
                 listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
             } else {
@@ -59,8 +59,8 @@ public class VenueMovementFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
-        view = inflater.inflate(R.layout.fragment_news,container,false);
-        listView = (ListView) view.findViewById(R.id.list);
+        view = inflater.inflate(R.layout.fragment_simplelist,container,false);
+        listView = (ListView) view.findViewById(R.id.simplelist_list);
 
         venueid = (int) getArguments().getSerializable("venueid");
 
@@ -86,7 +86,7 @@ public class VenueMovementFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), VenueMovementDetailActivity.class);
+                Intent intent = new Intent(getActivity(), VenueNewsDetailActivity.class);
                 intent.putExtra("vnews", mylist.get(i));
                 startActivity(intent);
             }

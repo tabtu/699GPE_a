@@ -1,8 +1,7 @@
-package uow.csse.tv.gpe.adapter;
+package uow.csse.tv.gpe.adapter.club;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +15,18 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.Club;
+import uow.csse.tv.gpe.util.CircleTransform;
 
 /**
  * Created by Vian on 2/9/2018.
  */
 
-public class ClubListAdapter extends ArrayAdapter<String> {
+public class SchoolListAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private List<Club> list;
 
-    public ClubListAdapter(Context context, List<Club> clubs){
+    public SchoolListAdapter(Context context, List<Club> clubs){
         super(context, R.layout.adapter_clublist);
         this.list = clubs;
         this.context = context;
@@ -53,7 +53,10 @@ public class ClubListAdapter extends ArrayAdapter<String> {
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        Picasso.with(getContext()).load(list.get(position).getPicture()).fit().into(viewHolder.mImage);
+
+        if (list.get(position).getPicture() != null) {
+            Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
+        }
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
 

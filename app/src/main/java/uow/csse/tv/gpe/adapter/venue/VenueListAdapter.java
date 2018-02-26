@@ -1,8 +1,7 @@
-package uow.csse.tv.gpe.adapter;
+package uow.csse.tv.gpe.adapter.venue;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.CircleTransform;
 
@@ -23,14 +21,14 @@ import uow.csse.tv.gpe.util.CircleTransform;
  * Created by Vian on 2/5/2018.
  */
 
-public class UserListAdapter extends ArrayAdapter<String>{
+public class VenueListAdapter extends ArrayAdapter<String>{
 
     private Context context;
-    private List<User> list;
+    private List<Venue> list;
 
-    public UserListAdapter (Context context, List<User> user){
-        super(context, R.layout.adapter_userlist);
-        this.list = user;
+    public VenueListAdapter(Context context, List<Venue> venue){
+        super(context, R.layout.adapter_venueslist);
+        this.list = venue;
         this.context = context;
     }
 
@@ -46,20 +44,22 @@ public class UserListAdapter extends ArrayAdapter<String>{
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_userlist, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_venueslist, parent, false);
 
-            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.usrlist_Image);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.usrlist_Name);
-            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.usrlist_Location);
-            viewHolder.mInterest = (TextView) convertView.findViewById(R.id.usrlist_Interest);
+            viewHolder.mImage = (ImageView) convertView.findViewById(R.id.venuelist_image);
+            viewHolder.mName = (TextView) convertView.findViewById(R.id.venuelist_name);
+            viewHolder.mLocation = (TextView) convertView.findViewById(R.id.venuelist_location);
+            viewHolder.mUsage = (TextView) convertView.findViewById(R.id.venuelist_usage);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
+        if (list.get(position).getPicture() != null) {
+            Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
+        }
         viewHolder.mName.setText(list.get(position).getName());
-        viewHolder.mLocation.setText(String.valueOf(list.get(position).getEmail()));
-        viewHolder.mInterest.setText(String.valueOf(list.get(position).getIntroduction()));
+        viewHolder.mLocation.setText(list.get(position).getAddress());
+        viewHolder.mUsage.setText(list.get(position).getSportsName());
 
         return convertView;
     }
@@ -68,6 +68,6 @@ public class UserListAdapter extends ArrayAdapter<String>{
         ImageView mImage;
         TextView mName;
         TextView mLocation;
-        TextView mInterest;
+        TextView mUsage;
     }
 }

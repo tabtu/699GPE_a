@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.fragment.user;
+package uow.csse.tv.gpe.fragment.venue;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +18,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.MainActivity;
-import uow.csse.tv.gpe.activity.UserDetailActivity;
-import uow.csse.tv.gpe.adapter.user.UserListAdapter;
+import uow.csse.tv.gpe.adapter.venue.VenueActivityListAdapter;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.activity.act.ActivityDetailActivity;
+import uow.csse.tv.gpe.model.Activity;
+import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 
 /**
- * Created by Vian on 2/19/2018.
+ * Created by Vian on 2/25/2018.
  */
 
-public class UserFragment extends Fragment {
-
+public class VenueActivityFragment extends Fragment {
+    private View view;
     private ListView listView;
-    private List<User> mylist = new ArrayList<>();
+    private List<Activity> mylist = new ArrayList<>();
+//    private Activity activity;
+    private Venue venue;
+
+    public VenueActivityFragment() {
+
+    }
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -42,8 +48,10 @@ public class UserFragment extends Fragment {
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
                 //pd.dismiss();
-                UserListAdapter userListAdapter = new UserListAdapter(getActivity(), mylist);
-                listView.setAdapter(userListAdapter);
+                VenueActivityListAdapter venueActivityListAdapter = new VenueActivityListAdapter(getActivity(), mylist);
+                listView.setAdapter(venueActivityListAdapter);
+                ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
+                listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
             } else {
                 Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
             }
@@ -52,28 +60,19 @@ public class UserFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_search, container, false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
+        view = inflater.inflate(R.layout.fragment_simplelist,container,false);
+        listView = (ListView) view.findViewById(R.id.simplelist_list);
 
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.search_toolbar);
-        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).finish();
-            }
-        });
-
-        listView = (ListView) view.findViewById(R.id.fieldslist);
+        venue = (Venue) getArguments().getSerializable("venue");
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + "0");
+                String tmp = hu.executeHttpGet(Const.getvenueactivitylist + Const.ID + venue.getId() + "&" + Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonUsers(tmp);
+                mylist = jp.ParseJsonActivity(tmp);
                 if (mylist != null) {
                     Message msg = new Message();
                     msg.what = 0x0;
@@ -89,20 +88,14 @@ public class UserFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), UserDetailActivity.class);
-                intent.putExtra("user",mylist.get(i));
-                intent.putExtra("currentuser",((MainActivity)getActivity()).getUsr());
+                Intent intent = new Intent(getActivity(), ActivityDetailActivity.class);
+                intent.putExtra("act", mylist.get(i));
+                intent.putExtra("venue",venue);
                 startActivity(intent);
             }
         });
+
         return view;
     }
 
-    public static UserFragment newInstance(String content) {
-        Bundle args = new Bundle();
-        args.putString("ARGS", content);
-        UserFragment fragment = new UserFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 }

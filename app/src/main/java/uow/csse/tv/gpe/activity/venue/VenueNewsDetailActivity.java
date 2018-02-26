@@ -16,14 +16,14 @@ import uow.csse.tv.gpe.util.Func;
  * Created by Vian on 2/20/2018.
  */
 
-public class VenueMovementDetailActivity extends AppCompatActivity {
+public class VenueNewsDetailActivity extends AppCompatActivity {
     private VNews vnews;
 //    private TextView title;
 //    private TextView date;
     private WebView webview;
     private Func func = new Func();
 
-    public VenueMovementDetailActivity() {
+    public VenueNewsDetailActivity() {
 
     }
 

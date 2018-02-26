@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         mFrameLayout = findViewById(R.id.layFrame);
         status();
@@ -153,11 +156,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 if (homeFragment == null) {
                     homeFragment = HomeFragment.newInstance("Home");
                 }
-                if (status == 0) {
-                    showFragment(loginFragment);
-                } else {
-                    showFragment(homeFragment);
-                }
+//                if (status == 0) {
+//                    showFragment(loginFragment);
+//                } else {
+//                    showFragment(homeFragment);
+//                }
+                showFragment(homeFragment);
                 break;
             case 1:
                 if (userFragment == null) {

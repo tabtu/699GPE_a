@@ -16,6 +16,16 @@
         <!--android:minHeight="?attr/actionBarSize"-->
         <!--android:theme="?attr/actionBarTheme" />-->
 
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sendmsg_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Send Message"
+            app:titleTextColor="@color/white"
+            android:background="@color/gpe">
+        </android.support.v7.widget.Toolbar>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="To:"/>
                 <EditText
-                    android:id="@+id/sendmsgdetail_name"
+                    android:id="@+id/sendmsg_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="15"
@@ -49,7 +59,7 @@
                 android:background="@android:color/darker_gray" />
 
             <EditText
-                android:id="@+id/sendmsgdetail_content"
+                android:id="@+id/sendmsg_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
@@ -70,7 +80,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/sendmsgdetail_send"
+                android:id="@+id/sendmsg_send"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:background="@color/gpe"
@@ -78,7 +88,7 @@
                 android:textColor="@color/white"
                 android:text="Send"/>
             <Button
-                android:id="@+id/sendmsgdetail_cancel"
+                android:id="@+id/sendmsg_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonborder"

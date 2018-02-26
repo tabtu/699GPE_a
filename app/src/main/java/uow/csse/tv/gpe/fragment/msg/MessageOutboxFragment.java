@@ -18,9 +18,8 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.MainActivity;
-import uow.csse.tv.gpe.activity.msg.MessageReceiveDetailActivity;
 import uow.csse.tv.gpe.activity.msg.MessageSendDetailActivity;
-import uow.csse.tv.gpe.adapter.OutMessageListAdapter;
+import uow.csse.tv.gpe.adapter.msg.OutMessageListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.Msgs;
 import uow.csse.tv.gpe.model.User;
