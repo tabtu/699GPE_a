@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.todddavies.components.progressbar.ProgressWheel;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
@@ -40,17 +44,33 @@ public class UserFragment extends Fragment {
     private View view;
     private SwipeRefreshView mSwipeRefreshView;
     private UserListAdapter userListAdapter;
+    private ProgressWheel pw;
+    private int pageCount;
+    private boolean lastItem = false;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                //pd.dismiss();
+                pw.stopSpinning();
+                pw.setVisibility(View.GONE);
                 userListAdapter = new UserListAdapter(getActivity(), mylist);
                 listView.setAdapter(userListAdapter);
-            } else {
+            }
+            if (msg.what == 0x2) {
+                userListAdapter.notifyDataSetChanged();
+                userListAdapter = new UserListAdapter(getActivity(), mylist);
+                Toast.makeText(getActivity(), "Loading finish", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
+            }
+            if (msg.what == 0x1) {
                 Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
+            }
+            if (msg.what == 0x3) {
+                Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
             }
         }
     };
@@ -77,52 +97,53 @@ public class UserFragment extends Fragment {
     }
 
     private void initSwipeFreshLayout() {
-//        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
-//        swipeRefreshLayout.setColorSchemeResources(R.color.gpe,R.color.black);
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                swipeRefreshLayout.setRefreshing(true);
-//                (new Handler()).postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        swipeRefreshLayout.setRefreshing(false);
-//
-//                        initList();
-//                    }
-//                },3000);
-//            }
-//        });
-
-        // 下拉时触发SwipeRefreshLayout的下拉动画，动画完毕之后就会回调这个方法
         mSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mylist.clear();
                 initData();
             }
         });
 
-
-        // 设置下拉加载更多
         mSwipeRefreshView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-//                loadMoreData();
+                if (!lastItem) {
+                    loadMoreData();
+                } else {
+                    mSwipeRefreshView.setLoading(false);
+                    Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void loadMoreData() {
+        pageCount++;
+        userListAdapter.notifyDataSetChanged();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                mylist.clear();
-//                mylist.addAll(DataResource.getMoreData());
-                Toast.makeText(getActivity(), "Loading finish", Toast.LENGTH_SHORT).show();
-
-                // 加载完数据设置为不加载状态，将加载进度收起来
-                mSwipeRefreshView.setLoading(false);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpUtils hu = new HttpUtils();
+                        String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + pageCount);
+                        JsonParse jp = new JsonParse(tmp);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            mylist.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x2;
+                            handler.sendMessage(msg);
+                        } else {
+                            lastItem = true;
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }).start();
             }
         }, 2000);
     }
@@ -131,11 +152,10 @@ public class UserFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                mylist.clear();
-//                mylist.addAll(DataResource.getData());
+                lastItem = false;
+                pageCount = 0;
                 initList();
                 userListAdapter.notifyDataSetChanged();
-
                 Toast.makeText(getActivity(), "Refresh finish", Toast.LENGTH_SHORT).show();
 
                 if (mSwipeRefreshView.isRefreshing()) {
@@ -149,6 +169,10 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_search, container, false);
+
+        pw = (ProgressWheel) view.findViewById(R.id.pw_spinner);
+        pw.setVisibility(View.VISIBLE);
+        pw.startSpinning();
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.search_toolbar);
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
@@ -173,14 +197,10 @@ public class UserFragment extends Fragment {
         });
 
         mSwipeRefreshView = (SwipeRefreshView) view.findViewById(R.id.swipelayout);
-        mSwipeRefreshView.setColorSchemeResources(R.color.colorAccent,
-                android.R.color.holo_blue_bright, R.color.colorPrimaryDark,
-                android.R.color.holo_orange_dark, android.R.color.holo_red_dark, android.R.color.holo_purple);
-        mSwipeRefreshView.setItemCount(8);
-        // 手动调用,通知系统去测量
+        mSwipeRefreshView.setColorSchemeResources(R.color.gpe,
+                R.color.lightgpe);
+        mSwipeRefreshView.setItemCount(20);
         mSwipeRefreshView.measure(0, 0);
-//        mSwipeRefreshView.setRefreshing(true);
-
         initSwipeFreshLayout();
 
         return view;

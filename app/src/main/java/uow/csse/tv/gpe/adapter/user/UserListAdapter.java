@@ -39,6 +39,10 @@ public class UserListAdapter extends ArrayAdapter<String>{
         return list.size();
     }
 
+    public void addItem(User user) {
+        list.add(user);
+    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){

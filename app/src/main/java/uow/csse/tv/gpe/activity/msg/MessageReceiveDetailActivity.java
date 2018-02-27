@@ -42,9 +42,6 @@ public class MessageReceiveDetailActivity extends AppCompatActivity{
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 0x0) {
                 Toast.makeText(MessageReceiveDetailActivity.this, "Delete Success!", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MessageReceiveDetailActivity.this, MainActivity.class);
-//                intent.putExtra("pageid",2);
-//                startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(MessageReceiveDetailActivity.this, "Delete Failed!", Toast.LENGTH_SHORT).show();

@@ -102,9 +102,6 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
     private boolean canLoadMore() {
         // 1. 是上拉状态
         boolean condition1 = (mDownY - mUpY) >= mScaledTouchSlop;
-        if (condition1) {
-            Log.d(TAG, "------->  是上拉状态");
-        }
 
         // 2. 当前页面可见的item是最后一个条目,一般最后一个条目位置需要大于第一页的数据长度
         boolean condition2 = false;
@@ -118,20 +115,16 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
                     condition2 = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount() - 1);
                 }
             } else {
-                // 未设置数据长度，则默认第一页数据不满时也可以上拉
-                condition2 = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount() - 1);
+                condition2 = false;
             }
+//            else {
+//                // 未设置数据长度，则默认第一页数据不满时也可以上拉
+//                condition2 = mListView.getLastVisiblePosition() == (mListView.getAdapter().getCount() - 1);
+//            }
 
-        }
-
-        if (condition2) {
-            Log.d(TAG, "------->  是最后一个条目");
         }
         // 3. 正在加载状态
         boolean condition3 = !isLoading;
-        if (condition3) {
-            Log.d(TAG, "------->  不是正在加载状态");
-        }
         return condition1 && condition2 && condition3;
     }
 
@@ -143,7 +136,7 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
      * 处理加载数据的逻辑
      */
     private void loadData() {
-        System.out.println("加载数据...");
+        System.out.println("Loading...");
         if (mListener != null) {
             // 设置加载状态，让布局显示出来
             setLoading(true);

@@ -102,8 +102,6 @@ public class HomeFragment extends Fragment{
         for (int i = 0; i < citylist.size(); i++) {
             cityData.add(citylist.get(i).getName());
         }
-//        CityListAdapter cityListAdapter = new CityListAdapter(getActivity(),R.layout.adapter_citylist, cityData);
-//        spinner.setAdapter(cityListAdapter);
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), R.layout.adapter_citylist, cityData);
         spinner.setAdapter(arrayAdapter);
 

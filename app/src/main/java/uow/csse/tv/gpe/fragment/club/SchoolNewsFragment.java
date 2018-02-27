@@ -19,6 +19,8 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.school.ClubDetailActivity;
+import uow.csse.tv.gpe.activity.school.SchoolActivity;
+import uow.csse.tv.gpe.activity.school.SchoolDetailActivity;
 import uow.csse.tv.gpe.activity.venue.VenueActivity;
 import uow.csse.tv.gpe.activity.venue.VenueDetailActivity;
 import uow.csse.tv.gpe.adapter.venue.VenueNewsListAdapter;
@@ -67,7 +69,7 @@ public class SchoolNewsFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_simplelist,container,false);
         listView = (ListView) view.findViewById(R.id.simplelist_list);
 
-        school=((ClubDetailActivity) getActivity()).getClub();
+        school=((SchoolDetailActivity) getActivity()).getSchool();
 
 //        new Thread(new Runnable() {
 //            @Override

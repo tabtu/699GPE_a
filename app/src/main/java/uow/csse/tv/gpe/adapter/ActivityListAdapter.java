@@ -36,6 +36,10 @@ public class ActivityListAdapter extends ArrayAdapter<String> {
         return list.size();
     }
 
+    public void addItem(Activity activity) {
+        list.add(activity);
+    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){

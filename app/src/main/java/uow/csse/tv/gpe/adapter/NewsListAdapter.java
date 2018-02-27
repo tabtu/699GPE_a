@@ -38,6 +38,10 @@ public class NewsListAdapter extends ArrayAdapter<String> {
         return list.size();
     }
 
+    public void addItem(News news) {
+        list.add(news);
+    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){

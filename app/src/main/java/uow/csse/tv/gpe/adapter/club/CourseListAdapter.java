@@ -37,6 +37,10 @@ public class CourseListAdapter extends ArrayAdapter<String> {
         return list.size();
     }
 
+    public void addItem(Club club) {
+        list.add(club);
+    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
