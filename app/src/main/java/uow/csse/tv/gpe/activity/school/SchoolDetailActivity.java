@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
-import uow.csse.tv.gpe.fragment.HonorFragment;
-import uow.csse.tv.gpe.fragment.club.ClubMovementFragment;
+import uow.csse.tv.gpe.fragment.club.SchoolActivityFragment;
+import uow.csse.tv.gpe.fragment.club.SchoolCourseFragment;
+import uow.csse.tv.gpe.fragment.club.SchoolHonorFragment;
+import uow.csse.tv.gpe.fragment.club.SchoolNewsFragment;
 import uow.csse.tv.gpe.model.Club;
 
 /**
@@ -37,6 +39,10 @@ public class SchoolDetailActivity extends AppCompatActivity {
         intro.setText(school.getIntroduction());
     }
 
+    public Club getSchool() {
+        return school;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +65,10 @@ public class SchoolDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new HonorFragment(),"Honor");
-        adapter.AddFragment(new ClubMovementFragment(),"Movement");
-        adapter.AddFragment(new HonorFragment(),"Activity");
+        adapter.AddFragment(new SchoolCourseFragment(),"Course");
+        adapter.AddFragment(new SchoolNewsFragment(),"News");
+        adapter.AddFragment(new SchoolHonorFragment(),"Honor");
+        adapter.AddFragment(new SchoolActivityFragment(),"Activity");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

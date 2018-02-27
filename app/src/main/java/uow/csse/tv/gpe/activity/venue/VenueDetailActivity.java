@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
+import uow.csse.tv.gpe.fragment.venue.VenueActivityFragment;
 import uow.csse.tv.gpe.fragment.venue.VenueNewsFragment;
 import uow.csse.tv.gpe.model.Venue;
 
@@ -31,6 +32,10 @@ public class VenueDetailActivity extends AppCompatActivity {
         name.setText(venue.getName());
         location.setText(venue.getAddress());
         contact.setText(String.valueOf(venue.getTel()));
+    }
+
+    public Venue getVenue() {
+        return venue;
     }
 
     @Override
@@ -55,14 +60,18 @@ public class VenueDetailActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
 
-        VenueNewsFragment vmf = new VenueNewsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("venueid", venue.getId());
-        vmf.setArguments(bundle);
-        adapter.AddFragment(vmf,"NEWS");
+//        VenueNewsFragment vmf = new VenueNewsFragment();
+//        Bundle bundle1 = new Bundle();
+//        bundle1.putSerializable("venueid", venue.getId());
+//        vmf.setArguments(bundle1);
+//        adapter.AddFragment(vmf,"NEWS");
+        adapter.AddFragment(new VenueNewsFragment(),"NEWS");
 
-
-//        adapter.AddFragment(new ActivityFragment(),"Activity");
+        adapter.AddFragment(new VenueActivityFragment(),"ACTIVITY");
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("venueid", venue.getId());
+//        vmf.setArguments(bundle);
+//        adapter.AddFragment(vmf,"NEWS");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

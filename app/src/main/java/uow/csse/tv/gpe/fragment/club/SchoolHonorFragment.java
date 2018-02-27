@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.fragment;
+package uow.csse.tv.gpe.fragment.club;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import uow.csse.tv.gpe.R;
 
 /**
- * Created by Vian on 2/9/2018.
+ * Created by Vian on 2/26/2018.
  */
 
-public class HonorFragment extends Fragment{
+public class SchoolHonorFragment extends Fragment{
     View view;
 
-    public HonorFragment() {
+    public SchoolHonorFragment() {
 
     }
 

@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.activity.act;
+package uow.csse.tv.gpe.fragment.club;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +19,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.UserDetailActivity;
+import uow.csse.tv.gpe.activity.act.MainActivityActivity;
+import uow.csse.tv.gpe.activity.school.ClubDetailActivity;
+import uow.csse.tv.gpe.activity.school.SchoolDetailActivity;
+import uow.csse.tv.gpe.activity.venue.VenueDetailActivity;
 import uow.csse.tv.gpe.adapter.ActivityListAdapter;
+import uow.csse.tv.gpe.adapter.venue.VenueActivityListAdapter;
 import uow.csse.tv.gpe.config.Const;
+import uow.csse.tv.gpe.activity.act.ActivityDetailActivity;
 import uow.csse.tv.gpe.model.Activity;
+import uow.csse.tv.gpe.model.Club;
+import uow.csse.tv.gpe.model.Venue;
+import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 
 /**
- * Created by Vian on 2/19/2018.
+ * Created by Vian on 2/26/2018.
  */
 
-public class ActivityActivity extends AppCompatActivity {
-
+public class SchoolActivityFragment extends Fragment {
+    private View view;
     private ListView listView;
     private List<Activity> mylist = new ArrayList<>();
+    private Club school;
+
+    public SchoolActivityFragment() {
+
+    }
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -40,26 +54,29 @@ public class ActivityActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
                 //pd.dismiss();
-                ActivityListAdapter activityListAdapter = new ActivityListAdapter(ActivityActivity.this, mylist);
+                ActivityListAdapter activityListAdapter = new ActivityListAdapter(getActivity(), mylist);
                 listView.setAdapter(activityListAdapter);
+                ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
+                listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
             } else {
-                Toast.makeText(ActivityActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
             }
         }
     };
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState0) {
+        view = inflater.inflate(R.layout.fragment_simplelist,container,false);
+        listView = (ListView) view.findViewById(R.id.simplelist_list);
 
-        listView = (ListView) findViewById(R.id.fieldslist);
+        school=((SchoolDetailActivity) getActivity()).getSchool();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getvenueactivitylist + "&" + Const.PAGE + "0");
+                String tmp = hu.executeHttpGet(Const.getclubactivitylist + Const.ID + school.getId() + "&" + Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
                 mylist = jp.ParseJsonActivity(tmp);
                 if (mylist != null) {
@@ -77,11 +94,14 @@ public class ActivityActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ActivityActivity.this, ActivityDetailActivity.class);
+                Intent intent = new Intent(getActivity(), ActivityDetailActivity.class);
                 intent.putExtra("act", mylist.get(i));
+//                intent.putExtra("venue",venue);
                 startActivity(intent);
             }
         });
+
+        return view;
     }
 
 }

@@ -15,12 +15,12 @@ import uow.csse.tv.gpe.model.Club;
  * Created by Vian on 2/10/2018.
  */
 
-public class CourseFragment extends Fragment{
+public class ClubCourseFragment extends Fragment{
     private View view;
     private Club club;
     private ListView listView;
 
-    public CourseFragment() {
+    public ClubCourseFragment() {
 
     }
 
@@ -29,7 +29,7 @@ public class CourseFragment extends Fragment{
         view = inflater.inflate(R.layout.fragment_course,container,false);
 //        listView = (ListView) view.findViewById(R.id.course_list);
 //
-//        club = (Club)getArguments().getSerializable("club");
+//        club=((ClubDetailActivity) getActivity()).getClub();
 //
 //        CourseListAdapter courseListAdapter = new CourseListAdapter(getActivity(), club.getClub_id().);
 //        listView.setAdapter(courseListAdapter);
