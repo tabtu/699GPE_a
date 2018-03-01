@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:layout_marginLeft="10dp"
-        app:srcCompat="@mipmap/athlete" />
+        app:srcCompat="@mipmap/ava" />
 
     <LinearLayout
         android:layout_width="match_parent"

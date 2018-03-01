@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <com.todddavies.components.progressbar.ProgressWheel
+        android:id="@+id/pw_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        ProgressWheel:pwTextSize="13sp"
+        ProgressWheel:pwRimColor="@color/gpe"
+        ProgressWheel:pwBarLength="60dp"
+        ProgressWheel:pwBarColor="@color/gpe"
+        ProgressWheel:pwBarWidth="5dp"
+        ProgressWheel:pwRimWidth="2dp"/>
+</android.support.constraint.ConstraintLayout>

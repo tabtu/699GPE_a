@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,9 +42,6 @@ public class MessageReceiveDetailActivity extends AppCompatActivity{
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 0x0) {
                 Toast.makeText(MessageReceiveDetailActivity.this, "Delete Success!", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MessageReceiveDetailActivity.this, MainActivity.class);
-//                intent.putExtra("pageid",2);
-//                startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(MessageReceiveDetailActivity.this, "Delete Failed!", Toast.LENGTH_SHORT).show();
@@ -137,6 +135,17 @@ public class MessageReceiveDetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receivemsgdetail);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.receivemsgdetail_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         message = (Msgs) getIntent().getSerializableExtra("msgin");
         setData();
 

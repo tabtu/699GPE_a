@@ -28,7 +28,7 @@ public class NewsListAdapter extends ArrayAdapter<String> {
     private Func func = new Func();
 
     public NewsListAdapter(Context context, List<News> news){
-        super(context, R.layout.adapter_movementlist);
+        super(context, R.layout.adapter_newslist);
         this.list = news;
         this.context = context;
     }
@@ -36,6 +36,10 @@ public class NewsListAdapter extends ArrayAdapter<String> {
     @Override
     public int getCount() {
         return list.size();
+    }
+
+    public void addItem(News news) {
+        list.add(news);
     }
 
     @NonNull
@@ -70,4 +74,5 @@ public class NewsListAdapter extends ArrayAdapter<String> {
         TextView mDate;
         TextView mAuthor;
     }
+
 }

@@ -8,13 +8,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/receivemsgdetail_toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/white"-->
-            <!--android:minHeight="?attr/actionBarSize"-->
-            <!--android:theme="?attr/actionBarTheme" />-->
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/receivemsgdetail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Message"
+            app:titleTextColor="@color/white"
+            android:background="@color/gpe">
+            <ImageButton
+                android:id="@+id/receivemsgdetail_menu"
+                android:layout_marginLeft="230dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/submenu"
+                android:background="@color/transparent"/>
+        </android.support.v7.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,18 +43,6 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:text="Name"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_marginTop="5dp">
-                    <ImageButton
-                        android:id="@+id/receivemsgdetail_menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/submenu"
-                        android:background="@color/transparent"/>
-                </LinearLayout>
             </LinearLayout>
             
             <LinearLayout

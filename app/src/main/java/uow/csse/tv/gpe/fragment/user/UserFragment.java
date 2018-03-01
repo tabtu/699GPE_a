@@ -7,6 +7,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +17,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.todddavies.components.progressbar.ProgressWheel;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.UserDetailActivity;
-import uow.csse.tv.gpe.adapter.UserListAdapter;
+import uow.csse.tv.gpe.adapter.user.UserListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
+import uow.csse.tv.gpe.util.SwipeRefreshView;
 
 /**
  * Created by Vian on 2/19/2018.
@@ -34,28 +41,41 @@ public class UserFragment extends Fragment {
 
     private ListView listView;
     private List<User> mylist = new ArrayList<>();
+    private View view;
+    private SwipeRefreshView mSwipeRefreshView;
+    private UserListAdapter userListAdapter;
+    private ProgressWheel pw;
+    private int pageCount;
+    private boolean lastItem = false;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                //pd.dismiss();
-                UserListAdapter userListAdapter = new UserListAdapter(getActivity(), mylist);
+                pw.stopSpinning();
+                pw.setVisibility(View.GONE);
+                userListAdapter = new UserListAdapter(getActivity(), mylist);
                 listView.setAdapter(userListAdapter);
-            } else {
+            }
+            if (msg.what == 0x2) {
+                userListAdapter.notifyDataSetChanged();
+                userListAdapter = new UserListAdapter(getActivity(), mylist);
+                Toast.makeText(getActivity(), "Loading finish", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
+            }
+            if (msg.what == 0x1) {
                 Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
+            }
+            if (msg.what == 0x3) {
+                Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                mSwipeRefreshView.setLoading(false);
             }
         }
     };
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_search, container, false);
-
-        listView = (ListView) view.findViewById(R.id.fieldslist);
-
+    private void initList() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -74,7 +94,98 @@ public class UserFragment extends Fragment {
                 }
             }
         }).start();
+    }
 
+    private void initSwipeFreshLayout() {
+        mSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mylist.clear();
+                initData();
+            }
+        });
+
+        mSwipeRefreshView.setOnLoadMoreListener(new SwipeRefreshView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                if (!lastItem) {
+                    loadMoreData();
+                } else {
+                    mSwipeRefreshView.setLoading(false);
+                    Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void loadMoreData() {
+        pageCount++;
+        userListAdapter.notifyDataSetChanged();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpUtils hu = new HttpUtils();
+                        String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + pageCount);
+                        JsonParse jp = new JsonParse(tmp);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            mylist.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x2;
+                            handler.sendMessage(msg);
+                        } else {
+                            lastItem = true;
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }).start();
+            }
+        }, 2000);
+    }
+
+    private void initData() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                lastItem = false;
+                pageCount = 0;
+                initList();
+                userListAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity(), "Refresh finish", Toast.LENGTH_SHORT).show();
+
+                if (mSwipeRefreshView.isRefreshing()) {
+                    mSwipeRefreshView.setRefreshing(false);
+                }
+            }
+        }, 2000);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.activity_search, container, false);
+
+        pw = (ProgressWheel) view.findViewById(R.id.pw_spinner);
+        pw.setVisibility(View.VISIBLE);
+        pw.startSpinning();
+
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.search_toolbar);
+        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) getActivity()).finish();
+            }
+        });
+
+        listView = (ListView) view.findViewById(R.id.fieldslist);
+        initList();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -84,6 +195,14 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        mSwipeRefreshView = (SwipeRefreshView) view.findViewById(R.id.swipelayout);
+        mSwipeRefreshView.setColorSchemeResources(R.color.gpe,
+                R.color.lightgpe);
+        mSwipeRefreshView.setItemCount(20);
+        mSwipeRefreshView.measure(0, 0);
+        initSwipeFreshLayout();
+
         return view;
     }
 

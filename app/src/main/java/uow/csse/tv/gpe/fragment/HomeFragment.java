@@ -1,14 +1,12 @@
 package uow.csse.tv.gpe.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
+import uow.csse.tv.gpe.activity.act.MainActivityActivity;
 import uow.csse.tv.gpe.activity.school.ClubActivity;
 import uow.csse.tv.gpe.activity.school.SchoolActivity;
 import uow.csse.tv.gpe.activity.venue.VenueActivity;
@@ -33,12 +30,13 @@ import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;
 
+import com.todddavies.components.progressbar.ProgressWheel;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
     private View view;
     private ImageButton btn_fields;
@@ -46,10 +44,12 @@ public class HomeFragment extends Fragment {
     private ImageButton btn_school;
     private ImageButton btn_club;
     private ListView listView;
+    private ProgressWheel pw;
 
     private List<News> uplist = new ArrayList<>();
     private List<News> downlist = new ArrayList<>();
     private List<City> citylist = new ArrayList<>();
+    private NewsListAdapter newsListAdapter;
 
     private City currentCity;
 
@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setList() {
-        NewsListAdapter newsListAdapter = new NewsListAdapter(getActivity(), downlist);
+        newsListAdapter = new NewsListAdapter(getActivity(), downlist);
         listView.setAdapter(newsListAdapter);
         ListViewAutoHeight listViewAutoHeight = new ListViewAutoHeight();
         listViewAutoHeight.setListViewHeightBasedOnChildren(listView);
@@ -102,8 +102,6 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < citylist.size(); i++) {
             cityData.add(citylist.get(i).getName());
         }
-//        CityListAdapter cityListAdapter = new CityListAdapter(getActivity(),R.layout.adapter_citylist, cityData);
-//        spinner.setAdapter(cityListAdapter);
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), R.layout.adapter_citylist, cityData);
         spinner.setAdapter(arrayAdapter);
 
@@ -121,13 +119,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-//        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                currentCity = citylist.get(i).getId();
-//            }
-//        });
     }
 
     @SuppressLint("HandlerLeak")
@@ -138,6 +129,8 @@ public class HomeFragment extends Fragment {
             setBanner();
         }
         if (msg.what == 0x1) {
+            pw.stopSpinning();
+            pw.setVisibility(View.GONE);
             setList();
         }
         if (msg.what == 0x2) {
@@ -153,14 +146,6 @@ public class HomeFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-//                pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pd = ProgressDialog.show(getActivity(), "…Please Wait", "Loading…");
-//
-//                    }
-//                });
                 HttpUtils hu = new HttpUtils();
                 String tmp = hu.executeHttpGet(Const.getupnewslist + currentCity.getId());
                 JsonParse jp = new JsonParse(tmp);
@@ -203,14 +188,17 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
         listView = (ListView) view.findViewById(R.id.home_list);
+        pw = (ProgressWheel) view.findViewById(R.id.pw_spinner);
+        pw.setVisibility(View.VISIBLE);
+        pw.startSpinning();
 
         //buttons
         btn_athlete = (ImageButton) view.findViewById(R.id.btn_athlete);
         btn_athlete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(),UserActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity(),MainActivityActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -269,8 +257,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        TextView tv = (TextView) getActivity().findViewById(R.id.tv);
-//        tv.setText(getArguments().getString("ARGS"));
     }
 
     public static HomeFragment newInstance(String content) {

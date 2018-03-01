@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,7 +41,9 @@ public class UserDetailActivity extends AppCompatActivity {
         Button btn_follow = (Button) findViewById(R.id.userdetail_follow);
 
         name.setText(user.getName());
-        Picasso.with(UserDetailActivity.this).load(user.getPicture()).resize(220,220).centerCrop().transform(new CircleTransform()).into(img);
+        if (user.getPicture() != null) {
+            Picasso.with(UserDetailActivity.this).load(user.getPicture()).resize(220, 220).centerCrop().transform(new CircleTransform()).into(img);
+        }
         btn_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +60,16 @@ public class UserDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userdetail);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.userdetail_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         user = (User)getIntent().getSerializableExtra("user");
         currentUser = (User)getIntent().getSerializableExtra("currentuser");

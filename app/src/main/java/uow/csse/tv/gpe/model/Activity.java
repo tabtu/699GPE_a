@@ -21,8 +21,8 @@ public class Activity extends Entitys implements Serializable {
     private String title;
     private List<Club> clubs = new ArrayList<>();
     private List<Venue> venues = new ArrayList<>();
-    private Date startdate;
-    private Date enddate;
+    private Long startdate;
+    private Long enddate;
     private double price;
     private int count;
     private String picture;
@@ -32,7 +32,7 @@ public class Activity extends Entitys implements Serializable {
 
     public Activity() { }
 
-    public Activity(String t, Date st, Date et, double p) {
+    public Activity(String t, Long st, Long et, double p) {
         this.title = t;
         this.startdate = st;
         this.enddate = et;
@@ -55,19 +55,19 @@ public class Activity extends Entitys implements Serializable {
         this.title = title;
     }
 
-    public Date getStartdate() {
+    public Long getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(Long startdate) {
         this.startdate = startdate;
     }
 
-    public Date getEnddate() {
+    public Long getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Date enddate) {
+    public void setEnddate(Long enddate) {
         this.enddate = enddate;
     }
 
