@@ -29,7 +29,7 @@ public class SchoolCourseFragment extends Fragment{
         view = inflater.inflate(R.layout.fragment_course,container,false);
 //        listView = (ListView) view.findViewById(R.id.course_list);
 //
-//        school = ((SchoolDetailActivity) getActivity()).getSchool();
+//        club = ((SchoolDetailActivity) getActivity()).getSchool();
 //
 //        CourseListAdapter courseListAdapter = new CourseListAdapter(getActivity(), club.getClub_id().);
 //        listView.setAdapter(courseListAdapter);

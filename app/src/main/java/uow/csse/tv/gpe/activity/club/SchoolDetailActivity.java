@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.activity.school;
+package uow.csse.tv.gpe.activity.club;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -35,7 +35,7 @@ public class SchoolDetailActivity extends AppCompatActivity {
         name.setText(school.getName());
         location.setText(school.getAddress());
         contact.setText(school.getTel());
-//        register.setText(school.get());
+//        register.setText(club.get());
         intro.setText(school.getIntroduction());
     }
 
@@ -58,7 +58,7 @@ public class SchoolDetailActivity extends AppCompatActivity {
             }
         });
 
-        school = (Club) getIntent().getSerializableExtra("school");
+        school = (Club) getIntent().getSerializableExtra("club");
         setData();
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);

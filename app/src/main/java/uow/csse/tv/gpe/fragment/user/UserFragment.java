@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import com.todddavies.components.progressbar.ProgressWheel;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
@@ -53,10 +51,10 @@ public class UserFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                pw.stopSpinning();
-                pw.setVisibility(View.GONE);
                 userListAdapter = new UserListAdapter(getActivity(), mylist);
                 listView.setAdapter(userListAdapter);
+                pw.stopSpinning();
+                pw.setVisibility(View.GONE);
             }
             if (msg.what == 0x2) {
                 userListAdapter.notifyDataSetChanged();

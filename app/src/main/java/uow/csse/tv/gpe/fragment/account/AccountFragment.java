@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.fragment;
+package uow.csse.tv.gpe.fragment.account;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.activity.FollowActivity;
 import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.model.User;
 
@@ -40,6 +41,16 @@ public class AccountFragment extends Fragment {
                 editor.clear();
                 editor.commit();
                 Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout btn_follow = view.findViewById(R.id.account_follow);
+        btn_follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),FollowActivity.class);
+                intent.putExtra("user",((MainActivity) getActivity()).getUsr());
                 startActivity(intent);
             }
         });

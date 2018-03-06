@@ -1,4 +1,4 @@
-package uow.csse.tv.gpe.activity.school;
+package uow.csse.tv.gpe.activity.club;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.adapter.club.SchoolListAdapter;
+import uow.csse.tv.gpe.adapter.club.ClubListAdapter;
 import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.City;
 import uow.csse.tv.gpe.model.Club;
@@ -31,7 +31,7 @@ import uow.csse.tv.gpe.util.SwipeRefreshView;
  * Created by Vian on 2/5/2018.
  */
 
-public class SchoolActivity extends AppCompatActivity {
+public class ClubActivity extends AppCompatActivity {
 
     private ListView listView;
     private List<Club> mylist = new ArrayList<>();
@@ -40,30 +40,30 @@ public class SchoolActivity extends AppCompatActivity {
     private SwipeRefreshView mSwipeRefreshView;
     private int pageCount;
     private boolean lastItem = false;
-    private SchoolListAdapter schoolListAdapter;
+    private  ClubListAdapter clubListAdapter;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
+                clubListAdapter = new ClubListAdapter(ClubActivity.this, mylist);
+                listView.setAdapter(clubListAdapter);
                 pw.stopSpinning();
                 pw.setVisibility(View.GONE);
-                schoolListAdapter = new SchoolListAdapter(SchoolActivity.this, mylist);
-                listView.setAdapter(schoolListAdapter);
             }
             if (msg.what == 0x2) {
-                schoolListAdapter.notifyDataSetChanged();
-                schoolListAdapter = new SchoolListAdapter(SchoolActivity.this, mylist);
-                Toast.makeText(SchoolActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
+                clubListAdapter.notifyDataSetChanged();
+                clubListAdapter = new ClubListAdapter(ClubActivity.this, mylist);
+                Toast.makeText(ClubActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x1) {
-                Toast.makeText(SchoolActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClubActivity.this, "empty list", Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x3) {
-                Toast.makeText(SchoolActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClubActivity.this, "Last item", Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
         }
@@ -74,7 +74,7 @@ public class SchoolActivity extends AppCompatActivity {
             @Override
             public void run() {
                 HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getschoollist + city.getId() + "&"+ Const.PAGE + "0");
+                String tmp = hu.executeHttpGet(Const.getclublist + city.getId() + "&"+ Const.PAGE + "0");
                 JsonParse jp = new JsonParse(tmp);
                 mylist = jp.ParseJsonClub(tmp);
                 if (mylist != null) {
@@ -104,7 +104,7 @@ public class SchoolActivity extends AppCompatActivity {
                     loadMoreData();
                 } else {
                     mSwipeRefreshView.setLoading(false);
-                    Toast.makeText(SchoolActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClubActivity.this, "Last item", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,7 +112,7 @@ public class SchoolActivity extends AppCompatActivity {
 
     private void loadMoreData() {
         pageCount++;
-        schoolListAdapter.notifyDataSetChanged();
+        clubListAdapter.notifyDataSetChanged();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -120,7 +120,7 @@ public class SchoolActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         HttpUtils hu = new HttpUtils();
-                        String tmp = hu.executeHttpGet(Const.getschoollist + city.getId() + "&"+ Const.PAGE + "0");
+                        String tmp = hu.executeHttpGet(Const.getclublist + city.getId() + "&"+ Const.PAGE + "0");
                         JsonParse jp = new JsonParse(tmp);
                         List<Club> temp = jp.ParseJsonClub(tmp);
                         if (temp.size() != 0) {
@@ -147,8 +147,8 @@ public class SchoolActivity extends AppCompatActivity {
                 lastItem = false;
                 pageCount = 0;
                 initList();
-                schoolListAdapter.notifyDataSetChanged();
-                Toast.makeText(SchoolActivity.this, "Refresh finish", Toast.LENGTH_SHORT).show();
+                clubListAdapter.notifyDataSetChanged();
+                Toast.makeText(ClubActivity.this, "Refresh finish", Toast.LENGTH_SHORT).show();
                 if (mSwipeRefreshView.isRefreshing()) {
                     mSwipeRefreshView.setRefreshing(false);
                 }
@@ -165,6 +165,8 @@ public class SchoolActivity extends AppCompatActivity {
         pw.setVisibility(View.VISIBLE);
         pw.startSpinning();
 
+        city = (City) getIntent().getSerializableExtra("city");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.search_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -175,14 +177,13 @@ public class SchoolActivity extends AppCompatActivity {
             }
         });
 
-        city = (City) getIntent().getSerializableExtra("city");
         listView = (ListView) findViewById(R.id.fieldslist);
         initList();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(SchoolActivity.this, SchoolDetailActivity.class);
-                intent.putExtra("school", mylist.get(i));
+                Intent intent = new Intent(ClubActivity.this, ClubDetailActivity.class);
+                intent.putExtra("club", mylist.get(i));
                 startActivity(intent);
             }
         });

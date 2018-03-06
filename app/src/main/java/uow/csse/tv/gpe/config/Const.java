@@ -6,8 +6,8 @@ package uow.csse.tv.gpe.config;
 
 public class Const {
 
-    private static String hostname = "http://gpe.tabtu.top/";
-//    private static String hostname = "http://192.168.0.7:8080/";
+//    private static String hostname = "http://gpe.tabtu.top/";
+    private static String hostname = "http://192.168.0.7:8080/";
 
     public static String PAGE = "page=";
     public static String ID = "id=";
@@ -18,7 +18,7 @@ public class Const {
     public static String getvenuelist = hostname + "venue?city=";
     public static String getvenuenewslist = hostname + "vnews?";
     public static String getclublist = hostname + "club?city=";
-    public static String getschoollist = hostname + "school?city=";
+    public static String getschoollist = hostname + "club?city=";
     public static String loginlgtl = hostname + "lg/tl?";
     public static String registtl = hostname + "reg/tl?";
     public static String getupnewslist = hostname + "home?city=";

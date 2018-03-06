@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,8 +20,8 @@ import android.widget.Spinner;
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
 import uow.csse.tv.gpe.activity.act.MainActivityActivity;
-import uow.csse.tv.gpe.activity.school.ClubActivity;
-import uow.csse.tv.gpe.activity.school.SchoolActivity;
+import uow.csse.tv.gpe.activity.club.ClubActivity;
+import uow.csse.tv.gpe.activity.club.SchoolActivity;
 import uow.csse.tv.gpe.activity.venue.VenueActivity;
 import uow.csse.tv.gpe.adapter.NewsListAdapter;
 import uow.csse.tv.gpe.config.Const;
@@ -39,10 +40,6 @@ import java.util.List;
 public class HomeFragment extends Fragment{
 
     private View view;
-    private ImageButton btn_fields;
-    private ImageButton btn_athlete;
-    private ImageButton btn_school;
-    private ImageButton btn_club;
     private ListView listView;
     private ProgressWheel pw;
 
@@ -182,15 +179,12 @@ public class HomeFragment extends Fragment{
         }).start();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        listView = (ListView) view.findViewById(R.id.home_list);
-        pw = (ProgressWheel) view.findViewById(R.id.pw_spinner);
-        pw.setVisibility(View.VISIBLE);
-        pw.startSpinning();
+    private void setButton(){
+        ImageButton btn_fields;
+        ImageButton btn_athlete;
+        ImageButton btn_school;
+        ImageButton btn_club;
+        Button btn_more;
 
         //buttons
         btn_athlete = (ImageButton) view.findViewById(R.id.btn_athlete);
@@ -231,6 +225,19 @@ public class HomeFragment extends Fragment{
                 startActivity(intent);
             }
         });
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        listView = (ListView) view.findViewById(R.id.home_list);
+        pw = (ProgressWheel) view.findViewById(R.id.pw_spinner);
+        pw.setVisibility(View.VISIBLE);
+        pw.startSpinning();
+
+        setButton();
 
         new Thread(new Runnable() {
             @Override

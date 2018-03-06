@@ -8,9 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -19,7 +16,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.fragment.AccountFragment;
+import uow.csse.tv.gpe.fragment.account.AccountFragment;
 import uow.csse.tv.gpe.fragment.HomeFragment;
 import uow.csse.tv.gpe.fragment.LoginFragment;
 import uow.csse.tv.gpe.fragment.msg.MessageFragment;

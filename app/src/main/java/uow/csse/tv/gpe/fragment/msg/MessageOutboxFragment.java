@@ -8,6 +8,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,8 @@ public class MessageOutboxFragment extends Fragment {
     private SwipeRefreshView mSwipeRefreshView;
     private int pageCount;
     private boolean lastItem = false;
+
+    private boolean shouldRefreshOnResume = false;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -199,5 +202,20 @@ public class MessageOutboxFragment extends Fragment {
         initSwipeFreshLayout();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Check should we need to refresh the fragment
+        if(shouldRefreshOnResume){
+            initList();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        shouldRefreshOnResume = true;
     }
 }

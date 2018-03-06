@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="-10dp"
             app:srcCompat="@mipmap/schoolbackground" />
 
         <LinearLayout
@@ -49,33 +49,34 @@
             <!--android:layout_marginLeft="-178dp"-->
             <!--app:srcCompat="@mipmap/ava"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/gpe"
-                android:layout_weight="1"
-                android:text="Join" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_weight="1"
-                android:text="Follow" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="65dp"-->
+            <!--android:orientation="horizontal">-->
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/gpe"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Join" />-->
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Follow" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="15dp"-->
+            <!--android:background="@color/lightgrey"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="@color/lightgrey"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="42dp">
+            android:layout_height="42dp"
+            android:layout_marginTop="70dp">
             <TextView
                 android:layout_width="0.1dp"
                 android:layout_height="wrap_content"
@@ -93,7 +94,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.1"
                 android:gravity="end"
-                android:text="location detail"
+                android:text="None"
                 android:textAlignment="gravity" />
         </LinearLayout>
 
@@ -122,7 +123,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="contact detail" />
+                android:text="None" />
         </LinearLayout>
 
         <TextView
@@ -150,7 +151,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="Register detail" />
+                android:text="None" />
         </LinearLayout>
 
         <LinearLayout
@@ -184,7 +185,7 @@
             android:paddingTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/>
+            android:text="None"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -329,13 +330,19 @@
             android:id="@+id/tablayout"
             app:tabTextColor="@color/grey"
             app:tabIndicatorColor="@color/gpe"/>
-        <com.youth.banner.Banner
-            android:layout_width="match_parent"
-            android:layout_height="330dp"/>
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="200dp" />
+
+        <Button
+            android:id="@+id/schooldetail_join"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gpe"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:text="Join" />
 
     </LinearLayout>
 </ScrollView>

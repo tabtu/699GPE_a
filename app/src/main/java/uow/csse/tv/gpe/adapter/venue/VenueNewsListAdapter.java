@@ -15,6 +15,7 @@ import java.util.List;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.VNews;
+import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.Func;
 
 /**
@@ -36,6 +37,10 @@ public class VenueNewsListAdapter extends ArrayAdapter<String> {
     @Override
     public int getCount() {
         return list.size();
+    }
+
+    public void addItem(VNews venue) {
+        list.add(venue);
     }
 
     @NonNull

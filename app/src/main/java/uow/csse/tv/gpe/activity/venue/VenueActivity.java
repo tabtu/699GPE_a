@@ -47,25 +47,25 @@ public class VenueActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
         if (msg.what == 0x0) {
-            pw.stopSpinning();
-            pw.setVisibility(View.GONE);
             venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
             listView.setAdapter(venueListAdapter);
+            pw.stopSpinning();
+            pw.setVisibility(View.GONE);
         }
-            if (msg.what == 0x2) {
-                venueListAdapter.notifyDataSetChanged();
-                venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
-                Toast.makeText(VenueActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
-            if (msg.what == 0x1) {
-                Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
-            if (msg.what == 0x3) {
-                Toast.makeText(VenueActivity.this, "Last item", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
+        if (msg.what == 0x2) {
+            venueListAdapter.notifyDataSetChanged();
+            venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
+            Toast.makeText(VenueActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
+        if (msg.what == 0x1) {
+            Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
+        if (msg.what == 0x3) {
+            Toast.makeText(VenueActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
         }
     };
 
