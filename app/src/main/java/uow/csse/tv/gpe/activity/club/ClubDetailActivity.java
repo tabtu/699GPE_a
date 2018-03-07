@@ -82,7 +82,7 @@ public class ClubDetailActivity extends AppCompatActivity {
         }
         if (club.getReferees().size() != 0) {
             refereeNum.setText(String.valueOf(club.getReferees().size()));
-            btn_member.setOnClickListener(new View.OnClickListener() {
+            btn_referee.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(ClubDetailActivity.this, ClubMemberActivity.class);
                     intent.putExtra("club", club);

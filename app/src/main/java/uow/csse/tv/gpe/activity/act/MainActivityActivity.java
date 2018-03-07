@@ -68,24 +68,29 @@ public class MainActivityActivity extends AppCompatActivity {
     };
 
     private void initList() {
-        new Thread(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
-                JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonActivity(tmp);
-                if (mylist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x0;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
+                    JsonParse jp = new JsonParse(tmp);
+                    mylist = jp.ParseJsonActivity(tmp);
+                    if (mylist != null) {
+                        Message msg = new Message();
+                        msg.what = 0x0;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x1;
+                        handler.sendMessage(msg);
+                    }
                 }
+            }).start();
             }
-        }).start();
+        }, 2000);
     }
 
     private void initSwipeFreshLayout() {
@@ -151,7 +156,7 @@ public class MainActivityActivity extends AppCompatActivity {
                     mSwipeRefreshView.setRefreshing(false);
                 }
             }
-        }, 2000);
+        }, 1000);
     }
 
     @Override

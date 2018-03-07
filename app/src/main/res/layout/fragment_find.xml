@@ -23,16 +23,31 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/lightgrey"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/find_spinner"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/gpe"/>
         <SearchView
-            android:id="@+id/searchView"
+            android:id="@+id/find_search"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
             android:background="@color/white"
             android:iconifiedByDefault="false"
-            android:queryHint="Search" />
+            android:queryHint="search"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:src="@mipmap/location"-->
+            <!--android:background="@color/gpe"/>-->
     </LinearLayout>
 
     <include layout="@layout/progressbar"/>
@@ -48,6 +63,5 @@
             android:background="@color/white"
             android:layout_margin="10dp" />
     </uow.csse.tv.gpe.util.SwipeRefreshView>
-
 
 </LinearLayout>
