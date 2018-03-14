@@ -49,6 +49,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/account_follow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -58,22 +59,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="-10dp"
                 android:src="@mipmap/account_management"/>
             <Button
-                android:id="@+id/account_accountmg"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/transparent"
                 android:textColor="@color/grey"
-                android:text="Account Managment"/>
+                android:text="Follow"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end">
                 <ImageView
-                    android:id="@+id/account_accountmgl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

@@ -47,47 +47,52 @@ public class VenueActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
         if (msg.what == 0x0) {
-            pw.stopSpinning();
-            pw.setVisibility(View.GONE);
             venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
             listView.setAdapter(venueListAdapter);
+            pw.stopSpinning();
+            pw.setVisibility(View.GONE);
         }
-            if (msg.what == 0x2) {
-                venueListAdapter.notifyDataSetChanged();
-                venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
-                Toast.makeText(VenueActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
-            if (msg.what == 0x1) {
-                Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
-            if (msg.what == 0x3) {
-                Toast.makeText(VenueActivity.this, "Last item", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshView.setLoading(false);
-            }
+        if (msg.what == 0x2) {
+            venueListAdapter.notifyDataSetChanged();
+            venueListAdapter = new VenueListAdapter(VenueActivity.this, mylist);
+            Toast.makeText(VenueActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
+        if (msg.what == 0x1) {
+            Toast.makeText(VenueActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
+        if (msg.what == 0x3) {
+            Toast.makeText(VenueActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+            mSwipeRefreshView.setLoading(false);
+        }
         }
     };
 
     private void initList() {
-        new Thread(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getvenuelist + city.getId() + "&"+ Const.PAGE + "0");
-                JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonVenue(tmp);
-                if (mylist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x0;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpUtils hu = new HttpUtils();
+                        String tmp = hu.executeHttpGet(Const.getvenuelist + city.getId() + "&"+ Const.PAGE + "0");
+                        JsonParse jp = new JsonParse(tmp);
+                        mylist = jp.ParseJsonVenue(tmp);
+                        if (mylist != null) {
+                            Message msg = new Message();
+                            msg.what = 0x0;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }).start();
             }
-        }).start();
+        }, 1000);
     }
 
     private void initSwipeFreshLayout() {

@@ -18,7 +18,7 @@ public class Const {
     public static String getvenuelist = hostname + "venue?city=";
     public static String getvenuenewslist = hostname + "vnews?";
     public static String getclublist = hostname + "club?city=";
-    public static String getschoollist = hostname + "school?city=";
+    public static String getschoollist = hostname + "club?city=";
     public static String loginlgtl = hostname + "lg/tl?";
     public static String registtl = hostname + "reg/tl?";
     public static String getupnewslist = hostname + "home?city=";
@@ -32,4 +32,9 @@ public class Const {
     public static String getvenueactivitylist = hostname + "act/venue?";
     public static String getclubactivitylist = hostname + "act/club?";
     public static String gethomeactivitylist = hostname + "act/home?";
+    public static String getuserlist = hostname + "lg/gusr?";
+    public static String postsearchuser = hostname + "sh/user?";
+    public static String postsearchvenue = hostname + "sh/venue?";
+    public static String postsearchactivity = hostname + "sh/activity?";
+    public static String postsearchclub = hostname + "sh/club?";
 }

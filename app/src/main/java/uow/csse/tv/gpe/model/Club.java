@@ -29,6 +29,7 @@ public class Club extends Entitys implements Serializable {
     private List<Coach> coaches = new ArrayList<>();
     private List<Referee> referees = new ArrayList<>();
     private List<Athlete> athletes = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     public Club() { }
 
@@ -142,5 +143,13 @@ public class Club extends Entitys implements Serializable {
 
     public void setAthletes(List<Athlete> athletes) {
         this.athletes = athletes;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

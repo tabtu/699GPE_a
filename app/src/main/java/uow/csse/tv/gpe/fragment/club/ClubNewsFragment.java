@@ -18,18 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.school.ClubDetailActivity;
-import uow.csse.tv.gpe.activity.venue.VenueActivity;
-import uow.csse.tv.gpe.activity.venue.VenueDetailActivity;
+import uow.csse.tv.gpe.activity.club.ClubDetailActivity;
 import uow.csse.tv.gpe.adapter.venue.VenueNewsListAdapter;
-import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.activity.venue.VenueNewsDetailActivity;
 import uow.csse.tv.gpe.model.Club;
-import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.ListViewAutoHeight;
 import uow.csse.tv.gpe.model.VNews;
-import uow.csse.tv.gpe.util.HttpUtils;
-import uow.csse.tv.gpe.util.JsonParse;
 
 /**
  * Created by Vian on 2/12/2018.

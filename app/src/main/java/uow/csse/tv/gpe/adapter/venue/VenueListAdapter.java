@@ -37,6 +37,10 @@ public class VenueListAdapter extends ArrayAdapter<String>{
         return list.size();
     }
 
+    public void addItem(Venue venue) {
+        list.add(venue);
+    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
@@ -60,7 +64,6 @@ public class VenueListAdapter extends ArrayAdapter<String>{
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
         viewHolder.mUsage.setText(list.get(position).getSportsName());
-
         return convertView;
     }
 

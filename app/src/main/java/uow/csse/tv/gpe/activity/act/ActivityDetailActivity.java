@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.model.Activity;
@@ -36,14 +39,27 @@ public class ActivityDetailActivity extends AppCompatActivity {
         TextView location = (TextView)findViewById(R.id.activitydetail_location);
         TextView intro = (TextView)findViewById(R.id.activitydetail_intro);
         TextView zbf = (TextView) findViewById(R.id.activitydetail_zbf);
+        TextView price = (TextView) findViewById(R.id.activitydetail_price);
         ImageView image = (ImageView) findViewById(R.id.activitydetail_image);
         Button btn_join = (Button) findViewById(R.id.activitydetail_join);
 
         title.setText(activity.getTitle());
-        String dt = func.convertLong2String(activity.getStartdate()) + " - " + func.convertLong2String(activity.getEnddate());
-        date.setText(dt);
+        if (activity.getStartdate() != null && activity.getEnddate() != null) {
+            String dt = func.convertLong2String(activity.getStartdate()) + " - " + func.convertLong2String(activity.getEnddate());
+            date.setText(dt);
+        }
+        if (activity.getContent() != null) {
+            intro.setText(activity.getContent());
+        }
+        if (activity.getPicture() != null) {
+            Picasso.with(ActivityDetailActivity.this).load(activity.getPicture()).resize(400,500).centerCrop().into(image);
+        }
+        if (activity.getPrice() != 0) {
+            price.setText(String.valueOf(activity.getPrice()));
+        } else {
+            price.setText("Free");
+        }
 
-        Log.v("xxxxxx",activity.getClubs().size()+"");
 
 //        for (int i = 0; i < activity.getClubs().)
 //
@@ -52,7 +68,6 @@ public class ActivityDetailActivity extends AppCompatActivity {
 //        } else {
 //            btn_join.setEnabled(false);
 //        }
-//        Picasso.with(ClubDetailActivity.this).load(club.getPicture()).fit().into(image);
     }
 
     @Override

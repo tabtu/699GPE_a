@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/lightgrey"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/search_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title=" "
+        app:titleTextColor="@color/white"
+        android:background="@color/gpe">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/lightgrey"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/find_spinner"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/gpe"/>
+        <SearchView
+            android:id="@+id/find_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:iconifiedByDefault="false"
+            android:queryHint="search"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:src="@mipmap/location"-->
+            <!--android:background="@color/gpe"/>-->
+    </LinearLayout>
+
+    <include layout="@layout/progressbar"/>
+
+    <uow.csse.tv.gpe.util.SwipeRefreshView
+        android:id="@+id/swipelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fieldslist"
+            android:background="@color/white"
+            android:layout_margin="10dp" />
+    </uow.csse.tv.gpe.util.SwipeRefreshView>
+
+</LinearLayout>

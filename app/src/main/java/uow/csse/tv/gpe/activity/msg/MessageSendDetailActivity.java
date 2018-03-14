@@ -1,8 +1,10 @@
 package uow.csse.tv.gpe.activity.msg;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
 import uow.csse.tv.gpe.R;
+import uow.csse.tv.gpe.config.Const;
 import uow.csse.tv.gpe.model.Msgs;
 import uow.csse.tv.gpe.util.Func;
+import uow.csse.tv.gpe.util.HttpUtils;
 
 /**
  * Created by Vian on 2/23/2018.
@@ -28,6 +33,19 @@ public class MessageSendDetailActivity extends AppCompatActivity{
 
     private Msgs message;
     private Func func = new Func();
+
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 0x0) {
+                Toast.makeText(MessageSendDetailActivity.this, "Delete Success!", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                Toast.makeText(MessageSendDetailActivity.this, "Delete Failed!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     public MessageSendDetailActivity() {
 
@@ -82,7 +100,29 @@ public class MessageSendDetailActivity extends AppCompatActivity{
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("qqqqqqq","delete");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String _sen = "sen=" + message.getReceiver();
+                        String _rec = "rec=" + message.getSender();
+                        String _sedt = "sedt=" + message.getSendtime();
+                        try {
+                            HttpUtils hu = new HttpUtils();
+                            String tmp = hu.executeHttpPost(Const.postdeletemsg + _sen + "&" + _rec + "&" + _sedt);
+                            if (tmp.equals("true")) {
+                                android.os.Message msg = new android.os.Message();
+                                msg.what = 0x0;
+                                handler.sendMessage(msg);
+                            } else {
+                                android.os.Message msg = new android.os.Message();
+                                msg.what = 0x99;
+                                handler.sendMessage(msg);
+                            }
+                        } catch (Exception e) {
+                        }
+                    }
+                }).start();
+                finish();
             }
         });
     }

@@ -61,6 +61,7 @@ public class ClubListAdapter extends ArrayAdapter<String> {
         if (list.get(position).getPicture() != null) {
             Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
         }
+//        Log.v("picture",list.get(position).getPicture().length()+"");
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
 

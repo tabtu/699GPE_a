@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.msg.MessageReceiveDetailActivity;
 import uow.csse.tv.gpe.activity.msg.MessageSendActivity;
 import uow.csse.tv.gpe.adapter.TabhostAdapter;
 import uow.csse.tv.gpe.fragment.user.UserAthleteFragment;

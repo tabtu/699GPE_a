@@ -37,6 +37,10 @@ public class VenueActivityListAdapter extends ArrayAdapter<String> {
         return list.size();
     }
 
+//    public void addItem( user) {
+//        list.add(user);
+//    }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){

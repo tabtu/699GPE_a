@@ -54,10 +54,10 @@ public class OutMessageListAdapter extends ArrayAdapter<String> {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-//        String userName = "User" + list.get(position).getSender().substring(10, 15);
-//        viewHolder.mTitle.setText(userName);
-//        viewHolder.mDate.setText(func.convertLong2String(list.get(position).getSendtime()));
-//        viewHolder.mText.setText(list.get(position).getText());
+        String userName = "User" + list.get(position).getSender().substring(10, 15);
+        viewHolder.mTitle.setText(userName);
+        viewHolder.mDate.setText(func.convertLong2String(list.get(position).getSendtime()));
+        viewHolder.mText.setText(list.get(position).getText());
 
         return convertView;
     }

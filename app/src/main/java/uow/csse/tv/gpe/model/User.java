@@ -1,7 +1,10 @@
 package uow.csse.tv.gpe.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import uow.csse.tv.gpe.model.Coach;
 /**
  * User Entity
@@ -30,6 +33,8 @@ public class User extends Entitys implements Serializable {
     private Athlete athlete;
     private Coach coach;
     private Referee referee;
+    private List<User> follows = new ArrayList<>();
+    private List<User> fans = new ArrayList<>();
 
     public User() { super(); }
 
@@ -173,5 +178,21 @@ public class User extends Entitys implements Serializable {
 
     public void setReferee(Referee referee) {
         this.referee = referee;
+    }
+
+    public List<User> getFollows() {
+        return follows;
+    }
+
+    public void setFollows(List<User> follows) {
+        this.follows = follows;
+    }
+
+    public List<User> getFans() {
+        return fans;
+    }
+
+    public void setFans(List<User> fans) {
+        this.fans = fans;
     }
 }

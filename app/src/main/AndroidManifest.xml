@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_home_white_24dp"
+        android:icon="@mipmap/logo_color"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_home_white_24dp"
+        android:roundIcon="@mipmap/logo_color"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
@@ -24,10 +24,10 @@
         <activity android:name=".activity.venue.VenueDetailActivity"/>
         <activity android:name=".activity.venue.VenueActivity"/>
         <activity android:name=".activity.UserDetailActivity"/>
-        <activity android:name=".activity.school.SchoolActivity"/>
-        <activity android:name=".activity.school.SchoolDetailActivity"/>
-        <activity android:name=".activity.school.ClubActivity"/>
-        <activity android:name=".activity.school.ClubDetailActivity"/>
+        <activity android:name=".activity.club.SchoolActivity"/>
+        <activity android:name=".activity.club.SchoolDetailActivity"/>
+        <activity android:name=".activity.club.ClubActivity"/>
+        <activity android:name=".activity.club.ClubDetailActivity"/>
         <activity android:name=".activity.NewsDetailActivity"/>
         <activity android:name=".activity.venue.VenueNewsDetailActivity"/>
         <activity android:name=".activity.RegisterActivity"/>
@@ -35,6 +35,9 @@
         <activity android:name=".activity.msg.MessageSendDetailActivity"/>
         <activity android:name=".activity.msg.MessageSendActivity"/>
         <activity android:name=".activity.act.MainActivityActivity"/>
+        <activity android:name=".activity.FollowActivity"/>
+        <activity android:name=".activity.act.ActivityDetailActivity"/>
+        <activity android:name=".activity.club.ClubMemberActivity"/>
 
     </application>
 
