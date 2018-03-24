@@ -3,6 +3,7 @@ package uow.csse.tv.gpe.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,9 +32,11 @@ public class LocationActivity extends Activity {
         super.onCreate(savedInstanceState);
         // -----------demo view config ------------
         setContentView(R.layout.activity_location);
+        Log.v("1", "1");
         LocationResult = (TextView) findViewById(R.id.textView1);
         LocationResult.setMovementMethod(ScrollingMovementMethod.getInstance());
         startLocation = (Button) findViewById(R.id.addfence);
+        Log.v("2", "2");
     }
 
         /**

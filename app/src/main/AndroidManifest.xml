@@ -31,10 +31,11 @@
         android:roundIcon="@mipmap/logo_color"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:theme">
+        tools:replace="android:theme"
+        android:name=".application.LocationApplication" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="C20a4c1813bd199caeb08d85117040fc" >
+            android:value="cpjxynVxGoAdLzCIULToUCv6ZFa4HZgj" >
         </meta-data>
         <activity android:name=".activity.MainActivity"
             android:configChanges="locale">
@@ -61,6 +62,7 @@
         <activity android:name=".activity.act.ActivityDetailActivity"/>
         <activity android:name=".activity.club.ClubMemberActivity"/>
         <activity android:name=".activity.account.SettingActivity"/>
+        <activity android:name=".activity.LocationActivity" />
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
     </application>
