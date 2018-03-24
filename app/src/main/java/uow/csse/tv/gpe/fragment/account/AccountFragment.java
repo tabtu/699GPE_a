@@ -60,6 +60,7 @@ public class AccountFragment extends Fragment {
         btn_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity) getActivity()).finish();
                 Intent intent = new Intent(getActivity(),SettingActivity.class);
                 startActivity(intent);
             }
