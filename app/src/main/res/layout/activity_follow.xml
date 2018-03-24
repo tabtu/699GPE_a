@@ -10,7 +10,7 @@
         android:id="@+id/follow_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Follow"
+        app:title="@string/follow"
         app:titleTextColor="@color/white"
         android:background="@color/gpe">
     </android.support.v7.widget.Toolbar>

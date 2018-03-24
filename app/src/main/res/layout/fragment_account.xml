@@ -15,7 +15,7 @@
             android:id="@+id/account_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Account"
+            app:title="@string/account"
             app:titleTextColor="@color/white"
             android:background="@color/gpe">
         </android.support.v7.widget.Toolbar>
@@ -59,15 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="-10dp"
                 android:src="@mipmap/account_management"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/transparent"
                 android:textColor="@color/grey"
-                android:text="Follow"/>
+                android:text="@string/follow"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +87,7 @@
             android:background="@android:color/darker_gray"/>
 
         <LinearLayout
+            android:id="@+id/account_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -96,22 +96,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="-8dp"
                 android:src="@mipmap/setting"/>
             <Button
-                android:id="@+id/account_setting"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/grey"
                 android:background="@color/transparent"
-                android:text="Setting"/>
+                android:text="@string/setting"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end">
                 <ImageView
-                    android:id="@+id/account_settingl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -135,16 +132,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="-20dp"
                 android:src="@mipmap/help"/>
             <Button
                 android:id="@+id/account_help"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/grey"
                 android:background="@color/transparent"
-                android:text="Help"/>
+                android:text="@string/help"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,12 +173,12 @@
                 android:src="@mipmap/feedback"/>
             <Button
                 android:id="@+id/account_feedback"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/transparent"
                 android:textColor="@color/grey"
-                android:text="Feedback"/>
+                android:text="@string/feedback"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -213,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gpe"
                 android:textColor="@color/white"
-                android:text="Sign Out"/>
+                android:text="@string/out"/>
         </LinearLayout>
 
     </LinearLayout>

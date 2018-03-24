@@ -53,15 +53,15 @@ public class MainActivityActivity extends AppCompatActivity {
             if (msg.what == 0x2) {
                 activityListAdapter.notifyDataSetChanged();
                 activityListAdapter = new ActivityListAdapter(MainActivityActivity.this, mylist);
-                Toast.makeText(MainActivityActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityActivity.this, getString(R.string.loadfinish), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x1) {
-                Toast.makeText(MainActivityActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityActivity.this, getString(R.string.empty), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x3) {
-                Toast.makeText(MainActivityActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityActivity.this, getString(R.string.last), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
         }
@@ -107,7 +107,7 @@ public class MainActivityActivity extends AppCompatActivity {
                     loadMoreData();
                 } else {
                     mSwipeRefreshView.setLoading(false);
-                    Toast.makeText(MainActivityActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivityActivity.this, getString(R.string.last), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -151,7 +151,7 @@ public class MainActivityActivity extends AppCompatActivity {
                 pageCount = 0;
                 initList();
                 activityListAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivityActivity.this, "Refresh finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityActivity.this, getString(R.string.refresh), Toast.LENGTH_SHORT).show();
                 if (mSwipeRefreshView.isRefreshing()) {
                     mSwipeRefreshView.setRefreshing(false);
                 }

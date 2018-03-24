@@ -15,7 +15,7 @@
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:padding="16dp"
-        android:text="Reply"
+        android:text="@string/reply"
         android:textColor="#666666"
         android:textSize="14sp"/>
 
@@ -29,7 +29,7 @@
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:padding="16dp"
-        android:text="Delete"
+        android:text="@string/delete"
         android:textColor="#666666"
         android:textSize="14sp"/>
 

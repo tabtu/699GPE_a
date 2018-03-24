@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,9 +36,10 @@
         <activity android:name=".activity.msg.MessageSendDetailActivity"/>
         <activity android:name=".activity.msg.MessageSendActivity"/>
         <activity android:name=".activity.act.MainActivityActivity"/>
-        <activity android:name=".activity.FollowActivity"/>
+        <activity android:name=".activity.account.FollowActivity"/>
         <activity android:name=".activity.act.ActivityDetailActivity"/>
         <activity android:name=".activity.club.ClubMemberActivity"/>
+        <activity android:name=".activity.account.SettingActivity"/>
 
     </application>
 

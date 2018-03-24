@@ -15,7 +15,7 @@
             android:id="@+id/venuedetail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Venue"
+            app:title="@string/venue"
             app:titleTextColor="@color/white"
             android:background="@color/gpe">
         </android.support.v7.widget.Toolbar>
@@ -54,7 +54,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.02"
-                android:text="Location" />
+                android:text="@string/location" />
 
             <TextView
                 android:id="@+id/venuedetail_location"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.1"
                 android:gravity="end"
-                android:text="location detail"
+                android:text="@string/none"
                 android:textAlignment="gravity" />
         </LinearLayout>
 
@@ -83,7 +83,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.02"
-                android:text="Contact" />
+                android:text="@string/contact" />
             <TextView
                 android:id="@+id/venuedetail_contact"
                 android:layout_width="1dp"
@@ -93,7 +93,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="contact detail" />
+                android:text="@string/none" />
         </LinearLayout>
 
         <LinearLayout

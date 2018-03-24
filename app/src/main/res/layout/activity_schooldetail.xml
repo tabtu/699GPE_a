@@ -15,7 +15,7 @@
             android:id="@+id/schooldetail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="School"
+            app:title="@string/school"
             app:titleTextColor="@color/white"
             android:background="@color/gpe">
         </android.support.v7.widget.Toolbar>
@@ -84,7 +84,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.02"
-                android:text="Location" />
+                android:text="@string/location" />
 
             <TextView
                 android:id="@+id/schooldetail_location"
@@ -94,7 +94,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.1"
                 android:gravity="end"
-                android:text="None"
+                android:text="@string/none"
                 android:textAlignment="gravity" />
         </LinearLayout>
 
@@ -113,7 +113,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.02"
-                android:text="Contact" />
+                android:text="@string/contact" />
             <TextView
                 android:id="@+id/schooldetail_contact"
                 android:layout_width="1dp"
@@ -123,7 +123,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="None" />
+                android:text="@string/none" />
         </LinearLayout>
 
         <TextView
@@ -141,7 +141,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.05"
-                android:text="Registeration" />
+                android:text="@string/registration" />
             <TextView
                 android:id="@+id/schooldetail_register"
                 android:layout_width="1dp"
@@ -151,7 +151,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="None" />
+                android:text="@string/none" />
         </LinearLayout>
 
         <LinearLayout
@@ -169,7 +169,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Introduction" />
+                android:text="@string/intrduction" />
         </LinearLayout>
 
         <TextView
@@ -185,7 +185,7 @@
             android:paddingTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="None"/>
+            android:text="@string/none"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -197,12 +197,12 @@
             android:layout_height="35dp">
             <TextView
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Team" />
+                android:text="@string/team" />
         </LinearLayout>
 
         <TextView
@@ -239,7 +239,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
-                        android:text="Running"/>
+                        android:text="@string/running"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -257,7 +257,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="15dp"
-                        android:text="Badminton"/>
+                        android:text="@string/badminton"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -275,7 +275,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="28dp"
                         android:layout_marginLeft="28dp"
-                        android:text="Tennis"/>
+                        android:text="@string/tennis"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -293,7 +293,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="26dp"
                         android:layout_marginLeft="26dp"
-                        android:text="Soccer"/>
+                        android:text="@string/soccer"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -311,7 +311,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
-                        android:text="Basketball"/>
+                        android:text="@string/basketball"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -342,7 +342,7 @@
             android:background="@color/gpe"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:text="Join" />
+            android:text="@string/join" />
 
     </LinearLayout>
 </ScrollView>

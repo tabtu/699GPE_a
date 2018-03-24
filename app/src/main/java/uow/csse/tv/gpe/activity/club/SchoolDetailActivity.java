@@ -15,6 +15,7 @@ import uow.csse.tv.gpe.fragment.club.SchoolCourseFragment;
 import uow.csse.tv.gpe.fragment.club.SchoolHonorFragment;
 import uow.csse.tv.gpe.fragment.club.SchoolNewsFragment;
 import uow.csse.tv.gpe.model.Club;
+import uow.csse.tv.gpe.util.SwitchLanguage;
 
 /**
  * Created by Vian on 2/9/2018.
@@ -64,11 +65,10 @@ public class SchoolDetailActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getSupportFragmentManager());
-
-        adapter.AddFragment(new SchoolCourseFragment(),"Course");
-        adapter.AddFragment(new SchoolNewsFragment(),"News");
-        adapter.AddFragment(new SchoolHonorFragment(),"Honor");
-        adapter.AddFragment(new SchoolActivityFragment(),"Activity");
+        adapter.AddFragment(new SchoolCourseFragment(), getString(R.string.course));
+        adapter.AddFragment(new SchoolNewsFragment(), getString(R.string.news));
+        adapter.AddFragment(new SchoolHonorFragment(), getString(R.string.honor));
+        adapter.AddFragment(new SchoolActivityFragment(), getString(R.string.activity));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
