@@ -36,7 +36,8 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="C20a4c1813bd199caeb08d85117040fc" >
         </meta-data>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -56,9 +57,10 @@
         <activity android:name=".activity.msg.MessageSendDetailActivity"/>
         <activity android:name=".activity.msg.MessageSendActivity"/>
         <activity android:name=".activity.act.MainActivityActivity"/>
-        <activity android:name=".activity.FollowActivity"/>
+        <activity android:name=".activity.account.FollowActivity"/>
         <activity android:name=".activity.act.ActivityDetailActivity"/>
         <activity android:name=".activity.club.ClubMemberActivity"/>
+        <activity android:name=".activity.account.SettingActivity"/>
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
     </application>

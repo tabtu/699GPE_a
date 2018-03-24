@@ -14,7 +14,7 @@
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title=" "
+        app:title="@string/find"
         app:titleTextColor="@color/white"
         android:background="@color/gpe">
     </android.support.v7.widget.Toolbar>
@@ -41,7 +41,7 @@
             android:layout_marginRight="10dp"
             android:background="@color/white"
             android:iconifiedByDefault="false"
-            android:queryHint="search"/>
+            android:queryHint="@string/search"/>
         <!--<ImageButton-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="40dp"-->

@@ -15,8 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.FollowActivity;
+import uow.csse.tv.gpe.activity.account.FollowActivity;
 import uow.csse.tv.gpe.activity.MainActivity;
+import uow.csse.tv.gpe.activity.account.SettingActivity;
 import uow.csse.tv.gpe.model.User;
 
 public class AccountFragment extends Fragment {
@@ -51,6 +52,15 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),FollowActivity.class);
                 intent.putExtra("user",((MainActivity) getActivity()).getUsr());
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout btn_setting = view.findViewById(R.id.account_setting);
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SettingActivity.class);
                 startActivity(intent);
             }
         });

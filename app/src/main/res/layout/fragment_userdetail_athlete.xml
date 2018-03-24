@@ -18,7 +18,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Club" />
+                android:text="@string/club" />
         </LinearLayout>
 
         <TextView
@@ -48,7 +48,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Ability" />
+                android:text="@string/ability" />
         </LinearLayout>
 
         <TextView
@@ -83,7 +83,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Interests" />
+                android:text="@string/interest" />
         </LinearLayout>
 
         <TextView
@@ -212,7 +212,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Movement" />
+                android:text="@string/movement" />
         </LinearLayout>
 
         <TextView

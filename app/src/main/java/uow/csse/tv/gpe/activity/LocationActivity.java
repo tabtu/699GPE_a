@@ -94,13 +94,13 @@ public class LocationActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                if (startLocation.getText().toString().equals(getString(R.string.startlocation))) {
+                if (startLocation.getText().toString().equals(getString(R.string.account))) {
                     locationService.start();// 定位SDK
                     // start之后会默认发起一次定位请求，开发者无须判断isstart并主动调用request
-                    startLocation.setText(getString(R.string.stoplocation));
+                    startLocation.setText(getString(R.string.ability));
                 } else {
                     locationService.stop();
-                    startLocation.setText(getString(R.string.startlocation));
+                    startLocation.setText(getString(R.string.again));
                 }
             }
         });

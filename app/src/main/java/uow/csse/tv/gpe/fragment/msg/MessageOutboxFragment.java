@@ -60,15 +60,15 @@ public class MessageOutboxFragment extends Fragment {
             if (msg.what == 0x2) {
                 outMessageListAdapter.notifyDataSetChanged();
                 outMessageListAdapter = new OutMessageListAdapter(getActivity(), mylist);
-                Toast.makeText(getActivity(), "Loading finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.loadfinish), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x1) {
-                Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.empty), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x3) {
-                Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.last), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
         }
@@ -118,7 +118,7 @@ public class MessageOutboxFragment extends Fragment {
                     loadMoreData();
                 } else {
                     mSwipeRefreshView.setLoading(false);
-                    Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.last), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -166,7 +166,7 @@ public class MessageOutboxFragment extends Fragment {
                 pageCount = 0;
                 initList();
                 outMessageListAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(), "Refresh finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
 
                 if (mSwipeRefreshView.isRefreshing()) {
                     mSwipeRefreshView.setRefreshing(false);

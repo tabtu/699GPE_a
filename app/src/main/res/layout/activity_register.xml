@@ -113,7 +113,7 @@
             android:layout_marginLeft="30dp"
             android:background="@color/gpe"
             android:textColor="@color/white"
-            android:text="Again"/>
+            android:text="@string/again"/>
     </LinearLayout>
 
     <LinearLayout
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:background="@color/gpe"
             android:textColor="@color/white"
-            android:text="Submit"/>
+            android:text="@string/submit"/>
     </LinearLayout>
 
 </LinearLayout>

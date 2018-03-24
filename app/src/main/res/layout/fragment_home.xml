@@ -63,7 +63,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="horizontal" >
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -77,11 +76,10 @@
                             android:background="@color/transparent"
                             app:srcCompat="@mipmap/activity" />
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginLeft="25dp"
-                                android:text="Activity"/>
+                                android:textAlignment="center"
+                                android:text="@string/activity"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -95,11 +93,10 @@
                             android:background="@color/transparent"
                             app:srcCompat="@mipmap/venue"/>
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginLeft="25dp"
-                                android:text="Venue"/>
+                                android:textAlignment="center"
+                                android:text="@string/venue"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -113,11 +110,10 @@
                                 android:background="@color/transparent"
                                 app:srcCompat="@mipmap/club"/>
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="33dp"
-                                android:layout_marginLeft="33dp"
-                                android:text="Club"/>
+                                android:textAlignment="center"
+                                android:text="@string/club"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -131,11 +127,10 @@
                                 android:background="@color/transparent"
                                 app:srcCompat="@mipmap/school"/>
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginLeft="25dp"
-                                android:text="School"/>
+                                android:textAlignment="center"
+                                android:text="@string/school"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -158,7 +153,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="0.2"
-                android:text="SPORTS" />
+                android:text="@string/sports" />
         </LinearLayout>
 
         <HorizontalScrollView
@@ -187,11 +182,10 @@
                         android:background="@color/transparent"
                         app:srcCompat="@mipmap/running"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:text="Running"/>
+                        android:textAlignment="center"
+                        android:text="@string/running"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -206,11 +200,10 @@
                         android:background="@color/transparent"
                         app:srcCompat="@mipmap/badmiton"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:text="Badminton"/>
+                        android:textAlignment="center"
+                        android:text="@string/badminton"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -225,11 +218,10 @@
                         android:background="@color/transparent"
                         app:srcCompat="@mipmap/baseball"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="28dp"
-                        android:layout_marginLeft="28dp"
-                        android:text="Volley"/>
+                        android:textAlignment="center"
+                        android:text="@string/volley"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -244,11 +236,10 @@
                         android:background="@color/transparent"
                         app:srcCompat="@mipmap/football" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="26dp"
-                        android:layout_marginLeft="26dp"
-                        android:text="Soccer"/>
+                        android:textAlignment="center"
+                        android:text="@string/football"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -267,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
-                        android:text="Basketball"/>
+                        android:text="@string/basketball"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -290,7 +281,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:text="NEWS" />
+                android:text="@string/news" />
         </LinearLayout>
 
         <include layout="@layout/progressbar"/>
@@ -310,7 +301,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textColor="@color/gpe"
-            android:text="More"/>
+            android:text="@string/more"/>
 
     </LinearLayout>
 </ScrollView>

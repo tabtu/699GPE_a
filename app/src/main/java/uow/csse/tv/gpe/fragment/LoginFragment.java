@@ -55,7 +55,7 @@ public class LoginFragment extends Fragment{
                 MainActivity parentActivity = (MainActivity) getActivity();
                 parentActivity.finishActivity();
             } else {
-                Toast.makeText(getActivity(), "Login Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
         }
     };

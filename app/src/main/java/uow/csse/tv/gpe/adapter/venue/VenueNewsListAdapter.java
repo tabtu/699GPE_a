@@ -64,7 +64,7 @@ public class VenueNewsListAdapter extends ArrayAdapter<String> {
         Picasso.with(getContext()).load(list.get(position).getPicture()).resize(320,220).centerCrop().into(viewHolder.mImage);
         viewHolder.mTitle.setText(list.get(position).getTitle());
         viewHolder.mDate.setText(func.convertLong2String(list.get(position).getUpdateDate()));
-        viewHolder.mAuthor.setText(list.get(position).getVenue().getName());
+        viewHolder.mAuthor.setText("None");
 
         return convertView;
     }

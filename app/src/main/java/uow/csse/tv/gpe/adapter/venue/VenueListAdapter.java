@@ -59,7 +59,7 @@ public class VenueListAdapter extends ArrayAdapter<String>{
             viewHolder = (ViewHolder)convertView.getTag();
         }
         if (list.get(position).getPicture() != null) {
-            Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
+//            Picasso.with(getContext()).load(list.get(position).getPicture()).resize(150,150).centerCrop().transform(new CircleTransform()).into(viewHolder.mImage);
         }
         viewHolder.mName.setText(list.get(position).getName());
         viewHolder.mLocation.setText(list.get(position).getAddress());
