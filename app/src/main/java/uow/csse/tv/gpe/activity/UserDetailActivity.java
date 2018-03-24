@@ -83,13 +83,13 @@ public class UserDetailActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("user", user);
             uaf.setArguments(bundle);
-            adapter.AddFragment(uaf, "Athlete");
+            adapter.AddFragment(uaf, getString(R.string.athelete));
         }
         if (user.getCoach() != null) {
-            adapter.AddFragment(new UserCoachFragment(), "Coach");
+            adapter.AddFragment(new UserCoachFragment(), getString(R.string.coach));
         }
         if (user.getReferee() != null) {
-            adapter.AddFragment(new UserRefereeFragment(), "Referee");
+            adapter.AddFragment(new UserRefereeFragment(), getString(R.string.referee));
         }
 
         viewPager.setAdapter(adapter);

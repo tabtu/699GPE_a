@@ -48,7 +48,7 @@
                         android:textSize="25sp"
                         android:layout_marginLeft="10dp"
                         android:lines="3"
-                        android:text="Title"/>
+                        android:text="@string/title"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -68,12 +68,12 @@
                         android:id="@+id/activitydetail_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Time:"/>
+                        android:text="@string/time"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="None"/>
+                        android:text="@string/none"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,13 +84,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date:"/>
+                        android:text="@string/date"/>
                     <TextView
                         android:id="@+id/activitydetail_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="None"/>
+                        android:text="@string/none"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,13 +101,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location:"/>
+                        android:text="@string/location"/>
                     <TextView
                         android:id="@+id/activitydetail_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="None"/>
+                        android:text="@string/none"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -118,13 +118,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Price:"/>
+                        android:text="@string/price"/>
                     <TextView
                         android:id="@+id/activitydetail_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="None"/>
+                        android:text="@string/none"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,13 +135,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Organizer:"/>
+                        android:text="@string/organizer"/>
                     <TextView
                         android:id="@+id/activitydetail_zbf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="None"/>
+                        android:text="@string/none"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -159,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Introduction"/>
+            android:text="@string/intrduction"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="None"/>
+            android:text="@string/none"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gpe"
                 android:textColor="@color/white"
-                android:text="Join"/>
+                android:text="@string/join"/>
         </LinearLayout>
 
     </LinearLayout>

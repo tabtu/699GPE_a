@@ -21,7 +21,7 @@
             android:id="@+id/sendmsg_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Send Message"
+            app:title="@string/sendmsg"
             app:titleTextColor="@color/white"
             android:background="@color/gpe">
         </android.support.v7.widget.Toolbar>
@@ -42,7 +42,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To:"/>
+                    android:text="@string/to"/>
                 <EditText
                     android:id="@+id/sendmsg_name"
                     android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:ems="15"
-                android:hint="Edit your message..."
+                android:hint="@string/edit"
                 android:layout_marginTop="10dp"
                 android:inputType="textPersonName" />
 
@@ -86,13 +86,13 @@
                 android:background="@color/gpe"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/white"
-                android:text="Send"/>
+                android:text="@string/send"/>
             <Button
                 android:id="@+id/sendmsg_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonborder"
-                android:text="Cancel"/>
+                android:text="@string/cancel"/>
         </LinearLayout>
 
 

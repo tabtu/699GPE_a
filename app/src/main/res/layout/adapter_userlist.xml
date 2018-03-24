@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location:" />
+                android:text="@string/location" />
             <TextView
                 android:id="@+id/usrlist_Location"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Interests:" />
+                android:text="@string/interest" />
             <TextView
                 android:id="@+id/usrlist_Interest"
                 android:layout_width="wrap_content"

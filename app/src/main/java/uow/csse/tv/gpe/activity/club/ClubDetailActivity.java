@@ -20,6 +20,7 @@ import uow.csse.tv.gpe.fragment.club.ClubHonorFragment;
 import uow.csse.tv.gpe.fragment.club.ClubNewsFragment;
 import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.model.User;
+import uow.csse.tv.gpe.util.SwitchLanguage;
 
 /**
  * Created by Vian on 2/9/2018.
@@ -121,11 +122,10 @@ public class ClubDetailActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         adapter = new TabhostAdapter(getSupportFragmentManager());
-
-        adapter.AddFragment(new ClubCourseFragment(),"Course");
-        adapter.AddFragment(new ClubNewsFragment(),"News");
-        adapter.AddFragment(new ClubHonorFragment(),"Honor");
-        adapter.AddFragment(new ClubActivityFragment(),"Activity");
+        adapter.AddFragment(new ClubCourseFragment(),getString(R.string.course));
+        adapter.AddFragment(new ClubNewsFragment(),getString(R.string.news));
+        adapter.AddFragment(new ClubHonorFragment(),getString(R.string.honor));
+        adapter.AddFragment(new ClubActivityFragment(),getString(R.string.activity));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

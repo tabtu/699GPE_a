@@ -2,17 +2,24 @@ package uow.csse.tv.gpe.activity;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+
+import java.util.Locale;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.config.Const;
@@ -24,6 +31,8 @@ import uow.csse.tv.gpe.fragment.user.UserFragment;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;
+import uow.csse.tv.gpe.util.PreferenceUtil;
+import uow.csse.tv.gpe.util.SwitchLanguage;
 
 /**
  * Created by Vian on 2/22/2018.
@@ -37,8 +46,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private AccountFragment accountFragment;
     private UserFragment userFragment;
     private LoginFragment loginFragment;
-    private Fragment currentFragment=new Fragment();
+    private Fragment currentFragment = new Fragment();
     private FragmentManager fm = getSupportFragmentManager();
+    private SwitchLanguage switchLanguage = new SwitchLanguage();
 
     private User usr;
     private int status = 0;
@@ -59,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PreferenceUtil.init(this);
+        switchLanguage.switchLanguage(PreferenceUtil.getString("language", "zh"),getResources());
 
         mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         mFrameLayout = findViewById(R.id.layFrame);
@@ -95,6 +108,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         }).start();
     }
 
+//    protected void switchLanguage(String language) {
+//        //设置应用语言类型
+//        Resources resources = getResources();
+//        Configuration config = resources.getConfiguration();
+//        DisplayMetrics dm = resources.getDisplayMetrics();
+//        if (language.equals("en")) {
+//            config.locale = Locale.ENGLISH;
+//        } else {
+//            config.locale = Locale.SIMPLIFIED_CHINESE;
+//        }
+//        resources.updateConfiguration(config, dm);
+//
+//        //保存设置语言的类型
+//        PreferenceUtil.commitString("language", language);
+//    }
+
     public User getUsr() {
         return usr;
     }
@@ -113,14 +142,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void InitNavigationBar() {
+        PreferenceUtil.init(this);
         mBottomNavigationBar.setTabSelectedListener(this);
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, "HOME").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_user_white_24dp, "FIND").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_msg_white_24dp, "MESSAGE").setActiveColorResource(R.color.black))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_account_white_24dp, "ACCOUNT").setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_home_white_24dp, getString(R.string.home)).setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_user_white_24dp, getString(R.string.find)).setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_msg_white_24dp, getString(R.string.message)).setActiveColorResource(R.color.black))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_account_white_24dp, getString(R.string.account)).setActiveColorResource(R.color.black))
                 .setFirstSelectedPosition(0)
                 .initialise();
     }

@@ -32,7 +32,7 @@
             android:layout_marginBottom="15dp"
             android:background="@color/white"
             android:iconifiedByDefault="false"
-            android:queryHint="Search" />
+            android:queryHint="@string/search" />
     </LinearLayout>
 
     <include layout="@layout/progressbar"/>

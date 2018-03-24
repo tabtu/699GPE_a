@@ -13,7 +13,7 @@
             android:id="@+id/sendmsgdetail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Message"
+            app:title="@string/message"
             app:titleTextColor="@color/white"
             android:background="@color/gpe">
             <ImageButton
@@ -42,13 +42,13 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:layout_marginRight="10dp"
-                    android:text="To:"/>
+                    android:text="@string/to"/>
                 <TextView
                     android:id="@+id/sendmsgdetail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:text="Name"/>
+                    android:text="@string/name"/>
             </LinearLayout>
 
             <LinearLayout
@@ -76,7 +76,7 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:text="Sent"/>
+                android:text="@string/sent"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:id="@+id/sendmsgdetail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="content"/>
+                android:text="@string/content"/>
 
         </LinearLayout>
 

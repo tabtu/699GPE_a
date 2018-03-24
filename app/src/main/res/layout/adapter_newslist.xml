@@ -31,7 +31,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="5dp"
                 android:textColor="@color/white"
-                android:text="News" />
+                android:text="@string/news" />
             <TextView
                 android:id="@+id/newslist_title"
                 android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date:" />
+                android:text="@string/date" />
             <TextView
                 android:id="@+id/newslist_date"
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Author:" />
+                android:text="@string/author" />
             <TextView
                 android:id="@+id/newslist_author"
                 android:layout_width="wrap_content"

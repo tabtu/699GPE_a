@@ -62,15 +62,15 @@ public class MessageInboxFragment extends Fragment {
             if (msg.what == 0x2) {
                 inMessageListAdapter.notifyDataSetChanged();
                 inMessageListAdapter = new InMessageListAdapter(getActivity(), mylist);
-                Toast.makeText(getActivity(), "Loading finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.loadfinish), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x1) {
-                Toast.makeText(getActivity(), "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.empty), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x3) {
-                Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.last), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
         }
@@ -121,7 +121,7 @@ public class MessageInboxFragment extends Fragment {
                     loadMoreData();
                 } else {
                     mSwipeRefreshView.setLoading(false);
-                    Toast.makeText(getActivity(), "Last item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.last), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,7 +169,7 @@ public class MessageInboxFragment extends Fragment {
                 pageCount = 0;
                 initList();
                 inMessageListAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(), "Refresh finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
 
                 if (mSwipeRefreshView.isRefreshing()) {
                     mSwipeRefreshView.setRefreshing(false);

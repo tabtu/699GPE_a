@@ -13,9 +13,11 @@
             android:id="@+id/receivemsgdetail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Message"
+            app:title="@string/message"
             app:titleTextColor="@color/white"
-            android:background="@color/gpe">
+            android:background="@color/gpe"
+            android:layout_gravity="end"
+            android:gravity="end">
             <ImageButton
                 android:id="@+id/receivemsgdetail_menu"
                 android:layout_marginLeft="230dp"
@@ -42,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:text="Name"/>
+                    android:text="@string/name"/>
             </LinearLayout>
             
             <LinearLayout
@@ -70,7 +72,7 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:text="Read"/>
+                android:text="@string/read"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,7 +84,7 @@
                 android:id="@+id/receivemsgdetail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="content"/>
+                android:text="@string/content"/>
 
         </LinearLayout>
 

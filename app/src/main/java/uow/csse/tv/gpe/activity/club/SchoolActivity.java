@@ -55,15 +55,15 @@ public class SchoolActivity extends AppCompatActivity {
             if (msg.what == 0x2) {
                 schoolListAdapter.notifyDataSetChanged();
                 schoolListAdapter = new SchoolListAdapter(SchoolActivity.this, mylist);
-                Toast.makeText(SchoolActivity.this, "Loading finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, getString(R.string.loadfinish), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x1) {
-                Toast.makeText(SchoolActivity.this, "empty list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, getString(R.string.empty), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
             if (msg.what == 0x3) {
-                Toast.makeText(SchoolActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, getString(R.string.last), Toast.LENGTH_SHORT).show();
                 mSwipeRefreshView.setLoading(false);
             }
         }
@@ -109,7 +109,7 @@ public class SchoolActivity extends AppCompatActivity {
                     loadMoreData();
                 } else {
                     mSwipeRefreshView.setLoading(false);
-                    Toast.makeText(SchoolActivity.this, "Last item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SchoolActivity.this, getString(R.string.last), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -153,7 +153,7 @@ public class SchoolActivity extends AppCompatActivity {
                 pageCount = 0;
                 initList();
                 schoolListAdapter.notifyDataSetChanged();
-                Toast.makeText(SchoolActivity.this, "Refresh finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, getString(R.string.refresh), Toast.LENGTH_SHORT).show();
                 if (mSwipeRefreshView.isRefreshing()) {
                     mSwipeRefreshView.setRefreshing(false);
                 }

@@ -23,8 +23,8 @@ public class MessageFragment extends Fragment{
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.message_viewpager);
         TabhostAdapter adapter = new TabhostAdapter(getFragmentManager());
 
-        adapter.AddFragment(new MessageInboxFragment(), "Inbox");
-        adapter.AddFragment(new MessageOutboxFragment(), "Outbox");
+        adapter.AddFragment(new MessageInboxFragment(), getString(R.string.inbox));
+        adapter.AddFragment(new MessageOutboxFragment(), getString(R.string.outbox));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

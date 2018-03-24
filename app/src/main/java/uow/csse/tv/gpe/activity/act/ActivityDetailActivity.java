@@ -19,6 +19,7 @@ import uow.csse.tv.gpe.model.Activity;
 import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.model.Venue;
 import uow.csse.tv.gpe.util.Func;
+import uow.csse.tv.gpe.util.SwitchLanguage;
 
 /**
  * Created by Vian on 2/25/2018.
@@ -57,7 +58,12 @@ public class ActivityDetailActivity extends AppCompatActivity {
         if (activity.getPrice() != 0) {
             price.setText(String.valueOf(activity.getPrice()));
         } else {
-            price.setText("Free");
+            SwitchLanguage switchLanguage = new SwitchLanguage();
+            if (switchLanguage.getLanguage().equals("en")) {
+                price.setText("Free");
+            } else {
+                price.setText("免费");
+            }
         }
 
 

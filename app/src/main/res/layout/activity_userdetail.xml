@@ -13,7 +13,7 @@
         android:id="@+id/userdetail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="User"
+        app:title="@string/user"
         app:titleTextColor="@color/white"
         android:background="@color/gpe">
     </android.support.v7.widget.Toolbar>
@@ -88,14 +88,14 @@
             android:layout_height="wrap_content"
             android:background="@color/gpe"
             android:layout_weight="1"
-            android:text="Message" />
+            android:text="@string/message" />
         <Button
             android:id="@+id/userdetail_follow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:layout_weight="1"
-            android:text="Follow" />
+            android:text="@string/follow" />
     </LinearLayout>
 
     <LinearLayout

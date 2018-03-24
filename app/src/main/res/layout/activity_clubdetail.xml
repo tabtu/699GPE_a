@@ -98,7 +98,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.02"
-                android:text="Contact" />
+                android:text="@string/contact" />
             <TextView
                 android:id="@+id/clubdetail_contact"
                 android:layout_width="1dp"
@@ -108,7 +108,7 @@
                 android:layout_weight="0.1"
                 android:gravity="end"
                 android:textAlignment="gravity"
-                android:text="None" />
+                android:text="@string/none" />
         </LinearLayout>
 
         <TextView
@@ -126,7 +126,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Introduction" />
+                android:text="@string/intrduction" />
         </LinearLayout>
 
         <TextView
@@ -142,7 +142,7 @@
             android:paddingTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="None"/>
+            android:text="@string/none"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -175,7 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:text="Member"/>
+                    android:text="@string/member"/>
             </LinearLayout>
 
             <LinearLayout
@@ -200,7 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:text="Coach"/>
+                    android:text="@string/coach"/>
             </LinearLayout>
 
             <LinearLayout
@@ -224,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:text="Referee"/>
+                    android:text="@string/referee"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -243,7 +243,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Team" />
+                android:text="@string/team" />
         </LinearLayout>
 
         <TextView
@@ -368,7 +368,7 @@
             android:paddingTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="None"/>
+            android:text="@string/none"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -399,7 +399,7 @@
             android:background="@color/gpe"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:text="Join" />
+            android:text="@string/join" />
 
     </LinearLayout>
 </ScrollView>
