@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                         handler.sendMessage(msg);
                     }
                 } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -216,11 +217,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 if (accountFragment == null) {
                     accountFragment = AccountFragment.newInstance("Account");
                 }
-                if (status == 0) {
-                    showFragment(loginFragment);
-                } else {
-                    showFragment(accountFragment);
-                }
+                showFragment(accountFragment);
                 break;
             default:
                 break;
@@ -233,6 +230,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public void onTabReselected(int position) {
+    }
+
+    public void showLoginFragment() {
+        showFragment(loginFragment);
     }
 
 }

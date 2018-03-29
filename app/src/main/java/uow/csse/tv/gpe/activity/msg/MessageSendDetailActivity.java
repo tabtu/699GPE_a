@@ -119,6 +119,7 @@ public class MessageSendDetailActivity extends AppCompatActivity{
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
+                            Toast.makeText(MessageSendDetailActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).start();

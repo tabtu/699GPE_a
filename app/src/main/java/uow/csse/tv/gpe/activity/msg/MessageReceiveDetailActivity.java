@@ -122,6 +122,7 @@ public class MessageReceiveDetailActivity extends AppCompatActivity{
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
+                            Toast.makeText(MessageReceiveDetailActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).start();
@@ -160,6 +161,7 @@ public class MessageReceiveDetailActivity extends AppCompatActivity{
                     String tmp = hu.executeHttpGet(Const.getmsgread + _sen + "&" + _rec + "&" + _sedt);
                     Log.v("tmp",tmp.length()+"");
                 } catch (Exception e) {
+                    Toast.makeText(MessageReceiveDetailActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();

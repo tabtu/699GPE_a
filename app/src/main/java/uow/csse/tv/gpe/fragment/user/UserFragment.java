@@ -138,18 +138,22 @@ public class UserFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + "0");
-                JsonParse jp = new JsonParse(tmp);
-                userList = jp.ParseJsonUsers(tmp);
-                if (userList != null) {
-                    Message msg = new Message();
-                    msg.what = 0x10;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + "0");
+                    JsonParse jp = new JsonParse(tmp);
+                    userList = jp.ParseJsonUsers(tmp);
+                    if (userList != null) {
+                        Message msg = new Message();
+                        msg.what = 0x10;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x1;
+                        handler.sendMessage(msg);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -186,127 +190,130 @@ public class UserFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                JsonParse jp = new JsonParse();
-                typeSelect = (String) spinner.getSelectedItem();
-                if (typeSelect.equals(getString(R.string.athelete))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=athelete" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<User> temp = jp.ParseJsonUsers(tmp);
-                    if (temp.size() != 0) {
-                        userList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x20;
-                        handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    JsonParse jp = new JsonParse();
+                    typeSelect = (String) spinner.getSelectedItem();
+                    if (typeSelect.equals(getString(R.string.athelete))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=athelete" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            userList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x20;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.coach))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=coach" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            userList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x20;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.referee))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=referee" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            userList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x20;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.user))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=user" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            userList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x20;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.club))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchclub + "type=club" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<Club> temp = jp.ParseJsonClub(tmp);
+                        if (temp.size() != 0) {
+                            clubList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x21;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.school))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchclub + "type=school" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<Club> temp = jp.ParseJsonClub(tmp);
+                        if (temp.size() != 0) {
+                            clubList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x21;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.venue))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchvenue + "name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<Venue> temp = jp.ParseJsonVenue(tmp);
+                        if (temp.size() != 0) {
+                            venueList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x22;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.activity))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchactivity + "name=" + searchContent + "&" + Const.PAGE + pageCount);
+                        List<Activity> temp = jp.ParseJsonActivity(tmp);
+                        if (temp.size() != 0) {
+                            activityList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x23;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
                     } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
+                        String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + pageCount);
+                        List<User> temp = jp.ParseJsonUsers(tmp);
+                        if (temp.size() != 0) {
+                            userList.addAll(temp);
+                            Message msg = new Message();
+                            msg.what = 0x20;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x3;
+                            handler.sendMessage(msg);
+                        }
                     }
-                } else if (typeSelect.equals(getString(R.string.coach))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=coach" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<User> temp = jp.ParseJsonUsers(tmp);
-                    if (temp.size() != 0) {
-                        userList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x20;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.referee))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=referee" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<User> temp = jp.ParseJsonUsers(tmp);
-                    if (temp.size() != 0) {
-                        userList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x20;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.user))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=user" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<User> temp = jp.ParseJsonUsers(tmp);
-                    if (temp.size() != 0) {
-                        userList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x20;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                }
-                else if (typeSelect.equals(getString(R.string.club))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchclub + "type=club" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<Club> temp = jp.ParseJsonClub(tmp);
-                    if (temp.size() != 0) {
-                        clubList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x21;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.school))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchclub + "type=school" + "&name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<Club> temp = jp.ParseJsonClub(tmp);
-                    if (temp.size() != 0) {
-                        clubList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x21;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.venue))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchvenue + "name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<Venue> temp = jp.ParseJsonVenue(tmp);
-                    if (temp.size() != 0) {
-                        venueList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x22;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.activity))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchactivity + "name=" + searchContent + "&" + Const.PAGE + pageCount);
-                    List<Activity> temp = jp.ParseJsonActivity(tmp);
-                    if (temp.size() != 0) {
-                        activityList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x23;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
-                } else {
-                    String tmp = hu.executeHttpGet(Const.getallusers + Const.PAGE + pageCount);
-                    List<User> temp = jp.ParseJsonUsers(tmp);
-                    if (temp.size() != 0) {
-                        userList.addAll(temp);
-                        Message msg = new Message();
-                        msg.what = 0x20;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x3;
-                        handler.sendMessage(msg);
-                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -316,14 +323,18 @@ public class UserFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                lastItem = false;
-                pageCount = 0;
-                newThread();
-                userListAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
+                try {
+                    lastItem = false;
+                    pageCount = 0;
+                    newThread();
+                    userListAdapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
 
-                if (mSwipeRefreshView.isRefreshing()) {
-                    mSwipeRefreshView.setRefreshing(false);
+                    if (mSwipeRefreshView.isRefreshing()) {
+                        mSwipeRefreshView.setRefreshing(false);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 2000);
@@ -343,95 +354,99 @@ public class UserFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                JsonParse jp = new JsonParse();
-                typeSelect = (String) spinner.getSelectedItem();
-                if (typeSelect.equals(getString(R.string.athelete))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=athelete" + "&name=" + searchContent + "&" + Const.PAGE + "0");
-                    userList = jp.ParseJsonUsers(tmp);
-                    if (userList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x10;
-                        handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    JsonParse jp = new JsonParse();
+                    typeSelect = (String) spinner.getSelectedItem();
+                    if (typeSelect.equals(getString(R.string.athelete))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=athelete" + "&name=" + searchContent + "&" + Const.PAGE + "0");
+                        userList = jp.ParseJsonUsers(tmp);
+                        if (userList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x10;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.coach))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=coach" + "&name=" + searchContent + "&" + Const.PAGE + "0");
+                        userList = jp.ParseJsonUsers(tmp);
+                        if (userList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x10;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.referee))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchuser + "type=referee" + "&name=" + searchContent + "&" + Const.PAGE + "0");
+                        userList = jp.ParseJsonUsers(tmp);
+                        if (userList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x10;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.club))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchclub + "type=club" + "&name=" + searchContent + "&" + Const.PAGE + "0");
+                        clubList = jp.ParseJsonClub(tmp);
+                        if (clubList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x11;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.school))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchclub + "type=school" + "&name=" + searchContent + "&" + Const.PAGE + "0");
+                        clubList = jp.ParseJsonClub(tmp);
+                        if (clubList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x11;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.venue))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchvenue + "name=" + searchContent + "&" + Const.PAGE + "0");
+                        venueList = jp.ParseJsonVenue(tmp);
+                        if (venueList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x12;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    } else if (typeSelect.equals(getString(R.string.activity))) {
+                        String tmp = hu.executeHttpGet(Const.postsearchactivity + "name=" + searchContent + "&" + Const.PAGE + "0");
+                        activityList = jp.ParseJsonActivity(tmp);
+                        if (clubList != null) {
+                            Message msg = new Message();
+                            msg.what = 0x13;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
                     } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
+                        initList();
                     }
-                } else if (typeSelect.equals(getString(R.string.coach))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=coach" + "&name=" + searchContent + "&" + Const.PAGE + "0");
-                    userList = jp.ParseJsonUsers(tmp);
-                    if (userList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x10;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.referee))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchuser + "type=referee" + "&name=" + searchContent + "&" + Const.PAGE + "0");
-                    userList = jp.ParseJsonUsers(tmp);
-                    if (userList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x10;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.club))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchclub + "type=club" + "&name=" + searchContent + "&" + Const.PAGE + "0");
-                    clubList = jp.ParseJsonClub(tmp);
-                    if (clubList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x11;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.school))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchclub + "type=school" + "&name=" + searchContent + "&" + Const.PAGE + "0");
-                    clubList = jp.ParseJsonClub(tmp);
-                    if (clubList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x11;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.venue))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchvenue + "name=" + searchContent + "&" + Const.PAGE + "0");
-                    venueList = jp.ParseJsonVenue(tmp);
-                    if (venueList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x12;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else if (typeSelect.equals(getString(R.string.activity))) {
-                    String tmp = hu.executeHttpGet(Const.postsearchactivity + "name=" + searchContent + "&" + Const.PAGE + "0");
-                    activityList = jp.ParseJsonActivity(tmp);
-                    if (clubList != null) {
-                        Message msg = new Message();
-                        msg.what = 0x13;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
-                    }
-                } else {
-                    initList();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();

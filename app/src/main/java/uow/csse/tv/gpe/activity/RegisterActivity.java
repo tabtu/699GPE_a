@@ -94,10 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     handler.sendMessage(msg);
                                 }
                             } catch (Exception e) {
-                                Log.v("2", e.getMessage());
-//                            Message msg = new Message();
-//                            msg.what = 0x99;
-//                            handler.sendMessage(msg);
+                                Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }).start();

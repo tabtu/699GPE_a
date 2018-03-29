@@ -69,18 +69,22 @@ public class ClubActivityFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getclubactivitylist + Const.ID + club.getId() + "&" + Const.PAGE + "0");
-                JsonParse jp = new JsonParse(tmp);
-                mylist = jp.ParseJsonActivity(tmp);
-                if (mylist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x0;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.getclubactivitylist + Const.ID + club.getId() + "&" + Const.PAGE + "0");
+                    JsonParse jp = new JsonParse(tmp);
+                    mylist = jp.ParseJsonActivity(tmp);
+                    if (mylist != null) {
+                        Message msg = new Message();
+                        msg.what = 0x0;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x1;
+                        handler.sendMessage(msg);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
