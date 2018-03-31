@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.MainActivity;
-import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.PreferenceUtil;
 import uow.csse.tv.gpe.util.SwitchLanguage;
 

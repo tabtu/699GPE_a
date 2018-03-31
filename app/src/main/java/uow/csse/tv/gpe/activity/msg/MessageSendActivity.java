@@ -90,6 +90,7 @@ public class MessageSendActivity extends AppCompatActivity {
                                 handler.sendMessage(msg);
                             }
                         } catch (Exception e) {
+                            Toast.makeText(MessageSendActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).start();

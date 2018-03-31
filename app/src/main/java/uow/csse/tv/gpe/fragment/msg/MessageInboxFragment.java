@@ -99,6 +99,7 @@ public class MessageInboxFragment extends Fragment {
                         handler.sendMessage(msg);
                     }
                 } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -140,20 +141,24 @@ public class MessageInboxFragment extends Fragment {
                         if(user != null) {
                             exu = "rec=" + user.getId();
                         }
-                        HttpUtils hu = new HttpUtils();
-                        String tmp = hu.executeHttpGet(Const.getinboxmsg + exu + "&" + Const.PAGE + pageCount);
-                        JsonParse jp = new JsonParse(tmp);
-                        List<Msgs> temp = jp.ParseJsonMsg(tmp);
-                        if (temp.size() != 0) {
-                            mylist.addAll(temp);
-                            Message msg = new Message();
-                            msg.what = 0x2;
-                            handler.sendMessage(msg);
-                        } else {
-                            lastItem = true;
-                            Message msg = new Message();
-                            msg.what = 0x3;
-                            handler.sendMessage(msg);
+                        try {
+                            HttpUtils hu = new HttpUtils();
+                            String tmp = hu.executeHttpGet(Const.getinboxmsg + exu + "&" + Const.PAGE + pageCount);
+                            JsonParse jp = new JsonParse(tmp);
+                            List<Msgs> temp = jp.ParseJsonMsg(tmp);
+                            if (temp.size() != 0) {
+                                mylist.addAll(temp);
+                                Message msg = new Message();
+                                msg.what = 0x2;
+                                handler.sendMessage(msg);
+                            } else {
+                                lastItem = true;
+                                Message msg = new Message();
+                                msg.what = 0x3;
+                                handler.sendMessage(msg);
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).start();
@@ -165,14 +170,18 @@ public class MessageInboxFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                lastItem = false;
-                pageCount = 0;
-                initList();
-                inMessageListAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
+                try {
+                    lastItem = false;
+                    pageCount = 0;
+                    initList();
+                    inMessageListAdapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), getString(R.string.refresh), Toast.LENGTH_SHORT).show();
 
-                if (mSwipeRefreshView.isRefreshing()) {
-                    mSwipeRefreshView.setRefreshing(false);
+                    if (mSwipeRefreshView.isRefreshing()) {
+                        mSwipeRefreshView.setRefreshing(false);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 2000);

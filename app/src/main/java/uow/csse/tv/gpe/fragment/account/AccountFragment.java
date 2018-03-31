@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.account.FollowActivity;
 import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.account.SettingActivity;
+import uow.csse.tv.gpe.fragment.LoginFragment;
 import uow.csse.tv.gpe.model.User;
 
 public class AccountFragment extends Fragment {
@@ -26,45 +29,74 @@ public class AccountFragment extends Fragment {
 
     private void setData(View view) {
         TextView name = view.findViewById(R.id.account_name);
-        if (user.getName() == null) {
-            String userName = "User" + user.getId().substring(10, 15);
-            name.setText(userName);
-        } else {
-            name.setText(user.getName());
-        }
-
-        Button btn_signout = view.findViewById(R.id.account_signout);
-        btn_signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences userSettings = getActivity().getSharedPreferences("status", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = userSettings.edit();
-                editor.clear();
-                editor.commit();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        final Button btn_signout = view.findViewById(R.id.account_signout);
         LinearLayout btn_follow = view.findViewById(R.id.account_follow);
-        btn_follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),FollowActivity.class);
-                intent.putExtra("user",((MainActivity) getActivity()).getUsr());
-                startActivity(intent);
-            }
-        });
-
         LinearLayout btn_setting = view.findViewById(R.id.account_setting);
-        btn_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).finish();
-                Intent intent = new Intent(getActivity(),SettingActivity.class);
-                startActivity(intent);
+
+        if (user != null) {
+            if (user.getName() == null) {
+                String userName = "User" + user.getId().substring(10, 15);
+                name.setText(userName);
+            } else {
+                name.setText(user.getName());
             }
-        });
+
+            btn_signout.setText("Sign Out");
+            btn_signout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferences userSettings = getActivity().getSharedPreferences("status", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userSettings.edit();
+                    editor.clear();
+                    editor.commit();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            btn_follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), FollowActivity.class);
+                    intent.putExtra("user", ((MainActivity) getActivity()).getUsr());
+                    startActivity(intent);
+                }
+            });
+
+            btn_setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity) getActivity()).finish();
+                    Intent intent = new Intent(getActivity(), SettingActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            name.setText("User");
+            btn_signout.setText("Login");
+            btn_signout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity) getActivity()).showLoginFragment();
+                }
+            });
+
+            btn_follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity) getActivity()).showLoginFragment();
+                }
+            });
+
+            btn_setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity) getActivity()).finish();
+                    Intent intent = new Intent(getActivity(), SettingActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Nullable

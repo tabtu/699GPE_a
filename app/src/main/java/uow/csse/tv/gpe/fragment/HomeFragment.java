@@ -16,9 +16,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.activity.LocationActivity;
+import uow.csse.tv.gpe.activity.MainActivity;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
 import uow.csse.tv.gpe.activity.act.MainActivityActivity;
 import uow.csse.tv.gpe.activity.club.ClubActivity;
@@ -144,18 +146,22 @@ public class HomeFragment extends Fragment{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getupnewslist + currentCity.getId());
-                JsonParse jp = new JsonParse(tmp);
-                uplist = jp.ParseJsonNews(tmp);
-                if (uplist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x0;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x99;
-                    handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.getupnewslist + currentCity.getId());
+                    JsonParse jp = new JsonParse(tmp);
+                    uplist = jp.ParseJsonNews(tmp);
+                    if (uplist != null) {
+                        Message msg = new Message();
+                        msg.what = 0x0;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x99;
+                        handler.sendMessage(msg);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -163,18 +169,22 @@ public class HomeFragment extends Fragment{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getdownnewslist + currentCity.getId() + "&" + Const.PAGE + "0");
-                JsonParse jp = new JsonParse(tmp);
-                downlist = jp.ParseJsonNews(tmp);
-                if (downlist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x1;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x99;
-                    handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.getdownnewslist + currentCity.getId() + "&" + Const.PAGE + "0");
+                    JsonParse jp = new JsonParse(tmp);
+                    downlist = jp.ParseJsonNews(tmp);
+                    if (downlist != null) {
+                        Message msg = new Message();
+                        msg.what = 0x1;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x99;
+                        handler.sendMessage(msg);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();
@@ -243,18 +253,22 @@ public class HomeFragment extends Fragment{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtils hu = new HttpUtils();
-                String tmp = hu.executeHttpGet(Const.getcitylist);
-                JsonParse jp = new JsonParse(tmp);
-                citylist = jp.ParseJsonCity(tmp);
-                if (citylist != null) {
-                    Message msg = new Message();
-                    msg.what = 0x2;
-                    handler.sendMessage(msg);
-                } else {
-                    Message msg = new Message();
-                    msg.what = 0x99;
-                    handler.sendMessage(msg);
+                try {
+                    HttpUtils hu = new HttpUtils();
+                    String tmp = hu.executeHttpGet(Const.getcitylist);
+                    JsonParse jp = new JsonParse(tmp);
+                    citylist = jp.ParseJsonCity(tmp);
+                    if (citylist != null) {
+                        Message msg = new Message();
+                        msg.what = 0x2;
+                        handler.sendMessage(msg);
+                    } else {
+                        Message msg = new Message();
+                        msg.what = 0x99;
+                        handler.sendMessage(msg);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }).start();

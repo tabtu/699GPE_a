@@ -74,18 +74,22 @@ public class MainActivityActivity extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    HttpUtils hu = new HttpUtils();
-                    String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
-                    JsonParse jp = new JsonParse(tmp);
-                    mylist = jp.ParseJsonActivity(tmp);
-                    if (mylist != null) {
-                        Message msg = new Message();
-                        msg.what = 0x0;
-                        handler.sendMessage(msg);
-                    } else {
-                        Message msg = new Message();
-                        msg.what = 0x1;
-                        handler.sendMessage(msg);
+                    try {
+                        HttpUtils hu = new HttpUtils();
+                        String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
+                        JsonParse jp = new JsonParse(tmp);
+                        mylist = jp.ParseJsonActivity(tmp);
+                        if (mylist != null) {
+                            Message msg = new Message();
+                            msg.what = 0x0;
+                            handler.sendMessage(msg);
+                        } else {
+                            Message msg = new Message();
+                            msg.what = 0x1;
+                            handler.sendMessage(msg);
+                        }
+                    }catch (Exception e) {
+                        Toast.makeText(MainActivityActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 }
             }).start();
@@ -122,20 +126,24 @@ public class MainActivityActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        HttpUtils hu = new HttpUtils();
-                        String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
-                        JsonParse jp = new JsonParse(tmp);
-                        List<Activity> temp = jp.ParseJsonActivity(tmp);
-                        if (temp.size() != 0) {
-                            mylist.addAll(temp);
-                            Message msg = new Message();
-                            msg.what = 0x2;
-                            handler.sendMessage(msg);
-                        } else {
-                            lastItem = true;
-                            Message msg = new Message();
-                            msg.what = 0x3;
-                            handler.sendMessage(msg);
+                        try {
+                            HttpUtils hu = new HttpUtils();
+                            String tmp = hu.executeHttpGet(Const.gethomeactivitylist + "&" + Const.PAGE + "0");
+                            JsonParse jp = new JsonParse(tmp);
+                            List<Activity> temp = jp.ParseJsonActivity(tmp);
+                            if (temp.size() != 0) {
+                                mylist.addAll(temp);
+                                Message msg = new Message();
+                                msg.what = 0x2;
+                                handler.sendMessage(msg);
+                            } else {
+                                lastItem = true;
+                                Message msg = new Message();
+                                msg.what = 0x3;
+                                handler.sendMessage(msg);
+                            }
+                        }catch (Exception e) {
+                            Toast.makeText(MainActivityActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).start();
@@ -147,13 +155,17 @@ public class MainActivityActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                lastItem = false;
-                pageCount = 0;
-                initList();
-                activityListAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivityActivity.this, getString(R.string.refresh), Toast.LENGTH_SHORT).show();
-                if (mSwipeRefreshView.isRefreshing()) {
-                    mSwipeRefreshView.setRefreshing(false);
+                try {
+                    lastItem = false;
+                    pageCount = 0;
+                    initList();
+                    activityListAdapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivityActivity.this, getString(R.string.refresh), Toast.LENGTH_SHORT).show();
+                    if (mSwipeRefreshView.isRefreshing()) {
+                        mSwipeRefreshView.setRefreshing(false);
+                    }
+                }catch (Exception e) {
+                    Toast.makeText(MainActivityActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 1000);
