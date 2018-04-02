@@ -37,4 +37,5 @@ public class Const {
     public static String postsearchvenue = hostname + "sh/venue?";
     public static String postsearchactivity = hostname + "sh/activity?";
     public static String postsearchclub = hostname + "sh/club?";
+    public static String getcsnewslist = hostname + "csnews?id=";
 }

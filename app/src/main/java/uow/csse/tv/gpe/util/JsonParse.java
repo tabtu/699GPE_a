@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import uow.csse.tv.gpe.model.Activity;
+import uow.csse.tv.gpe.model.CNews;
 import uow.csse.tv.gpe.model.City;
 import uow.csse.tv.gpe.model.Club;
 import uow.csse.tv.gpe.model.Msgs;
@@ -96,6 +97,12 @@ public class JsonParse {
     public List<Activity> ParseJsonActivity (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Activity>>(){}.getType();
+        return gson.fromJson(str, type);
+    }
+
+    public List<CNews> ParseJsonCNews (String str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<CNews>>(){}.getType();
         return gson.fromJson(str, type);
     }
 }

@@ -63,6 +63,7 @@
         <activity android:name=".activity.club.ClubMemberActivity"/>
         <activity android:name=".activity.account.SettingActivity"/>
         <activity android:name=".activity.LocationActivity" />
+        <activity android:name=".activity.club.ClubNewsDetailActivity" />
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
     </application>

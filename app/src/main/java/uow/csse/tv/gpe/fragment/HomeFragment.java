@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment{
         banner_news.setOnBannerClickListener(new Banner.OnBannerClickListener() {
             @Override
             public void OnBannerClick(View view, int i) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("news", uplist.get(i));
                 startActivity(intent);
             }

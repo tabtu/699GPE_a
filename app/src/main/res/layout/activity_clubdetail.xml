@@ -1,405 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/clubdetail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Club"
+        app:titleTextColor="@color/white"
+        android:background="@color/gpe">
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="45dp"
+        app:srcCompat="@mipmap/clubbackground" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/clubdetail_toolbar"
+        android:orientation="vertical"
+        android:layout_marginTop="-195dp">
+        <TextView
+            android:id="@+id/clubdetail_name"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Club"
-            app:titleTextColor="@color/white"
-            android:background="@color/gpe">
-        </android.support.v7.widget.Toolbar>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="-10dp"
-            android:layout_marginBottom="45dp"
-            app:srcCompat="@mipmap/clubbackground" />
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:lines="2"
+            android:text="Ryan Wilson"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="-195dp">
-            <TextView
-                android:id="@+id/clubdetail_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:lines="2"
-                android:text="Ryan Wilson"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="10dp">
-                <TextView
-                    android:id="@+id/clubdetail_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Windsor"/>
-                <TextView
-                    android:id="@+id/clubdetail_district"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:text="University"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="50dp"-->
-            <!--android:orientation="horizontal">-->
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/gpe"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="Join" />-->
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/white"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="Follow" />-->
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_marginTop="50dp"-->
-            <!--android:layout_height="15dp"-->
-            <!--android:background="@color/lightgrey"/>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginTop="35dp">
-            <TextView
-                android:layout_width="0.1dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.02"
-                android:text="@string/contact" />
-            <TextView
-                android:id="@+id/clubdetail_contact"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="0.1"
-                android:gravity="end"
-                android:textAlignment="gravity"
-                android:text="@string/none" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="@string/intrduction" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/clubdetail_intro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/none"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="@color/lightgrey"/>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/lightgrey"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/clubdetail_member"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@color/white"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_athletenum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:text="0"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="@string/member"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/clubdetail_coach"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:paddingLeft="17dp"
-                android:paddingRight="17dp"
-                android:background="@color/white"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_cachnum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:text="0"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="@string/coach"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/clubdetail_referee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:background="@color/white"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/clubdetail_refereenum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="center"
-                    android:text="0"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="@string/referee"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="@color/lightgrey"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_marginBottom="10dp">
             <TextView
-                android:layout_height="wrap_content"
+                android:id="@+id/clubdetail_city"
                 android:layout_width="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="@string/team" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Windsor"/>
+            <TextView
+                android:id="@+id/clubdetail_district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:text="University"/>
         </LinearLayout>
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
-
-        <!--<HorizontalScrollView-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<Button-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:scrollbars="none" >-->
-            <!--<LinearLayout-->
-                <!--android:id="@+id/clubdetail_team"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_vertical"-->
-                <!--android:orientation="horizontal" >-->
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-                    <!--<ImageButton-->
-                        <!--android:id="@+id/running"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/transparent"-->
-                        <!--app:srcCompat="@mipmap/athlete"/>-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="25dp"-->
-                        <!--android:layout_marginLeft="25dp"-->
-                        <!--android:text="Running"/>-->
-                <!--</LinearLayout>-->
+            <!--android:background="@color/gpe"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Join" />-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Follow" />-->
+    <!--</LinearLayout>-->
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-                    <!--<ImageButton-->
-                        <!--android:id="@+id/badminton"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/transparent"-->
-                        <!--app:srcCompat="@mipmap/athlete"/>-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="15dp"-->
-                        <!--android:layout_marginLeft="15dp"-->
-                        <!--android:text="Badminton"/>-->
-                <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_height="15dp"-->
+        <!--android:background="@color/lightgrey"/>-->
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-                    <!--<ImageButton-->
-                        <!--android:id="@+id/tennis"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/transparent"-->
-                        <!--app:srcCompat="@mipmap/athlete"/>-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="28dp"-->
-                        <!--android:layout_marginLeft="28dp"-->
-                        <!--android:text="Tennis"/>-->
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-                    <!--<ImageButton-->
-                        <!--android:id="@+id/soccer"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/transparent"-->
-                        <!--app:srcCompat="@mipmap/athlete" />-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="26dp"-->
-                        <!--android:layout_marginLeft="26dp"-->
-                        <!--android:text="Soccer"/>-->
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-                    <!--<ImageButton-->
-                        <!--android:id="@+id/basketball"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/transparent"-->
-                        <!--app:srcCompat="@mipmap/athlete"/>-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="25dp"-->
-                        <!--android:layout_marginLeft="25dp"-->
-                        <!--android:text="Basketball"/>-->
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-        <!--</HorizontalScrollView>-->
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/clubdetail_memberlist"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="35dp">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.1dp"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/none"/>
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.02"
+            android:text="@string/contact" />
+        <TextView
+            android:id="@+id/clubdetail_contact"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.1"
+            android:gravity="end"
+            android:textAlignment="gravity"
+            android:text="@string/none" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/intrduction" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/clubdetail_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/none"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/lightgrey"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/lightgrey"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/clubdetail_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/clubdetail_athletenum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/member"/>
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="@color/lightgrey"/>
-
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
+            android:id="@+id/clubdetail_coach"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            android:id="@+id/tablayout"
-            app:tabTextColor="@color/grey"
-            app:tabIndicatorColor="@color/gpe"/>
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:background="@color/white"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/clubdetail_cachnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/coach"/>
+        </LinearLayout>
 
-        <com.youth.banner.Banner
-            android:layout_width="match_parent"
-            android:layout_height="330dp" />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/clubdetail_join"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/clubdetail_referee"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gpe"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="@string/join" />
-
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/clubdetail_refereenum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/referee"/>
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/lightgrey"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="35dp">-->
+        <!--<TextView-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginStart="20dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/team" />-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="@android:color/darker_gray" />-->
+
+    <!--&lt;!&ndash;<HorizontalScrollView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginBottom="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginLeft="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:scrollbars="none" >&ndash;&gt;-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/clubdetail_team"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal" >&ndash;&gt;-->
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/running"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="95dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/transparent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@mipmap/athlete"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="25dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="25dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Running"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/badminton"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="95dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/transparent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@mipmap/athlete"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="15dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="15dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Badminton"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/tennis"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="95dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/transparent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@mipmap/athlete"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="28dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="28dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Tennis"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/soccer"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="95dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/transparent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@mipmap/athlete" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="26dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="26dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Soccer"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/basketball"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="95dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/transparent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@mipmap/athlete"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="25dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="25dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Basketball"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+    <!--&lt;!&ndash;</HorizontalScrollView>&ndash;&gt;-->
+    <!--&lt;!&ndash;<android.support.v7.widget.RecyclerView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/clubdetail_memberlist"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="50dp"/>&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="5dp"-->
+        <!--android:paddingTop="5dp"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:text="@string/none"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/lightgrey"/>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:id="@+id/tablayout"
+        app:tabTextColor="@color/grey"
+        app:tabIndicatorColor="@color/gpe"/>
+
+    <com.youth.banner.Banner
+        android:layout_width="match_parent"
+        android:layout_height="330dp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <!--<Button-->
+        <!--android:id="@+id/clubdetail_join"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/gpe"-->
+        <!--android:layout_weight="1"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:text="@string/join" />-->
+
+</LinearLayout>
