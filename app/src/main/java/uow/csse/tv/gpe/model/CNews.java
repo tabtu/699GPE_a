@@ -19,7 +19,7 @@ public class CNews extends Entitys implements Serializable {
     private Club club;
     private String title;
     private String content;
-    private Date updatedate;
+    private Long updatedate;
     private String picture;
 
     public CNews() { }
@@ -64,11 +64,11 @@ public class CNews extends Entitys implements Serializable {
         this.picture = picture;
     }
 
-    public Date getUpdatedate() {
+    public Long getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(Date updatedate) {
+    public void setUpdatedate(Long updatedate) {
         this.updatedate = updatedate;
     }
 }
