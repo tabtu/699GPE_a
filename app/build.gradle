@@ -31,6 +31,8 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    compileOptions {
+    }
 }
 repositories {
     flatDir {
@@ -45,13 +47,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile(name: 'bottom-navigation-bar-2.0.4', ext: 'aar')
-    compile 'com.youth.banner:banner:1.1.5'
-    compile 'com.google.code.gson:gson:2.7'
+    implementation(name: 'bottom-navigation-bar-2.0.4', ext: 'aar')
+    implementation 'com.youth.banner:banner:1.1.5'
+    implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.android.support:design:27.0.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.github.Todd-Davies:ProgressWheel:1.2'
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:recyclerview-v7:26.+'
-    compile files('libs/BaiduLBS_Android.jar')
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.Todd-Davies:ProgressWheel:1.2'
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support:recyclerview-v7:26.+'
+    implementation files('libs/BaiduLBS_Android.jar')
 }
