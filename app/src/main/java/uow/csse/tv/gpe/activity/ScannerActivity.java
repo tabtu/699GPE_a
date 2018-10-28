@@ -12,12 +12,12 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
+import cn.bingoogolapple.qrcode.core.BarcodeType;
+import cn.bingoogolapple.qrcode.core.QRCodeView;
+import cn.bingoogolapple.qrcode.zbar.BarcodeFormat;
+import cn.bingoogolapple.qrcode.zbar.ZBarView;
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.qrcode.BarcodeFormat;
-import uow.csse.tv.gpe.qrcode.BarcodeType;
-import uow.csse.tv.gpe.qrcode.QRCodeView;
-import uow.csse.tv.gpe.qrcode.ZBarView;
-
 
 public class ScannerActivity extends AppCompatActivity implements QRCodeView.Delegate {
     private static final String TAG = ScannerActivity.class.getSimpleName();
@@ -38,8 +38,6 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
     protected void onStart() {
         super.onStart();
         mZBarView.startCamera(); // 打开后置摄像头开始预览，但是并未开始识别
-//        mZBarView.startCamera(Camera.CameraInfo.CAMERA_FACING_FRONT); // 打开前置摄像头开始预览，但是并未开始识别
-
         mZBarView.startSpotAndShowRect(); // 显示扫描框，并且延迟0.1秒后开始识别
     }
 
@@ -184,13 +182,13 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
                 https://github.com/bingoogolapple/BGAPhotoPicker-Android
                 这个库来从图库中选择二维码图片，这个库不是必须的，你也可以通过自己的方式从图库中选择图片
                  */
-//                Intent photoPickerIntent = new BGAPhotoPickerActivity.IntentBuilder(this)
-//                        .cameraFileDir(null)
-//                        .maxChooseCount(1)
-//                        .selectedPhotos(null)
-//                        .pauseOnScroll(false)
-//                        .build();
-//                startActivityForResult(photoPickerIntent, REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY);
+                Intent photoPickerIntent = new BGAPhotoPickerActivity.IntentBuilder(this)
+                        .cameraFileDir(null)
+                        .maxChooseCount(1)
+                        .selectedPhotos(null)
+                        .pauseOnScroll(false)
+                        .build();
+                startActivityForResult(photoPickerIntent, REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY);
                 break;
         }
     }
@@ -201,10 +199,10 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
 
         mZBarView.showScanRect();
 
-//        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY) {
-//            final String picturePath = BGAPhotoPickerActivity.getSelectedPhotos(data).get(0);
-//            mZBarView.decodeQRCode(picturePath);
-//        }
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY) {
+            final String picturePath = BGAPhotoPickerActivity.getSelectedPhotos(data).get(0);
+            mZBarView.decodeQRCode(picturePath);
+        }
     }
 
 }

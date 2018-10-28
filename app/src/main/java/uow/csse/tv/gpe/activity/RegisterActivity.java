@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.config.Const;
-import uow.csse.tv.gpe.fragment.LoginFragment;
 import uow.csse.tv.gpe.model.User;
 import uow.csse.tv.gpe.util.HttpUtils;
 import uow.csse.tv.gpe.util.JsonParse;

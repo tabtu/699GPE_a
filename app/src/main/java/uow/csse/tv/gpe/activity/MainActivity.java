@@ -2,24 +2,18 @@ package uow.csse.tv.gpe.activity;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
+
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-
-import java.util.Locale;
 
 import uow.csse.tv.gpe.R;
 import uow.csse.tv.gpe.config.Const;

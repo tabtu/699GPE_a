@@ -18,9 +18,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import uow.csse.tv.gpe.R;
-import uow.csse.tv.gpe.activity.LocationActivity;
 import uow.csse.tv.gpe.activity.NewsDetailActivity;
-import uow.csse.tv.gpe.activity.ScannerActivity;
+import uow.csse.tv.gpe.activity.OpenScannerActivity;
 import uow.csse.tv.gpe.activity.act.MainActivityActivity;
 import uow.csse.tv.gpe.activity.club.ClubActivity;
 import uow.csse.tv.gpe.activity.club.SchoolActivity;
@@ -72,7 +71,7 @@ public class HomeFragment extends Fragment{
         banner_news.setOnBannerClickListener(new Banner.OnBannerClickListener() {
             @Override
             public void OnBannerClick(View view, int i) {
-                Intent intent = new Intent(getActivity(), ScannerActivity.class);
+                Intent intent = new Intent(getActivity(), OpenScannerActivity.class);
                 intent.putExtra("news", uplist.get(i));
                 startActivity(intent);
             }
