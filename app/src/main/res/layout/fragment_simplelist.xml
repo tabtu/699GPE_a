@@ -19,7 +19,7 @@
         ProgressWheel:pwRimWidth="2dp"
         android:layout_marginLeft="170dp"/>
 
-    <uow.csse.tv.gpe.util.SwipeRefreshView
+    <uow.cs.tv.gpe.util.SwipeRefreshView
         android:id="@+id/swipelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,5 +29,5 @@
             android:id="@+id/simplelist_list"
             android:background="@color/white"
             android:layout_margin="10dp" />
-    </uow.csse.tv.gpe.util.SwipeRefreshView>
+    </uow.cs.tv.gpe.util.SwipeRefreshView>
 </LinearLayout>
