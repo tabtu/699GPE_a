@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import uow.cs.tv.gpe.R;
 import uow.cs.tv.gpe.activity.NewsDetailActivity;
 import uow.cs.tv.gpe.activity.OpenScannerActivity;
+import uow.cs.tv.gpe.activity.ScannerActivity;
 import uow.cs.tv.gpe.activity.act.MainActivityActivity;
 import uow.cs.tv.gpe.activity.club.ClubActivity;
 import uow.cs.tv.gpe.activity.club.SchoolActivity;
