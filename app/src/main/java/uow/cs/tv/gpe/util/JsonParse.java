@@ -11,6 +11,8 @@ import uow.cs.tv.gpe.model.City;
 import uow.cs.tv.gpe.model.Club;
 import uow.cs.tv.gpe.model.Msgs;
 import uow.cs.tv.gpe.model.News;
+import uow.cs.tv.gpe.model.Running;
+import uow.cs.tv.gpe.model.RunningMan;
 import uow.cs.tv.gpe.model.User;
 import uow.cs.tv.gpe.model.VNews;
 import uow.cs.tv.gpe.model.Venue;
@@ -96,6 +98,18 @@ public class JsonParse {
     public List<Activity> ParseJsonActivity (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Activity>>(){}.getType();
+        return gson.fromJson(str, type);
+    }
+
+    public Running ParseJsonRunning (String  str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<Running>(){}.getType();
+        return gson.fromJson(str, type);
+    }
+
+    public RunningMan ParseJsonRunningMan (String  str) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<RunningMan>(){}.getType();
         return gson.fromJson(str, type);
     }
 }

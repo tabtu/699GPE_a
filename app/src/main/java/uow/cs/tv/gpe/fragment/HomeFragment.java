@@ -18,9 +18,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import uow.cs.tv.gpe.R;
+import uow.cs.tv.gpe.activity.MainActivity;
 import uow.cs.tv.gpe.activity.NewsDetailActivity;
-import uow.cs.tv.gpe.activity.OpenScannerActivity;
-import uow.cs.tv.gpe.activity.ScannerActivity;
+import uow.cs.tv.gpe.activity.scan.OpenScannerActivity;
+import uow.cs.tv.gpe.activity.scan.ScannerActivity;
 import uow.cs.tv.gpe.activity.act.MainActivityActivity;
 import uow.cs.tv.gpe.activity.club.ClubActivity;
 import uow.cs.tv.gpe.activity.club.SchoolActivity;
@@ -29,6 +30,7 @@ import uow.cs.tv.gpe.adapter.NewsListAdapter;
 import uow.cs.tv.gpe.config.Const;
 import uow.cs.tv.gpe.model.City;
 import uow.cs.tv.gpe.model.News;
+import uow.cs.tv.gpe.model.User;
 import uow.cs.tv.gpe.util.HttpUtils;
 import uow.cs.tv.gpe.util.JsonParse;
 import uow.cs.tv.gpe.util.ListViewAutoHeight;
@@ -51,6 +53,7 @@ public class HomeFragment extends Fragment{
     private NewsListAdapter newsListAdapter;
 
     private City currentCity;
+    private User user;
 
     private void setBanner() {
         Banner banner_news;
@@ -72,7 +75,7 @@ public class HomeFragment extends Fragment{
         banner_news.setOnBannerClickListener(new Banner.OnBannerClickListener() {
             @Override
             public void OnBannerClick(View view, int i) {
-                Intent intent = new Intent(getActivity(), OpenScannerActivity.class);
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("news", uplist.get(i));
                 startActivity(intent);
             }
@@ -187,6 +190,7 @@ public class HomeFragment extends Fragment{
         ImageButton btn_school;
         ImageButton btn_club;
         Button btn_more;
+//        ImageButton btn_running;
 
         //buttons
         btn_athlete = (ImageButton) view.findViewById(R.id.btn_athlete);
@@ -227,6 +231,16 @@ public class HomeFragment extends Fragment{
                 startActivity(intent);
             }
         });
+
+//        btn_running = (ImageButton) view.findViewById(R.id.running);
+//        btn_running.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(),OpenScannerActivity.class);
+//                intent.putExtra("usid", user.getId());
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Nullable
@@ -240,6 +254,7 @@ public class HomeFragment extends Fragment{
         pw.startSpinning();
 
         setButton();
+        user = ((MainActivity)getActivity()).getUsr();
 
         new Thread(new Runnable() {
             @Override

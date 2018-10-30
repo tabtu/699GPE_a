@@ -18,6 +18,8 @@ import uow.cs.tv.gpe.R;
 import uow.cs.tv.gpe.activity.account.FollowActivity;
 import uow.cs.tv.gpe.activity.MainActivity;
 import uow.cs.tv.gpe.activity.account.SettingActivity;
+import uow.cs.tv.gpe.activity.scan.OpenScannerActivity;
+import uow.cs.tv.gpe.activity.scan.ScannerActivity;
 import uow.cs.tv.gpe.model.User;
 
 public class AccountFragment extends Fragment {
@@ -62,6 +64,16 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 ((MainActivity) getActivity()).finish();
                 Intent intent = new Intent(getActivity(),SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout btn_scanner = view.findViewById(R.id.account_scanner);
+        btn_scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ScannerActivity.class);
+                intent.putExtra("usid", user.getId());
                 startActivity(intent);
             }
         });

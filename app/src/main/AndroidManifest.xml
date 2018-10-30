@@ -65,8 +65,8 @@
         <activity android:name="uow.cs.tv.gpe.activity.club.ClubMemberActivity"/>
         <activity android:name="uow.cs.tv.gpe.activity.account.SettingActivity"/>
         <activity android:name="uow.cs.tv.gpe.activity.LocationActivity"/>
-        <activity android:name="uow.cs.tv.gpe.activity.ScannerActivity"/>
-        <activity android:name="uow.cs.tv.gpe.activity.OpenScannerActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.scan.ScannerActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.scan.OpenScannerActivity"/>
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
     </application>

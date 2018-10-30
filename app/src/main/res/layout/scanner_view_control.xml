@@ -9,6 +9,7 @@
     <!--app:fl_isDistributionWhiteSpacing="true"-->
     <!--app:fl_verticalChildGap="4dp">-->
 
+<!--
     <TextView
         android:id="@+id/start_preview"
         style="@style/WrapWrapTv"
@@ -113,4 +114,5 @@
         android:id="@+id/choose_qrcde_from_gallery"
         style="@style/WrapWrapTv"
         android:text="识别图片中的码" />
+-->
 </cn.bingoogolapple.flowlayout.BGAFlowLayout>
