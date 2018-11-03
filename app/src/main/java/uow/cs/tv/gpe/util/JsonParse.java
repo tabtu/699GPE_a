@@ -101,13 +101,13 @@ public class JsonParse {
         return gson.fromJson(str, type);
     }
 
-    public Running ParseJsonRunning (String  str) {
+    public Running ParseJsonRunning (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<Running>(){}.getType();
         return gson.fromJson(str, type);
     }
 
-    public RunningMan ParseJsonRunningMan (String  str) {
+    public RunningMan ParseJsonRunningMan (String str) {
         Gson gson = new Gson();
         Type type = new TypeToken<RunningMan>(){}.getType();
         return gson.fromJson(str, type);

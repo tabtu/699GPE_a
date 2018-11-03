@@ -72,7 +72,7 @@ public class AccountFragment extends Fragment {
         btn_scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ScannerActivity.class);
+                Intent intent = new Intent(getActivity(),OpenScannerActivity.class);
                 intent.putExtra("usid", user.getId());
                 startActivity(intent);
             }

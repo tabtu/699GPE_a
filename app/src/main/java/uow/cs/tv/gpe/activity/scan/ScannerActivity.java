@@ -18,7 +18,6 @@ import cn.bingoogolapple.qrcode.zbar.ZBarView;
 import uow.cs.tv.gpe.R;
 import uow.cs.tv.gpe.config.Const;
 import uow.cs.tv.gpe.model.Running;
-import uow.cs.tv.gpe.model.RunningMan;
 import uow.cs.tv.gpe.util.HttpUtils;
 import uow.cs.tv.gpe.util.JsonParse;
 
@@ -27,9 +26,7 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
     private static final int REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY = 666;
 
     private ZBarView mZBarView;
-
-    private RunningMan runner;
-
+    private Running running;
     private String usid;
 
     @SuppressLint("HandlerLeak")
@@ -37,14 +34,18 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x0) {
-                String content = runner.getName();
+                String content = running.getRmid();
                 setTitle("成功登记 " + content + "点击返回继续使用");
                 Toast.makeText(ScannerActivity.this, content, Toast.LENGTH_LONG).show();
                 mZBarView.stopCamera();
+            } else if (msg.what == 0x1) {
+                setTitle("网络异常！请重新扫描");
+                Toast.makeText(ScannerActivity.this, "Re-Scanning", Toast.LENGTH_SHORT).show();
+                mZBarView.startSpotAndShowRect();
             } else {
                 setTitle("操作失败! 重新扫描中");
                 Toast.makeText(ScannerActivity.this, "Re-Scanning", Toast.LENGTH_SHORT).show();
-                mZBarView.startSpot();
+                mZBarView.startSpotAndShowRect();
             }
         }
     };
@@ -54,10 +55,12 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
         setContentView(R.layout.activity_scanner);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        usid = getIntent().getStringExtra("usid").toString().trim();
+        usid = getIntent().getStringExtra("usid").trim();
 
         mZBarView = findViewById(R.id.zbarview);
         mZBarView.setDelegate(this);
+
+//        onScanQRCodeSuccess("W8888A");
     }
 
     @Override
@@ -88,9 +91,7 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
     public void onScanQRCodeSuccess(final String result) {
 
         mZBarView.stopSpotAndHiddenRect();
-
         setTitle(R.string.loading);
-
         vibrate();
 
         new Thread(new Runnable() {
@@ -100,9 +101,11 @@ public class ScannerActivity extends AppCompatActivity implements QRCodeView.Del
                 try {
                     HttpUtils hu = new HttpUtils();
                     String tmp = hu.executeHttpPost(Const.running + lg);
+//                    Log.v("response_string_run/lg", tmp);
                     JsonParse jp = new JsonParse(tmp);
-                    runner = jp.ParseJsonRunningMan(tmp);
-                    if (runner != null) {
+                    running = jp.ParseJsonRunning(tmp);
+//                    Log.v("gson_parse", running.getUsid());
+                    if (running != null) {
                         Message msg = new Message();
                         msg.what = 0x0;
                         handler.sendMessage(msg);

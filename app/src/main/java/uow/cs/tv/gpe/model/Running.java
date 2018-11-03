@@ -15,10 +15,10 @@ import java.util.Date;
 public class Running extends Entitys implements Serializable {
 
     private long id;
-    private User user;
-    private RunningMan runner;
-    private Date date;
+    private long date;
     private String location;
+    private String usid;
+    private String rmid;
 
     public Running() {
 
@@ -32,27 +32,11 @@ public class Running extends Entitys implements Serializable {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public RunningMan getRunner() {
-        return runner;
-    }
-
-    public void setRunner(RunningMan runner) {
-        this.runner = runner;
-    }
-
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
@@ -62,5 +46,21 @@ public class Running extends Entitys implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getUsid() {
+        return usid;
+    }
+
+    public void setUsid(String usid) {
+        this.usid = usid;
+    }
+
+    public String getRmid() {
+        return rmid;
+    }
+
+    public void setRmid(String rmid) {
+        this.rmid = rmid;
     }
 }
