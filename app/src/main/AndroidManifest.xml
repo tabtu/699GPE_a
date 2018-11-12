@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="uow.csse.tv.gpe">
+    package="uow.cs.tv.gpe">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
     <!-- 这个权限用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
     <!-- 这个权限用于访问GPS定位-->
@@ -19,10 +18,13 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <!-- 访问网络，网络定位需要上网-->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- SD卡读取权限，用户写入离线定位数据-->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <!-- Vibrate, Camera, FlashLight-->
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.FLASHLIGHT"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -32,38 +34,39 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme"
-        android:name=".application.LocationApplication" >
+        android:name="uow.cs.tv.gpe.application.LocationApplication" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="cpjxynVxGoAdLzCIULToUCv6ZFa4HZgj" >
         </meta-data>
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="uow.cs.tv.gpe.activity.MainActivity"
             android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.venue.VenueDetailActivity"/>
-        <activity android:name=".activity.venue.VenueActivity"/>
-        <activity android:name=".activity.UserDetailActivity"/>
-        <activity android:name=".activity.club.SchoolActivity"/>
-        <activity android:name=".activity.club.SchoolDetailActivity"/>
-        <activity android:name=".activity.club.ClubActivity"/>
-        <activity android:name=".activity.club.ClubDetailActivity"/>
-        <activity android:name=".activity.NewsDetailActivity"/>
-        <activity android:name=".activity.venue.VenueNewsDetailActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.msg.MessageReceiveDetailActivity"/>
-        <activity android:name=".activity.msg.MessageSendDetailActivity"/>
-        <activity android:name=".activity.msg.MessageSendActivity"/>
-        <activity android:name=".activity.act.MainActivityActivity"/>
-        <activity android:name=".activity.account.FollowActivity"/>
-        <activity android:name=".activity.act.ActivityDetailActivity"/>
-        <activity android:name=".activity.club.ClubMemberActivity"/>
-        <activity android:name=".activity.account.SettingActivity"/>
-        <activity android:name=".activity.LocationActivity" />
-        <activity android:name=".activity.club.ClubNewsDetailActivity" />
+        <activity android:name="uow.cs.tv.gpe.activity.venue.VenueDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.venue.VenueActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.UserDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.club.SchoolActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.club.SchoolDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.club.ClubActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.club.ClubDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.NewsDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.venue.VenueNewsDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.RegisterActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.msg.MessageReceiveDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.msg.MessageSendDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.msg.MessageSendActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.act.MainActivityActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.account.FollowActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.act.ActivityDetailActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.club.ClubMemberActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.account.SettingActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.LocationActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.scan.ScannerActivity"/>
+        <activity android:name="uow.cs.tv.gpe.activity.scan.OpenScannerActivity"/>
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
     </application>

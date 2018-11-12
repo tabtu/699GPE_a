@@ -76,4 +76,8 @@
     <string name="home">首页</string>
     <string name="inbox">收件箱</string>
     <string name="outbox">发件箱</string>
+    <string name="scanner">扫描</string>
+    <string name="loading">正在加载</string>
+    <string name="succed">成功</string>
+    <string name="failed">失败</string>
 </resources>

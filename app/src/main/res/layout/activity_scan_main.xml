@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@android:color/white">
+
+    <include layout="@layout/scanner_toolbar"/>
+
+    <TextView
+        android:id="@+id/test_scan_qrcode"
+        style="@style/MatchWrapTv"
+        android:layout_height="200dp"
+        android:text="扫描二维码" />
+
+</LinearLayout>

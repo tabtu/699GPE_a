@@ -76,4 +76,8 @@
     <string name="home">Home</string>
     <string name="inbox">Inbox</string>
     <string name="outbox">Outbox</string>
+    <string name="scanner">Scanner</string>
+    <string name="loading">Loading</string>
+    <string name="succed">Succed</string>
+    <string name="failed">Failed</string>
 </resources>
