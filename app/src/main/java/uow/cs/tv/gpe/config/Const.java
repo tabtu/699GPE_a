@@ -6,7 +6,7 @@ package uow.cs.tv.gpe.config;
 
 public class Const {
 
-    private static String hostname = "http://gpe.tabtu.top/";
+    private static String hostname = "http://gpe.tabtu.cn:12258/gpe/";
 //    private static String hostname = "http://192.168.0.15:8080/";
 
     public static String PAGE = "page=";
